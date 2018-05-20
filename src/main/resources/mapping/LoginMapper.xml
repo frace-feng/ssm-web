@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.LoginDao" >
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Login" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+    
+    <select id="selectById" resultType="java.util.Map">
+    select userName , passWord,email from user
+    </select>
+    
+
+</mapper>    

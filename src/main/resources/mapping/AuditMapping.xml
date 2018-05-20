@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.AuditDao">
+	<resultMap type="com.example.demo.entity.Audit" id="AuditResultMap">
+		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="client_code" property="clientCode" jdbcType="VARCHAR"/>
+		<result column="role_flag" property="roleFlag" jdbcType="INTEGER"/>
+		<result column="audit_result" property="auditResult" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<select id="selectByPrimaryKeyT11" resultType="java.util.Map">
+	SELECT
+	COUNT( client_code ) AS cli4 ,
+	DATE_FORMAT( aduit_time, '%Y-%m' ) AS time	
+	FROM
+	audit 
+	WHERE
+	role_flag = 1 
+	AND audit_result = 2
+	GROUP BY time
+	</select>
+	
+</mapper>	

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.CarDao">
+	<resultMap type="com.example.demo.entity.Car" id="CarResultMap">
+		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="oilNumber" property="oilNumber" jdbcType="VARCHAR"/>
+		<result column="current_capacity" property="currentCapacity" jdbcType="VARCHAR"/>
+		<result column="percent" property="percent" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	<!-- 下线车数量 -->
+	<select id="selectByPrimaryKeyT24" resultType="java.lang.Integer" >
+	 select count(*) as num1 from car where  status = 'DISABLE'
+	</select>
+	<!-- 运营中的车 -->
+	<select id="selectByPrimaryKeyT25" resultType="java.lang.Integer" >
+	 select count(*) from car WHERE status = 'ENABLE'
+	</select>
+	<!-- 低油量车 -->
+	<select id="selectByPrimaryKeyT26" resultType="java.lang.Integer" >
+	 select count(*) from car WHERE <![CDATA[percent < 30]]>
+	</select>
+	<!-- 加油量 -->
+	<select id="selectByPrimaryKeyT27" resultType="java.util.Map">
+	SELECT
+	ROUND(sum(fuel_quantity)) sumFuel,
+	DATE_FORMAT( create_time, '%Y-%m' ) AS time
+	FROM
+	upload_refuel
+	WHERE
+	fuel_quantity > 0
+	GROUP BY
+	time
+	</select>
+
+	<!-- 添加车 -->
+	<insert id="insertCar"
+		parameterType="com.example.demo.entity.Car">
+		INSERT INTO
+		car
+		(
+		brand,plateNumber,oilNumber,createTime
+		)VALUES(
+		#{brand},#{plateNumber},#{oiNumber},#{createTime}
+		)
+	</insert>
+
+	<!-- 修改车(Update) -->
+	<update id="updateCar"
+		parameterType="com.example.demo.entity.Car">
+		update car set reserve=#{reserve},
+		updateTime=#{updateTime},status=#{status},percent=#{percent} where
+		id=#{id}
+	</update> 
+</mapper>	

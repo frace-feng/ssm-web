@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.GroundInviteDao">
+	<resultMap type="com.example.demo.entity.GroundInvite" id="GroundInviteResultMap">
+		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="client_code" property="clientCode" jdbcType="VARCHAR"/>
+		<result column="invite_client_code" property="inviteClientCode" jdbcType="VARCHAR"/>
+	</resultMap>
+		
+	
+	<select id="selectByPrimaryKeyT4" resultType="java.util.Map">
+	SELECT
+	count(invite_client_code ) as num1
+	FROM
+	client_invite
+	WHERE
+	client_code IN ( SELECT clientCode FROM client WHERE mobile =
+	#{mobile} )
+	and <![CDATA[create_time >= #{stime} AND create_time <= #{etime}]]>
+	
+	</select>
+
+</mapper>

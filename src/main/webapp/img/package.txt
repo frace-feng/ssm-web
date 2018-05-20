@@ -1,0 +1,13 @@
+####maven项目的打包
+
+1.在pom中部署，打包默认为war包
+   run as 中找到 
+2.用maven build 打包  goals：package；profile：pom.xml，然后run
+3.在项目的target里面可以找到打的war包
+
+
+
+####vue项目的打包
+
+
+

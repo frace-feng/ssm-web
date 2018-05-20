@@ -1,0 +1,185 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>后台管理系统--退押金</title>
+<meta name="description" content="这是一个 后台 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/admin/assets/css/admin.css">
+<script src="/admin/assets/js/jquery.min.js"></script>
+<script src="/admin/assets/js/app.js"></script>
+</head>
+
+
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="/admin/assets/i/logo.png"></div>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+   <li class="am-dropdown tognzhi" data-am-dropdown>
+ <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
+  <ul class="am-dropdown-content">
+ 	
+    <li class="am-dropdown-header">跳到到后台首页</li>
+    <li><a href="/pages/managerIndex.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
+  
+  </ul>
+</li>
+
+  <li class="kuanjie">
+ 	
+ 	<a href="/pages/managerIndex.html">用户管理</a>
+ 	<a href="/pages/managerClient.html">客户管理</a>             
+ 	<a href="/pages/managerOrder.html">订单管理</a> 
+ 	<a href="/pages/managerCar.html">车辆管理</a>   
+ 	<a href="/pages/managerMoney.html">收入管理</a> 
+ 	<a href="/pages/managerNotice.html">反馈管理</a> 
+ </li>
+ 
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main"> 
+
+<div class="nav-navicon admin-main admin-sidebar">
+    
+    
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
+    <div class="sideMenu">
+      <h3 class="am-icon-flag"><em></em> <a href="/pages/managerIndex.html">用户管理</a></h3>
+      <ul>
+        <li><a href="/pages/managerIndex.html">添加用户</a></li>
+        <li><a href="/pages/userDelete.html">删除用户</a></li>
+		 <li><a href="/pages/userUpdate.html">更新用户</a></li>
+        
+      </ul>
+      <h3 class="am-icon-users"><em></em> <a href="/pages/managerClient.html">客户管理</a></h3>
+      <ul>
+        <li><a href="/pages/managerClient.html">添加客户</a> </li>
+        <li><a href="/pages/clientDelete.html">删除客户</a> </li>
+      </ul>
+      <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
+      <ul>
+        <li><a href="/pages/orderAdd.html">添加订单</a></li>
+        <li><a href="/pages/managerOrder.html">删除订单</a></li>
+        
+      </ul>
+      <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
+      <ul>
+      	 <li><a href="/pages/managerCar.html">增加车</a></li>
+        <li><a href="/pages/carUpdate.html">更新车</a> </li>
+      </ul>
+      <h3 class="am-icon-gears on"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
+      <ul>
+        <li><a href="/pages/managerMoney.html">充值</a></li>
+        <li><a href="/pages/moneyDelete.html">退押金</a></li>
+
+      </ul>
+      <h3 class="am-icon-volume-up"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
+      <ul>
+        <li><a href="/pages/managerNotice.html">添加消息</a></li>
+		<li><a href="/pages/noticeUpdate.html">更新消息</a></li>
+		<li><a href="/pages/noticeDelete.html">删除消息</a></li>
+      </ul>
+
+    </div>
+    <!-- sideMenu End --> 
+    
+    <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script>    
+</div>
+
+<div class=" admin-content">
+	
+		<div class="daohang">
+			<ul>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户管理 > </button></li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 充值->退押金</button></li> 
+
+       
+
+	
+</div>
+
+<div class="admin-biaogelist">
+    
+
+    <form class="am-form am-g" action="/manage/delete">
+          <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
+            <thead>
+              <tr class="am-success">
+                <th class="table-check"><input type="checkbox" /></th>
+				<th class="table-id" >ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td><input type="text" name="id" class="id"></td>
+				
+				
+              </tr>
+             
+            </tbody>
+          </table>
+          
+                 <div class="am-btn-group am-btn-group-xs">
+
+              <button type="submit" onclick="成功"  name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span>删除</button>
+            </div>
+          
+      
+          
+          
+         
+        </form>
+ 
+<!--      <ul class="am-pagination am-fr">
+                <li class="am-disabled"><a href="#">«</a></li>
+                <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
+                <li><a href="/pages/deleteClient.html">2</a></li>
+                <li><a href="/pages/updateClient.html">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul> -->
+ 
+<!--  <div class="foods">
+  <ul>
+    版权所有@2018
+  </ul>
+  <dl>
+    <a href="/pages/managerIndex.html" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a>
+  </dl>
+</div> -->
+
+
+
+
+</div>
+
+</div>
+
+	</div>
+<script src="/admin/assets/js/amazeui.min.js"></script>
+
+</body>
+</html>

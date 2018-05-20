@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.DepositDao">
+	<resultMap type="com.example.demo.entity.Deposit" id="DepositResultMap">
+		<result column="id" property="id" jdbcType="INTEGER"/>
+	</resultMap>
+		
+
+	<select id="selectByPrimaryKeyT3" resultType="java.util.Map">
+	select  count(clientCode) as number , date_format( create_time, '%m-%d' ) as time 
+	from deposit
+    where  pay_status = '1' 
+    and <![CDATA[create_time > #{stime}]]> 
+    and <![CDATA[create_time< #{etime}]]>
+	group by date_format( create_time, '%m-%d' ) 
+    </select> 
+	
+
+
+</mapper>
