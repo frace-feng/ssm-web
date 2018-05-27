@@ -49,7 +49,7 @@
 	<update id="updateCar"
 		parameterType="com.example.demo.entity.Car">
 		update car set reserve=#{reserve},
-		updateTime=#{updateTime},status=#{status},percent=#{percent} where
+		status=#{status},percent=#{percent}, updateTime=#{updateTime} where
 		id=#{id}
 	</update> 
 </mapper>	

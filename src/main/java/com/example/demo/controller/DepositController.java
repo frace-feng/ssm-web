@@ -5,13 +5,17 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.entity.Deposit;
 import com.example.demo.service.DepositService;
 
 @Controller
@@ -20,6 +24,8 @@ import com.example.demo.service.DepositService;
 public class DepositController {
 	@Resource
 	private DepositService depositService;
+	
+	private static final Log logger = (Log) LogFactory.getLog(DepositController.class);
 
 	/*
 	 * 显示天数的查询
@@ -45,6 +51,20 @@ public class DepositController {
 		System.out.println(etime);
 		List<Map<String, Object>> deposit = this.depositService.getDepositByIdT(1, stime, etime);
 		return deposit;
+	}
+	
+	@RequestMapping("/update")
+	public void updateUser(HttpServletRequest request, HttpServletResponse response, Deposit deposit) throws Exception {
+		int result = depositService.updateDeposit(deposit);
+		if (result > 0) {
+			logger.info("退押金成功");
+			response.sendRedirect("/pages/moneyDelete.html");
+
+		} else {
+			logger.error("退押金失败");
+			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
+
+		}
 	}
 
 }

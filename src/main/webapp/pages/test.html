@@ -8,13 +8,21 @@
 </head>
 <body>
  
- <form action="/manage/show1" method="get"> 
-
-<input id="id" name="id" type="text" >
-<button type="submit">查询</button>
-
- 
- </form>
+<form action="/test/checkLogin" method="post">
+		<table>
+			<tr>
+				<td>用户名:</td>
+				<td><input id="email" name="email" type="email"></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input id="passWord" name="passWord" type="password"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="登录"></td>
+			</tr>
+		</table>
+	</form>
 </body>
 
 </html>

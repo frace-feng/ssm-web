@@ -22,7 +22,7 @@ import com.example.demo.service.UserService;
 public class UserController {
 	@Resource
 	private UserService userService;
-	private static final Log logger = (Log) LogFactory.getLog(LoginController.class);
+	private static final Log logger = (Log) LogFactory.getLog(UserController.class);
 
 	// 查询时间范围的注冊人数
 	@ResponseBody
@@ -97,7 +97,7 @@ public class UserController {
 	public void updateUser(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
 		int result = userService.updateUser(user);
 		if (result > 0) {
-			logger.info("更新用户数据成功");
+			logger.info("更新客户数据成功");
 			response.sendRedirect("/pages/clientUpdate.html");
 
 		} else {

@@ -30,7 +30,7 @@ public class ManageUserController {
 	@Resource
 	private ManageUserService manageUserService;
 
-	private static final Log logger = (Log) LogFactory.getLog(LoginController.class);
+	private static final Log logger = (Log) LogFactory.getLog(ManageUserController.class);
 
 	/**
 	 * @Title: addPage
@@ -67,7 +67,7 @@ public class ManageUserController {
 			response.sendRedirect("/pages/managerIndex.html");
 		} else {
 			logger.error("注册失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
 		}
 	}
 

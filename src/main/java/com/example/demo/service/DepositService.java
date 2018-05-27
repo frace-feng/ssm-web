@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.example.demo.entity.Deposit;
+
 public interface DepositService {
 	public List<Map<String, Object>> getDepositById(int id, Integer day);
 
@@ -12,4 +14,5 @@ public interface DepositService {
 	public List<Map<String, Object>> getDepositByIdT(int id, @Param("stime") String stime,
 			@Param("etime") String etime);
 
+	public int updateDeposit(Deposit deposit);
 }

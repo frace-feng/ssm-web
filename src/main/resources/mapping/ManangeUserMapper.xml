@@ -13,9 +13,9 @@
         INSERT INTO
            user
         (
-            id,userName,passWord,email,status
+            userName,passWord,email,status
         )VALUES(
-            #{id},#{userName},#{passWord},#{email},#{status}
+            #{userName},#{passWord},#{email},#{status}
         )
     </insert>
     

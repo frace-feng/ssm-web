@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>反馈信息展示</title>
+<title>上传文件</title>
 <meta name="description" content="这是一个 反馈 页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,10 +14,9 @@
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
+<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script  src="/js/echarts.js"></script>
-<script src="/js/pay.js"></script>
-<script  src="/js/order.js"></script>
 <script src="/admin/assets/js/app.js"></script>
 </head>
 <body>
@@ -128,45 +127,37 @@
 <div class="admin-biaogelist">		
 		      <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">上传需求文件</a></li>
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+      <legend>指定允许上传的文件类型</legend>
+	  </fieldset>
     </ul>
 
     <div class="am-tabs-bd">
       <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+      
 	<form action="/load/upload" enctype="multipart/form-data" method="post">
 		<table>
 			<tr>
-				<td>文件描述</td>
-				<td><input type="text" name="description"></td>
+				<td>
+				<span>文件描述</span>
+				<input type="text" name="description"></td>
 			</tr>
-			<tr></tr>
+			<tr><td><i class="layui-icon"></i></td></tr>
 			<tr>
-				<td>请选择文件</td>
-				<td><input type="file" name="file"></td>
+				<td>
+				<input type="file" name="file"></td>
 			</tr>
+			<tr><td><i class="layui-icon"></i></td></tr>
 			<tr>
-				<td><input type="submit" value="上传" ></td>
+				<td><input type="submit" class="layui-btn" id="test3" ></td>
 			</tr>
 		</table>
 	</form>
 	</div>
-
-      <div class="am-tab-panel am-fade" id="tab2">
-        
-      </div>
     </div>
   </div>
 
 </div>	
-	
-				<div class="foods">
-					<ul>版权所有@2018
-					</ul>
-					<dl>
-						<a href="/pages/notice.html" title="返回头部"
-							class="am-icon-btn am-icon-arrow-up"></a>
-					</dl>
-				</div>
 
 			</div>
 
@@ -176,4 +167,19 @@
 <script src="/admin/assets/js/amazeui.min.js"></script>
 
 </body>
+<script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  //指定允许上传的文件类型
+  upload.render({
+    elem: '#test3'
+    ,url: '/load/upload'
+    ,accept: 'file' //普通文件
+    ,done: function(res){
+      console.log(res)
+    }
+  });
+})
+</script>
 </html>

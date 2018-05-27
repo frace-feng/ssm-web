@@ -14,7 +14,7 @@
 		<div class="account-pages">
 			<div class="wrapper-page">
 				<div class="text-center">
-	                <a href="index.html" class="logo"><span>登录</span></a>
+	                <a href="#" class="logo"><span>登录</span></a>
 	            </div>
 	            
 	            <div class="m-t-40 card-box">
@@ -22,21 +22,16 @@
 	                    <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
 	                </div>
 	                <div class="panel-body">
-	                	<form action="/web/login" method="POST" class="am-form">
+	                	<form action="/web/checkLogin" method="POST" class="am-form">
 	                		<div class="am-g">
 	                			<div class="am-form-group">
-							      <input type="email" class="am-radius" name="loginname" id="loginname"  placeholder="Username">
+							      <input type="email" class="am-radius" name="email" id="email"  placeholder="email">
 							    </div>
 							
 							    <div class="am-form-group form-horizontal m-t-20">
-							      <input type="password" name="passwd" id="passwd" class="am-radius"  placeholder="Password">
+							      <input type="password" name="passWord" id="passWord" class="am-radius"  placeholder="passWord">
 							    </div>
 							    
-							    <div class="am-form-group ">
-		                           	<label style="font-weight: normal;color: #999;">
-								        <input type="checkbox" class="remeber"> Remember me
-								    </label>
-		                        </div>
 		                        
 		                        <div class="am-form-group ">
 		                        	<button type="submit" class="am-btn am-btn-primary am-radius" style="width: 100%;height: 100%;">登录</button>

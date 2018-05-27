@@ -3,18 +3,25 @@
 <mapper namespace="com.example.demo.dao.DepositDao">
 	<resultMap type="com.example.demo.entity.Deposit" id="DepositResultMap">
 		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="depositCode" property="depositCode" jdbcType="INTEGER"/>
+		<result column="payMode" property="payMode" jdbcType="INTEGER"/>		
 	</resultMap>
 		
 
 	<select id="selectByPrimaryKeyT3" resultType="java.util.Map">
-	select  count(clientCode) as number , date_format( create_time, '%m-%d' ) as time 
+	select  count(clientCode) as number , date_format( createTime, '%m-%d' ) as time 
 	from deposit
-    where  pay_status = '1' 
-    and <![CDATA[create_time > #{stime}]]> 
-    and <![CDATA[create_time< #{etime}]]>
-	group by date_format( create_time, '%m-%d' ) 
+    where  payStatus = '1' 
+    and <![CDATA[createTime > #{stime}]]> 
+    and <![CDATA[createTime< #{etime}]]>
+	group by date_format( createTime, '%m-%d' ) 
     </select> 
 	
+	<!-- 退押金 -->
+	
+	<update id="updateDeposit" parameterType="com.example.demo.entity.Deposit">  
+        update deposit set payMode=1 where depositCode=#{depositCode}  
+    </update>
 
 
 </mapper>

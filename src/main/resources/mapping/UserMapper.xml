@@ -70,7 +70,7 @@
 	LEFT JOIN deposit d on c.clientCode = d.clientCode
 	WHERE
 	auditingStatus = 2 	
-	AND pay_status = 1	
+	AND payStatus = 1	
 	GROUP BY
 	time
 	</select>
@@ -202,7 +202,7 @@
     
     <!-- 修改用户(Update) -->  
     <update id="updateUser" parameterType="com.example.demo.entity.User">  
-        update client set clientCode=#{clientCode}, depositSta=#{depositSta},auditingStatus=#{auditingStatus} where clientName=#{clientName}  
+        update client set clientCode=#{clientCode}, depositSta=#{depositSta},auditingStatus=#{auditingStatus} where id=#{id}  
     </update>  
     
     <!-- 删除用户(Remove) -->  

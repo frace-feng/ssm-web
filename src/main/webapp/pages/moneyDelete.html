@@ -124,19 +124,18 @@
 <div class="admin-biaogelist">
     
 
-    <form class="am-form am-g" action="/manage/delete">
+    <form class="am-form am-g" action="/deposit/update">
           <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
             <thead>
               <tr class="am-success">
                 <th class="table-check"><input type="checkbox" /></th>
-				<th class="table-id" >ID</th>
+				<th class="table-text" >押金号</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><input type="checkbox" /></td>
-                <td><input type="text" name="id" class="id"></td>
-				
+                <td><input type="text" name="depositCode" class="depositCode"></td>
 				
               </tr>
              
@@ -145,7 +144,7 @@
           
                  <div class="am-btn-group am-btn-group-xs">
 
-              <button type="submit" onclick="成功"  name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span>删除</button>
+              <button type="submit"   name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span>退押金</button>
             </div>
           
       

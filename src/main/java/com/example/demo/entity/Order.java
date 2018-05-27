@@ -5,18 +5,20 @@ import java.sql.Date;
 
 public class Order {
 	private Integer id;
+	
+	private String clientCode;
 
 	private String orderCode;
 
 	private String orderStatus;
 
-	private Date endTime;
+	private Date createTime;
 
 	private BigDecimal allKm;
 
 	private Integer allTime;
 
-	private BigDecimal orderPayAmount;
+	private BigDecimal totalMoney;
 
 	private BigDecimal amount;
 
@@ -26,6 +28,14 @@ public class Order {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getClientCode() {
+		return clientCode;
+	}
+
+	public void setClientCode(String clientCode) {
+		this.clientCode = clientCode;
 	}
 
 	public String getOrderCode() {
@@ -44,13 +54,7 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
-	public Date getEndTime() {
-		return endTime;
-	}
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
 
 	public BigDecimal getAllKm() {
 		return allKm;
@@ -68,12 +72,22 @@ public class Order {
 		this.allTime = allTime;
 	}
 
-	public BigDecimal getOrderPayAmount() {
-		return orderPayAmount;
+
+
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setOrderPayAmount(BigDecimal orderPayAmount) {
-		this.orderPayAmount = orderPayAmount;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public BigDecimal getTotalMoney() {
+		return totalMoney;
+	}
+
+	public void setTotalMoney(BigDecimal totalMoney) {
+		this.totalMoney = totalMoney;
 	}
 
 	public BigDecimal getAmount() {

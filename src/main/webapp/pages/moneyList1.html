@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>收入信息展示</title>
+<meta http-equiv="refresh" content="60">
 <meta name="description" content="这是一个 收入 页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,6 +17,7 @@
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script  src="/js/echarts.js"></script>
+<script  src="/js/monMoney.js"></script>
 <script src="/js/monTotal.js"></script>
 <script src="/admin/assets/js/app.js"></script>
 </head>
@@ -129,11 +131,14 @@
 		<!-- 数据展示开始 -->
 			<div class="admin-biaogelist">
 				<script type="text/javascript"></script>
-				<!-- 图片轮换 -->
-				<!--这里打开的是新页面-->
+					<table>
+					<tr>
+						<td><div id="monMoney" style="width: 1800px; height: 400px;"></div></td>
+					</tr>
+				</table>
 				<table>
 					<tr>
-						<td><div id="monTotal" style="width: 1800px; height: 500px;"></div></td>
+						<td><div id="monTotal" style="width: 1800px; height: 400px;"></div></td>
 					</tr>
 				</table>
 
@@ -151,7 +156,7 @@
 					<ul>版权所有@2018
 					</ul>
 					<dl>
-						<a href="/pages/clientList.html" title="返回头部"
+						<a href="/pages/moneyList1.html" title="返回头部"
 							class="am-icon-btn am-icon-arrow-up"></a>
 					</dl>
 				</div>

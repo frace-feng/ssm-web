@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>收入信息展示</title>
+<meta http-equiv="refresh" content="60">
 <meta name="description" content="这是一个 收入 页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,10 +15,11 @@
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
+<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script  src="/js/echarts.js"></script>
 <script src="/js/pay.js"></script>
-<script  src="/js/monMoney.js"></script>
+<script src="/js/deposit.js"></script>
 <script src="/admin/assets/js/app.js"></script>
 </head>
 <body>
@@ -129,28 +131,36 @@
 		</div>
 		<!-- 数据展示开始 -->
 			<div class="admin-biaogelist">
-				
+				 <div class="layui-form-item">
 				<!--这里打开的是新页面-->
-				<table align="center">
-					<tr>
-						<td><span>开始日期：<input type="text" name="stime"
-								id="stime" value="2018-04-07" style="width: 150px; height: 40px" /></span></td>
-						<td><span>结束日期：<input type="text" name="etime"
-								id="etime" value="2018-04-23" style="width: 150px; height: 40px" /></span></td>
-						<td><button id="tijiao1" style="width: 100px; height: 45px">提交</button></td>
-					</tr>
-				</table>
+				
+							<label class="layui-form-label">开始日期：</label>
+							<div class="layui-form-item">
+							<input type="text" name="stime" value="2018-03-22" class="demo-input" placeholder="请选择日期" id="test1">
+							</div>
+									
+						
+							<label class="layui-form-label">结束日期：</label>
+							<div class="layui-form-item">
+							<input type="text" name="etime" value="2018-04-23" class="demo-input" placeholder="请选择日期" id="test2">
+							</div>
+							
+							<td><button id="tijiao1" class="layui-btn layui-btn-xs" style="width: 100px; height: 45px">提交</button></td>
+				
 				<table>
 					<tr>
-						<td><div id="pay" style="width: 1800px; height: 500px;"></div></td>
+						<td><div id="pay" style="width: 1100px; height: 400px;"></div></td>
 					</tr>
 				</table>
+				
 				<br />
-				<table>
-					<tr>
-						<td><div id="monMoney" style="width: 1800px; height: 400px;"></div></td>
-					</tr>
+			    <table>
+						<tr>
+							<td><div id="deposit" style="width: 1100px; height: 400px;"></div></td>
+						</tr>
 				</table>
+				</div>
+
 
 				<ul class="am-pagination am-fr">
 					<li class="am-disabled"><a href="/pages/moneyList.html">«</a></li>
@@ -179,4 +189,18 @@
 <script src="/admin/assets/js/amazeui.min.js"></script>
 
 </body>
+<script src="/laydate/laydate.js"></script>
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1',//指定元素
+  //range: true
+});
+laydate.render({
+	  elem: '#test2',//指定元素
+	  //range: true
+	});
+</script>
 </html>

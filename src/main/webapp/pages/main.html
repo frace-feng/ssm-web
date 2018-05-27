@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>首页展示</title>
+<meta http-equiv="refresh" content="60">
 <meta name="description" content="这是一个 index 页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,7 +17,6 @@
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script  src="/js/echarts.js"></script>
-<script src="/js/deposit.js"></script>
 <script src="/admin/assets/js/app.js"></script>
   <style>
   /*body{padding: 20px;}*/
@@ -237,27 +237,6 @@
           </tr>
         </tbody>
       </table>
-					<table align="center">
-						<tr>
-							<td>
-							<span>开始日期：
-							<input type="text" name="stime" value="2018-02-07" class="demo-input" placeholder="请选择日期" id="test1">
-							</span>
-							</td>		
-							<td>
-							<span>结束日期：
-							<input type="text" name="etime" value="2018-04-23" class="demo-input" placeholder="请选择日期" id="test2">
-							</span>
-							</td>
-							<td><button id="tijiao1" style="width: 100px; height: 45px">提交</button></td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td><div id="deposit" style="width: 1800px; height: 400px;"></div></td>
-						</tr>
-					</table>
-					<br />
 
 				</div>
     <div class="shuju">
@@ -339,54 +318,17 @@
         </div>
       </div>
       <script type="text/javascript">jQuery(".slideTxtBox").slide();</script> 
-   
-   
-   
-   
-   
-   
-   
-   
 </div>
 
     <div class="foods">
     	<ul>版权所有@2018</ul>
     	<dl><a href="/pages/main.html" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a></dl>
 
-
-    	
     </div>
-
-
-
-
-
-
-
 </div>
 
 </div>
-
-
-
-
 </div>
-
-<!-- <script src="/admin/assets/js/amazeui.min.js"></script> -->
-<script src="/laydate/laydate.js"></script>
-<script>
-lay('#version').html('-v'+ laydate.v);
-
-//执行一个laydate实例
-laydate.render({
-  elem: '#test1',//指定元素
-  //range: true
-});
-laydate.render({
-	  elem: '#test2',//指定元素
-	  //range: true
-	});
-</script>
 
 </body>
 

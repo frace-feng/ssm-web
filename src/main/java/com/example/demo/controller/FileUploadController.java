@@ -4,8 +4,11 @@ package com.example.demo.controller;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,14 +25,16 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/load")
 public class FileUploadController {
 
+	private static final Log logger = (Log) LogFactory.getLog(FileUploadController.class);
+	
 	@ResponseBody
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(HttpServletRequest request, @RequestParam("description") String description,
+	public void upload(HttpServletRequest request, HttpServletResponse response, @RequestParam("description") String description,
 			@RequestParam("file") MultipartFile file) throws Exception {
 		System.out.println(description);
 		if (!file.isEmpty()) {
 			// 上传文件路径
-			String path = request.getServletContext().getRealPath("/img/");
+			String path = request.getServletContext().getRealPath("/file/");
 			// 上传文件名
 			String filename = file.getOriginalFilename();
 			File filepath = new File(path, filename);
@@ -39,14 +44,15 @@ public class FileUploadController {
 			}
 			// 将上传文件保存到一个目标文件当中
 			file.transferTo(new File(path + File.separator + filename));
-			return "download";
+			logger.info("上传文件成功");
+			response.sendRedirect("/pages/success.html");
 		} else {
-			return "error";
+			logger.error("上传失败");
+			request.getRequestDispatcher("/pages/500.html").forward(request, response);
 		}
 
 	}
 
-	@SuppressWarnings("unused")
 	@ResponseBody
 	@RequestMapping(value = "/download")
 	public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("filename") String filename,

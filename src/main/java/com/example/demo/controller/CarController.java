@@ -22,7 +22,7 @@ import com.example.demo.service.CarService;
 public class CarController {
 	@Resource
 	private CarService carService;
-	private static final Log logger = (Log) LogFactory.getLog(LoginController.class);
+	private static final Log logger = (Log) LogFactory.getLog(CarController.class);
 	@ResponseBody
 	@RequestMapping(value = "/ajaxshowCar", method = RequestMethod.GET)
 	public Map<String, Integer> ajaxshowCar(HttpServletRequest request, Model model) {

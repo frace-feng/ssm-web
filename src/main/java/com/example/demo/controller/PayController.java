@@ -26,7 +26,7 @@ public class PayController {
 
 	@Resource
 	private PayService payService;
-	private static final Log logger = (Log) LogFactory.getLog(LoginController.class);
+	private static final Log logger = (Log) LogFactory.getLog(PayController.class);
 	// 查询天数
 	/*
 	 * @ResponseBody

@@ -27,7 +27,7 @@ public class ManagerLogin {
 	@Resource
 	private LoginService loginService;
 	private Login login;
-	private static final Log logger = (Log) LogFactory.getLog(LoginController.class);
+	private static final Log logger = (Log) LogFactory.getLog(ManagerLogin.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {

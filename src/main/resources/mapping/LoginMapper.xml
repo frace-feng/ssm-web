@@ -9,9 +9,11 @@
         <result column="status" property="status" jdbcType="INTEGER" />
     </resultMap>
     
-    <select id="selectById" resultType="java.util.Map">
-    select userName , passWord,email from user
+    <select id="selectByEmail" resultType="com.example.demo.entity.Login">
+    select * from user where email=#{email}
     </select>
-    
+    <select id="selectById" resultType="java.util.Map">
+    select * from user 
+    </select>
 
 </mapper>    

@@ -5,44 +5,44 @@
 		<result column="id" property="id" jdbcType="INTEGER"/>
 		<result column="orderCode" property="orderCode" jdbcType="VARCHAR"/>
 		<result column="clientCode" property="clientCode" jdbcType="VARCHAR"/>
-		<result column="order_status" property="orderStatus" jdbcType="VARCHAR"/>
-		<result column="end_time" property="endTime" jdbcType="DECIMAL"/>
-		<result column="all_km" property="allKm" jdbcType="DECIMAL"/>
-		<result column="all_time" property="allTime" jdbcType="INTEGER"/>
+		<result column="orderStatus" property="orderStatus" jdbcType="VARCHAR"/>
+		<result column="createTime" property="createTime" jdbcType="DECIMAL"/>
+		<result column="allKm" property="allKm" jdbcType="DECIMAL"/>
+		<result column="allTime" property="allTime" jdbcType="INTEGER"/>
 		<result column="amount" property="amount" jdbcType="DECIMAL"/>
-		<result column="order_pay_amount" property="orderPayAmount" jdbcType="DECIMAL" />
+		<result column="totalMoney" property="totalMoney" jdbcType="DECIMAL" />
 	</resultMap>
 		
 	
 	<select id="selectByPrimaryKey" resultType="java.util.HashMap"  >
 	select 
 	count(clientCode) as number, 
-	sum(order_pay_amount) as totalAmount,
+	sum(totalMoney) as totalAmount,
 	sum(amount) as amount, 
 	date_format( from_unixtime(create_time ), '%m-%d' ) as time 
 	from f_order
-	where order_status != 2 
+	where orderStatus != 2 
 	and <![CDATA[DATE_SUB(CURDATE(), INTERVAL #{1} DAY) <= from_unixtime( order.create_time ) ]]>
 	group by date_format( from_unixtime( order.create_time ),'%m-%d' ) 
     </select> 
     <!-- 时间段订单，收入的查询 -->
 	<select id="selectByPrimaryKeyT" resultType="java.util.HashMap">
-		select count(clientCode) as number, sum(order_pay_amount) as
+		select count(clientCode) as number, sum(totalMoney) as
 		totalAmount,
-		sum(amount) as amount, date_format( from_unixtime( order.end_time ), '%m-%d' )
+		sum(amount) as amount, date_format( from_unixtime( order.createTime ), '%m-%d' )
 		as time
 		from f_order
 		where 
-<![CDATA[  from_unixtime( order.end_time ) > #{stime} ]]>
+<![CDATA[  from_unixtime( order.createTime ) > #{stime} ]]>
 		and 
-<![CDATA[ from_unixtime( order.end_time )  < #{etime} ]]>
-		group by date_format( from_unixtime( order.end_time ),'%m-%d' )
+<![CDATA[ from_unixtime( order.createTime )  < #{etime} ]]>
+		group by date_format( from_unixtime( order.createTime ),'%m-%d' )
 	</select> 
     
     <select id="selectByPrimaryKeyT7" resultType="java.util.Map">
 	SELECT count(DISTINCT clientCode) as num4 
 	FROM f_order
-	WHERE <![CDATA[order_status != 2 ]]>
+	WHERE <![CDATA[orderStatus != 2 ]]>
 	AND <![CDATA[from_unixtime( create_time ) >= #{stime} 
 	AND from_unixtime( create_time ) <= #{etime}]]>
     AND clientCode IN ( SELECT clientCode FROM client WHERE mobile = #{mobile} )	
@@ -52,78 +52,78 @@
 	SELECT
 	COUNT(*) as resu1
 	from f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	AND
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '00:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '04:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '00:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '04:00:00']]> 
 	</select>	
 	
 	<select id="selectByPrimaryKeyT13" resultType="java.lang.Integer">
 	SELECT
 	COUNT(*) as resu2
 	FROM f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	and
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '04:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '08:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '04:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '08:00:00']]> 
 	</select>
 	
 	<select id="selectByPrimaryKeyT14" resultType="java.lang.Integer">
 	SELECT
 	COUNT(*) as resu3
 	FROM f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	and
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '08:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '12:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '08:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '12:00:00']]> 
 	</select>
 	
 	<select id="selectByPrimaryKeyT15" resultType="java.lang.Integer">
 	SELECT
 	COUNT(*) as resu4
 	FROM f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	and
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '12:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '16:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '12:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '16:00:00']]> 
 	</select>
 	
 	<select id="selectByPrimaryKeyT16" resultType="java.lang.Integer">
 	SELECT
 	COUNT(*) as resu5
 	FROM f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	and
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '16:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '20:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '16:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '20:00:00']]> 
 	</select>
 	
 	<select id="selectByPrimaryKeyT17" resultType="java.lang.Integer">
 	SELECT
 	COUNT(*) as resu6
 	FROM f_order
-	WHERE <![CDATA[order_status <> 2]]> 
+	WHERE <![CDATA[orderStatus <> 2]]> 
 	and
-	<![CDATA[ date_format( from_unixtime( end_time ), '%H:%i:%s') >= '20:00:00' and
-	 date_format( from_unixtime( end_time ), '%H:%i:%s') < '24:00:00']]> 
+	<![CDATA[ date_format( from_unixtime( createTime ), '%H:%i:%s') >= '20:00:00' and
+	 date_format( from_unixtime( createTime ), '%H:%i:%s') < '24:00:00']]> 
 	</select>
 	
 	<!-- 月现金收入 -->
 	<select id="selectByPrimaryKeyT18" resultType="java.util.HashMap">
-	SELECT date_format( from_unixtime( end_time ), '%Y-%m-%d') as
+	SELECT date_format( from_unixtime( createTime ), '%Y-%m-%d') as
 	time,sum(amount) as monMoney
 	FROM f_order
-	WHERE <![CDATA[  date_format( from_unixtime( end_time ),
+	WHERE <![CDATA[  date_format( from_unixtime( createTime ),
 	'%Y-%m-%d')> '2017-09-01' ]]>
-	GROUP BY date_format( from_unixtime( end_time ), '%Y-%m')
+	GROUP BY date_format( from_unixtime( createTime ), '%Y-%m')
 	</select>
 	<!-- 月总收入 -->
 	<select id="selectByPrimaryKeyT19" resultType="java.util.HashMap">
 	SELECT 
-	date_format( from_unixtime( end_time ), '%Y-%m') as	time,
-	COUNT(order_pay_amount) as monTotal
+	date_format( from_unixtime( createTime ), '%Y-%m') as	time,
+	COUNT(totalMoney) as monTotal
 	FROM f_order
-	WHERE <![CDATA[   date_format( from_unixtime( end_time ),'%Y-%m')> '2017-09-01' ]]>
+	WHERE <![CDATA[   date_format( from_unixtime( createTime ),'%Y-%m')> '2017-09-01' ]]>
 	GROUP BY time
 	</select>
 	<!-- 添加订单 -->
@@ -131,9 +131,9 @@
         INSERT INTO
            f_order
         (
-            id,orderCode,clientCode,all_km,all_time,amount
+            id,orderCode,clientCode,allKm,allTime,amount
         )VALUES(
-            #{id},#{orderCode},#{clientCode},#{all_km},#{all_time},#{amount}
+            #{id},#{orderCode},#{clientCode},#{allKm},#{allTime},#{amount}
         )
     </insert>
     
