@@ -5,6 +5,7 @@
 		<result column="id" property="id" jdbcType="INTEGER"/>
 		<result column="client_code" property="clientCode" jdbcType="VARCHAR"/>
 		<result column="invite_client_code" property="inviteClientCode" jdbcType="VARCHAR"/>
+		<result column="create_time" property="createTime" jdbcType="DATE"/>
 	</resultMap>
 		
 	

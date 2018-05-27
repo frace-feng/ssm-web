@@ -14,7 +14,7 @@ option = {
 	    legend: {
 	        x : 'center',
 	        y : 'bottom',
-	        data:['白领','学生','教师','家庭','金领','长租车','包车']
+	        data:['白领','学生','教师','家庭','金领']
 	    },
 	    toolbox: {
 	        show : true,
@@ -32,7 +32,7 @@ option = {
 	    calculable : true,
 	    series : [
 	        {
-	            name:'半径模式',
+	            name:'客户身份',
 	            type:'pie',
 	            radius : [20, 110],
 	            center : ['25%', '50%'],
@@ -58,9 +58,7 @@ option = {
 	                {value:5, name:'学生'},
 	                {value:15, name:'教师'},
 	                {value:25, name:'家庭'},
-	                {value:20, name:'金领'},
-	                {value:35, name:'长租车'},
-	                {value:30, name:'包车'}
+	                {value:20, name:'金领'}
 	            ]
 	        },
 	        {
@@ -74,9 +72,7 @@ option = {
 	                {value:5, name:'学生'},
 	                {value:15, name:'教师'},
 	                {value:25, name:'家庭'},
-	                {value:20, name:'金领'},
-	                {value:35, name:'长租车'},
-	                {value:30, name:'包车'}
+	                {value:20, name:'金领'}
 	            ]
 	        }
 	    ]

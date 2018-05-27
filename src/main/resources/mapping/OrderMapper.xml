@@ -19,11 +19,11 @@
 	count(clientCode) as number, 
 	sum(totalMoney) as totalAmount,
 	sum(amount) as amount, 
-	date_format( from_unixtime(create_time ), '%m-%d' ) as time 
+	date_format( from_unixtime(createTime ), '%m-%d' ) as time 
 	from f_order
 	where orderStatus != 2 
-	and <![CDATA[DATE_SUB(CURDATE(), INTERVAL #{1} DAY) <= from_unixtime( order.create_time ) ]]>
-	group by date_format( from_unixtime( order.create_time ),'%m-%d' ) 
+	and <![CDATA[DATE_SUB(CURDATE(), INTERVAL #{1} DAY) <= from_unixtime( createTime ) ]]>
+	group by date_format( from_unixtime( createTime ),'%m-%d' ) 
     </select> 
     <!-- 时间段订单，收入的查询 -->
 	<select id="selectByPrimaryKeyT" resultType="java.util.HashMap">
@@ -43,8 +43,8 @@
 	SELECT count(DISTINCT clientCode) as num4 
 	FROM f_order
 	WHERE <![CDATA[orderStatus != 2 ]]>
-	AND <![CDATA[from_unixtime( create_time ) >= #{stime} 
-	AND from_unixtime( create_time ) <= #{etime}]]>
+	AND <![CDATA[from_unixtime( createTime ) >= #{stime} 
+	AND from_unixtime( createTime ) <= #{etime}]]>
     AND clientCode IN ( SELECT clientCode FROM client WHERE mobile = #{mobile} )	
 	</select>
 	<!-- 时间段查询开始 -->

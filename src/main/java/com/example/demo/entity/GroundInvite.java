@@ -1,11 +1,15 @@
 package com.example.demo.entity;
 
+import java.sql.Date;
+
 public class GroundInvite {
 	private Integer id;
 
 	private String client_code;
 
 	private String invite_client_code;
+	
+	private Date createTime;
 
 	public Integer getId() {
 		return id;
@@ -31,4 +35,13 @@ public class GroundInvite {
 		this.invite_client_code = invite_client_code;
 	}
 
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	
 }

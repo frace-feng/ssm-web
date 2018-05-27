@@ -15,7 +15,7 @@ var	option = {
 	        color: '#cdd0d5'
 	    }]),
 	    title: {
-	        text: '用户地址信息'
+	        text: '车辆地址信息'
 	    },
 	    legend: {
 	        right: 10,

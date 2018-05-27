@@ -3,20 +3,20 @@
 <mapper namespace="com.example.demo.dao.AuditDao">
 	<resultMap type="com.example.demo.entity.Audit" id="AuditResultMap">
 		<result column="id" property="id" jdbcType="INTEGER"/>
-		<result column="client_code" property="clientCode" jdbcType="VARCHAR"/>
-		<result column="role_flag" property="roleFlag" jdbcType="INTEGER"/>
-		<result column="audit_result" property="auditResult" jdbcType="INTEGER"/>
+		<result column="clientCode" property="clientCode" jdbcType="VARCHAR"/>
+		<result column="roleFlag" property="roleFlag" jdbcType="INTEGER"/>
+		<result column="auditResult" property="auditResult" jdbcType="INTEGER"/>
 	</resultMap>
 	
 	<select id="selectByPrimaryKeyT11" resultType="java.util.Map">
 	SELECT
-	COUNT( client_code ) AS cli4 ,
-	DATE_FORMAT( aduit_time, '%Y-%m' ) AS time	
+	COUNT( clientCode ) AS cli4 ,
+	DATE_FORMAT( aduitTime, '%Y-%m' ) AS time	
 	FROM
 	audit 
 	WHERE
-	role_flag = 1 
-	AND audit_result = 2
+	roleFlag = 1 
+	AND auditResult = 2
 	GROUP BY time
 	</select>
 	

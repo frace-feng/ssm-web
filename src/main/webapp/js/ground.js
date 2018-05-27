@@ -46,7 +46,7 @@ $(function(){
 			     // 指定图表的配置项和数据
 				 var option = {
 				         title: {
-				             text: '注册量,身份审核通过量,交押金量,有订单量'
+				             text: ''
 				         },
 				         toolbox: {
 				           
