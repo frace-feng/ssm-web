@@ -19,8 +19,8 @@ $(function(){
 		$.ajax({
 			url:"/groundInvite/ajaxshowGroundInviteT",
 			data:{
-				stime:$("#stime").val(),
-				etime:$("#etime").val(),
+				stime:$("input[name='stime']").val(),
+				etime:$("input[name='etime']").val(),
 				mobile:$("#mobile").val(),
 			},
 			type:"get",

@@ -41,7 +41,7 @@
 		(
 		brand,plateNumber,oilNumber,createTime
 		)VALUES(
-		#{brand},#{plateNumber},#{oiNumber},#{createTime}
+		#{brand},#{plateNumber},#{oilNumber},#{createTime}
 		)
 	</insert>
 

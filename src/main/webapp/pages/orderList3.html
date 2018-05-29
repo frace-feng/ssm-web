@@ -15,6 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
+<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script " src="/js/echarts.min.js"></script>
 <script  src="/js/ground.js"></script>
@@ -127,14 +128,17 @@
 <div class="admin-biaogelist">
 				<table align="center">
 					<tr>
-						<td>请输入电话</td>
-						<td><input type="text" name="mobile" id="mobile"
-							value="18340872576" /></td>
-						<td><span>开始日期：<input type="text" name="stime"
-								id="stime" value="2018-03-01" style="width: 150px; height: 40px" /></span></td>
-						<td><span>结束日期：<input type="text" name="etime"
-								id="etime" value="2018-04-01" style="width: 150px; height: 40px" /></span></td>
-						<td><button id="submit" style="width: 100px; height: 45px">提交</button></td>
+						<td><label>电话:</label>
+						<div class="layui-form-item"><input type="text" class="demo-input" name="mobile" id="mobile" value="18340872576" /></div></td>
+						<td><label>开始：</label>
+							<div class="layui-form-item">
+							<input type="text" name="stime" value="2018-03-01" class="demo-input" placeholder="请选择日期" id="test1">
+							</div></td>						
+						<td><label>结束：</label>
+							<div class="layui-form-item">
+							<input type="text" name="etime" value="2018-04-01" class="demo-input" placeholder="请选择日期" id="test2">
+							</div></td>
+						<td><button id="submit" class="layui-btn layui-btn-xs" style="width: 100px; height: 45px">提交</button></td>
 					</tr>
 				</table>
 				<table>
@@ -157,4 +161,18 @@
 </div>
 <script src="/admin/assets/js/amazeui.min.js"></script>
 </body>
+<script src="/laydate/laydate.js"></script>
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1',//指定元素
+  //range: true
+});
+laydate.render({
+	  elem: '#test2',//指定元素
+	  //range: true
+	});
+</script>
 </html>
