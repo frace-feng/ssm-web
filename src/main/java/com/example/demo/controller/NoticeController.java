@@ -97,4 +97,12 @@ public class NoticeController {
 		List<Map<String, Object>> user = this.noticeService.getNotice(Integer.parseInt(id));
 		return user;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/showList", method = RequestMethod.GET)
+	public List<Notice> showList(HttpServletRequest request, Model model) {
+		System.out.println("list");
+		List<Notice> notice = this.noticeService.getNoticeList();
+		return notice;
+	}
 }

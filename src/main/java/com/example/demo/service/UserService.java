@@ -34,4 +34,6 @@ public interface UserService {
 	public int updateUser(User user);
 	
 	public int deleteUser(int id);
+	
+	public List<User> getUserList();
 }

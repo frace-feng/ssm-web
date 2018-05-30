@@ -36,7 +36,8 @@ public interface UserDao {
 	Integer selectByPrimaryKeyT31();
 
 	Integer selectByPrimaryKeyT32();
-
+	
+	//查询年龄
 	Integer selectByPrimaryKeyT33();
 
 	Integer selectByPrimaryKeyT34();
@@ -48,18 +49,16 @@ public interface UserDao {
 	Integer selectByPrimaryKeyT37();
 
 	Integer selectByPrimaryKeyT38();
-
+	
+	//插入
 	public int insertUser(User user); 
 	
+	//更新
 	public int updateUser(User user);
-	
+	//删除
 	public int deleteUser(int id);
-	// 更新，删除，插入
-	/*
-	 * int updateByPrimaryKeySelective(User record); 
-	 * int updateByPrimaryKey(User record); 
-	 * int deleteByPrimaryKey(Integer id); 
-	 * int insert(User record);
-	 * int insertSelective(User record);
-	 */
+	//查询多条数据
+	public List<User> getUserList();
+	
+	
 }

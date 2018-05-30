@@ -103,6 +103,12 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public List<User> getUserList() {
+		// TODO Auto-generated method stub
+		return userDao.getUserList();
+	}
+
 	// 增加用户
 	/*
 	 * public boolean addUser(User record){

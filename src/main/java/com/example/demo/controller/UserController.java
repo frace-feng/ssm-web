@@ -120,14 +120,24 @@ public class UserController {
 
 		}
 	}
+	
+	@RequestMapping(value="/showList" , method = RequestMethod.GET)
+	public List<User> showList(HttpServletRequest request, Model model){
+		System.out.println("userlist");
+		List<User> userlist = this.userService.getUserList();
+		return userlist;
+		
+	}
 
 }
 
 // 查询用户列表信息
 /*
  * @RequestMapping(value = "/showUser", method = RequestMethod.GET) public
- * String showUser(HttpServletRequest request, Model model){ // int userId =
- * Integer.parseInt(request.getParameter("id")); List<User> user =
+ * String showUser(HttpServletRequest request, Model model){ //
+ *  int userId =
+ * Integer.parseInt(request.getParameter("id"));
+ *  List<User> user =
  * this.userService.getUserById(1); return "index"; }
  */
 /*

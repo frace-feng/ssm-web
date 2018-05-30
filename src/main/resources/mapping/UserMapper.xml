@@ -30,8 +30,7 @@
 	FROM
 	client
 	WHERE
-	auditingStatus = 2
-	
+	auditingStatus = 2	
 	AND <![CDATA[createTime > #{stime} AND createTime < #{etime}]]>
 	AND clientCode IN ( SELECT clientCode FROM client WHERE mobile =#{mobile} )
 	</select>
@@ -209,4 +208,9 @@
     <delete id="deleteUser" parameterType="java.lang.Integer">  
         delete from client where id=#{id}  
     </delete> 
+    
+    <!-- 查询多条用户 -->
+    <select id="getUserList" resultType="com.example.demo.entity.User" parameterType="com.example.demo.entity.User">
+    select * from client 
+    </select>
 </mapper>
