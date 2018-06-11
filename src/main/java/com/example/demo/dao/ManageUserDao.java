@@ -19,6 +19,7 @@ public interface ManageUserDao {
 	
 	public List<Map<String, Object>> getUser1(@Param("id") Integer id);
 
-	public List<Map<String, Object>> getLoginList();
-
+	public List<Login> getLoginList(@Param("limit") int limit,@Param("offset") int offset);
+	//查询用户总数量
+	public int userNum();
 }

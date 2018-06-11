@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.io.IOException;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -145,13 +146,20 @@ public class ManageUserController {
 	 * @return 参数
 	 * @throws IOException
 	 */
+	@ResponseBody
 	@RequestMapping(value ="/showlist", method = RequestMethod.GET)
-	public List<Map<String, Object>> listUser( HttpServletRequest request, Model model)
+	public Map<String, Object> showList(HttpServletRequest request,HttpServletResponse response, String page,String limit)
 			throws IOException {
-		List<Map<String, Object>> list = manageUserService.getLoginList(1);
-		//mm.put("list", list);
-		logger.info("展示数据");
-		return list;
+		//传过来两个参数，page和limit，就是当前也是和每一页数量
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<Login> userlist = this.manageUserService.getLoginList(Integer.parseInt(limit),offset);
+		int count=this.manageUserService.getUserNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data",userlist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+		return map;
 		// response.sendRedirect("/pages/test.html");
 	}
 	/*

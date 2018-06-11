@@ -129,88 +129,45 @@
 <div class="admin-biaogelist">
     
 
-    <form class="am-form am-g" action="/manage/insert">
-          <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
-            <thead>
-              <tr class="am-success">
-                <th class="table-check"><input type="checkbox" /></th>
-                <th class="table-title">用户名称</th>               
-                <th class="table-author am-hide-sm-only" >用户密码</th>
-                <th class="table-date am-hide-sm-only">用户邮箱</th>
-                 <th class="table-type">用户级别</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td><input type="text"  name="userName" id="useraName"></td>
-				
-				<td ><input  type="password" name="passWord" id="passWord"></td>
-                <td><input  type="email" name="email" id="email"> </td>
-                <td>
-					<select id="sid" onchange="selectcity()"  name="status" id="status">
-							<option>0:用户,1:管理员</option>
-							<option>0</option>
-							<option>1</option>
-					</select>
-				</td>
-              </tr>
-             
-            </tbody>
-          </table>
-           
-            <div class="am-btn-group am-btn-group-xs">
-
-              <button type="submit" name="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-                        <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/userUpdate.html">更新</a></button>
-                        <button type="button" name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span><a href="/pages/userDelete.html">删除</a></button>
-            </div>
-            <div id="table_content"></div>
-
-
-
-
-            </form>
-
             <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;">
                 <!--用户名-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        <input type="text" name="userName" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input">
                     </div>
                 </div>
                 <!--密码-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">密码</label>
                     <div class="layui-input-block">
-                        <input type="password" name="clientName" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="password" name="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <!--邮箱-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-block">
-                        <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                        <input type="email" name="email" autocomplete="off" lay-verify="required" placeholder="请输入邮箱" class="layui-input">
                     </div>
                 </div>
                 <!--身份-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">身份</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="depositSta" value="0" title="用户" checked>
-                        <input type="radio" name="depositSta" value="1" title="管理员">
+                        <input type="radio" name="status" value="0" title="用户" checked>
+                        <input type="radio" name="status" value="1" title="管理员">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <div style="text-align: center;">
                         <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
-                    </div>
-                </div>
-            </form>
+            </div>
+        </div>
+        </form>
 
 
-            <!--      <ul class="am-pagination am-fr">
+        <!--      <ul class="am-pagination am-fr">
                     <li class="am-disabled"><a href="#">«</a></li>
                     <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
                     <li><a href="/pages/deleteClient.html">2</a></li>
@@ -218,7 +175,7 @@
                     <li><a href="#">»</a></li>
                   </ul> -->
 
-            <!--  <div class="foods">
+        <!--  <div class="foods">
   <ul>
     版权所有@2018
   </ul>
@@ -230,7 +187,7 @@
 
 
 
-        </div>
+    </div>
 
     </div>
 
@@ -240,104 +197,25 @@
         //  设置form显示
         layui.use(['form'], function() {
             var form = layui.form
-                //自定义验证规则
-            form.verify({
-                // title: function(value){
-                //     if(value.length < 5){
-                //         return '标题至少得5个字符啊';
-                //     }
-                // },
-                pass: [/(.+){6,12}$/, '密码必须6到12位']
-                    // ,content: function(value){
-                    //     layedit.sync(editIndex);
-                    // }
-            });
-            //监听提交
+                //监听提交
             form.on('submit(demo1)', function(data) {
+                $.ajax({
+                    url: "/manage/insert",
+                    type: "POST",
+                    data: data.field
+                })
                 layer.alert(JSON.stringify(data.field), {
                     title: '最终的提交信息'
                 })
                 return false;
             });
+            form.val('add_user', {
+                email: '',
+                passWord: ""
+            });
         });
     </script>
+
 </body>
 
 </html>
-<script type="text/javascript">
-    function createTable() {
-        tableNode = document.createElement("table"); //获得对象 
-        tableNode.setAttribute("id", "table")
-        var row = parseInt(document.getElementsByName("row1")[0].value); //获得行号 
-        //alert(row); 
-        if (row <= 0 || isNaN(row)) {
-            alert("输入的行号错误，不能创建表格，请重新输入：");
-            return;
-        }
-        var cols = parseInt(document.getElementsByName("cols1")[0].value);
-        if (isNaN(cols) || cols <= 0) {
-            alert("输入的列号错误，不能创建表格，请重新输入：");
-            return;
-        }
-        //上面确定了 现在开始创建 
-        for (var x = 0; x < row; x++) {
-            var trNode = tableNode.insertRow();
-            for (var y = 0; y < cols; y++) {
-                var tdNode = trNode.insertCell();
-                tdNode.innerHTML = "单元格" + (x + 1) + "-" + (y + 1);
-            }
-        }
-        table_content.
-        document.body.appendChild(tableNode); //添加到那个位置 
-    }
-
-    function getUser() {
-        //获取输入的id值
-        var clientName = document.getElementById("clientName").value;
-        $.ajax({
-            url: "/user/showList,
-            type: "get",
-            success: function(data) {
-                console.log(data)
-                createTable(data);
-            }
-        })
-    }
-
-    function createTable(notices) {
-        //创建一个table对象
-        tableNode = document.createElement("table");
-        var cols = ['id', '电话', '编号', '用户名', '驾驶证号', '身份通过0：N  2：Y', '押金状态0:N 1:Y'];
-        var keys = ['id', 'mobile', 'clientCode', 'clientName', 'driverCode', 'auditingStatus', 'depositSta'];
-        //列数
-        var rows = notices.length;
-        //先创建一个表头tr用来放表头标题
-        var tr = document.createElement("TR");
-        tableNode.appendChild(tr);
-        //上面确定了 现在开始创建 
-        for (var i = 0; i < cols.length; i++) {
-            var th = document.createElement("TH");
-            //设置表头
-            th.innerText = cols[i];
-            tr.appendChild(th);
-        }
-        //遍历notices,填充表格数据
-        notices.forEach(function(notice) {
-                var trNode = tableNode.insertRow();
-                for (var i = 0; i < cols.length; i++) {
-                    //插入一个td
-                    var tdNode = trNode.insertCell();
-                    tdNode.innerHTML = notice[keys[i]];
-                }
-            })
-            //获取table容器
-        var contentNode = document.getElementById("table_content");
-        //存在就替换
-        if (contentNode.childNodes[0]) {
-            contentNode.replaceChild(tableNode, contentNode.childNodes[0])
-                //不存在就添加
-        } else {
-            contentNode.appendChild(tableNode);
-        }
-    }
-</script>

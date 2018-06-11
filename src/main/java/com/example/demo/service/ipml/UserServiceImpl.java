@@ -108,7 +108,6 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.selectList(page,limit);
 	}
-
 	@Override
 	public int getUserNum() {
 		// TODO Auto-generated method stub

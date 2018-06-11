@@ -35,9 +35,8 @@ public interface UserService {
 	public int updateUser(User user);
 	
 	public int deleteUser(int id);
-	
-	public List<User> getUserList(int limit,int offset);
 
+	public List<User> getUserList(int limit,int offset);
 	public int getUserNum();
 	//查询单个用户
 	public List<Map<String, Object>> getUser(String clientName);

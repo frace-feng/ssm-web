@@ -24,5 +24,6 @@ public interface ManageUserService {
 	public List<Map<String, Object>> getUser1(@Param("id") Integer id);
 	
 	// 获得一个列表
-	public List<Map<String, Object>> getLoginList(int id);
+	public List<Login>  getLoginList(int limit,int offset);
+	public int getUserNum();
 }

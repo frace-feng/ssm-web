@@ -11,10 +11,12 @@ import com.example.demo.dao.ManageUserDao;
 import com.example.demo.service.ManageUserService;
 import com.example.demo.entity.Login;
 
+import javax.annotation.Resource;
+
 @Service("ManageUserService")
 public class ManageUserServiceImpl implements ManageUserService {
 
-	@Autowired
+	@Resource
 	private ManageUserDao manageUserDao;
 
 	@Override
@@ -51,12 +53,17 @@ public class ManageUserServiceImpl implements ManageUserService {
 		// TODO Auto-generated method stub
 		return manageUserDao.getUser1(id);
 	}
-	
+
 	@Override
-	public List<Map<String, Object>> getLoginList(int id) {
+	public List<Login> getLoginList(int limit,int offset) {
 		// TODO Auto-generated method stub
-		List<Map<String, Object>> list = manageUserDao.getLoginList();
+		List<Login> list = manageUserDao.getLoginList(limit,offset);
 		return list;
+	}
+	@Override
+	public int getUserNum() {
+		// TODO Auto-generated method stub
+		return manageUserDao.userNum();
 	}
 
 }

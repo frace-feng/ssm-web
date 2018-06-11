@@ -37,9 +37,13 @@
     <select id="getUser1" parameterType="Integer" resultType="java.util.Map">
         select id,userName,email from user WHERE id = #{id}
     </select>
-    
-    <!-- 查询多条记录 -->
-    <select id="getLoginList" resultType="java.util.Map">
-       select id,userName,email from user
-    </select>  
+
+    <!-- 查询多条用户 -->
+    <select id="getLoginList" resultType="java.util.Map" parameterType="java.lang.Integer">
+    select id,userName,email,status from user limit #{limit} offset #{offset}
+    </select>
+    <!-- 计算用户数量 -->
+    <select id="userNum" resultType="java.lang.Integer">
+    select count(*) from user
+    </select>
 </mapper>    
