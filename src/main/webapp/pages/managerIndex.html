@@ -172,95 +172,46 @@
 
             </form>
             <button id="add_user" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">添加用户</button>
-            <!--数据展示及操作table-->
-            <div style="padding:20px">
-                <table class="layui-table" lay-data="{url:'/user/showList', page:true, id:'idTest'}" lay-filter="demo">
-                    <thead>
-                        <tr>
-                            <!-- <th lay-data="{type:'checkbox', fixed: 'left'}"></th> -->
-                            <th lay-data="{field:'id', width:80, sort: true}">ID</th>
-                            <th lay-data="{field:'clientName', width:180}">用户名</th>
-                            <th lay-data="{field:'driverCode', width:180, sort: true}">牌照</th>
-                            <th lay-data="{field:'mobile', width:180}">电话</th>
 
-                            <th lay-data="{ width:178, align:'center', toolbar: '#barDemo'}">操作</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <script type="text/html" id="barDemo">
-                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-            </script>
-            <div style="display: none" id="add_user_template">
-                <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;">
-                    <!--用户名-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">用户名</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
-                        </div>
+
+            <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;">
+                <!--用户名-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
                     </div>
-                    <!--密码-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">密码</label>
-                        <div class="layui-input-block">
-                            <input type="password" name="clientName" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                        </div>
+                </div>
+                <!--密码-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="clientName" placeholder="请输入密码" autocomplete="off" class="layui-input">
                     </div>
-                    <!--邮箱-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">邮箱</label>
-                        <div class="layui-input-block">
-                            <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
-                        </div>
+                </div>
+                <!--邮箱-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-block">
+                        <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
                     </div>
-                    <!--身份-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">身份</label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="depositSta" value="0" title="用户" checked>
-                            <input type="radio" name="depositSta" value="1" title="管理员">
-                        </div>
+                </div>
+                <!--身份-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">身份</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="depositSta" value="0" title="用户" checked>
+                        <input type="radio" name="depositSta" value="1" title="管理员">
                     </div>
-                    <div class="layui-form-item">
-                        <div style="text-align: center;">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                        </div>
+                </div>
+                <div class="layui-form-item">
+                    <div style="text-align: center;">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
                     </div>
-                </form>
-            </div>
-            <div style="display: none" id="edit_user_template">
-                <form class="layui-form" action="" lay-filter="edit_user" style="margin:20px;">
-                    <!--用户名-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">用户名</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
-                        </div>
-                    </div>
-                    <!--邮箱-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">邮箱</label>
-                        <div class="layui-input-block">
-                            <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
-                        </div>
-                    </div>
-                    <!--身份-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">身份</label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="depositSta" value="0" title="用户" checked>
-                            <input type="radio" name="depositSta" value="1" title="管理员">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div style="text-align: center;">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
+
+
             <!--      <ul class="am-pagination am-fr">
                     <li class="am-disabled"><a href="#">«</a></li>
                     <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
@@ -288,74 +239,27 @@
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
     <script>
-        function setForm(initValue) {
-            layui.use(['form'], function() {
-                var form = layui.form
-                    //自定义验证规则
-                form.verify({
-                    // title: function(value){
-                    //     if(value.length < 5){
-                    //         return '标题至少得5个字符啊';
-                    //     }
-                    // },
-                    pass: [/(.+){6,12}$/, '密码必须6到12位']
-                        // ,content: function(value){
-                        //     layedit.sync(editIndex);
-                        // }
-                });
-                //监听提交
-                form.on('submit(demo1)', function(data) {
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
-                    })
-                    return false;
-                });
-                //表单初始赋值
-                if (initValue) {
-                    form.val('edit_user', initValue);
-                }
-            });
-        }
-        //触发事件
-        function activePop(id, initValue) {
-            layer.open({
-                type: 1,
-                area: ['500px', '360px'],
-                content: document.getElementById(id).innerHTML //传入表单html
-                    // ,btn: '关闭全部'
-                    ,
-                btnAlign: 'c' //按钮居中
-                    ,
-                shade: 0 //不显示遮罩
-                    // ,yes: function(){
-                    //     layer.closeAll();
+        //  设置form显示
+        layui.use(['form'], function() {
+            var form = layui.form
+                //自定义验证规则
+            form.verify({
+                // title: function(value){
+                //     if(value.length < 5){
+                //         return '标题至少得5个字符啊';
+                //     }
+                // },
+                pass: [/(.+){6,12}$/, '密码必须6到12位']
+                    // ,content: function(value){
+                    //     layedit.sync(editIndex);
                     // }
             });
-            //打开后设置form
-            setForm(initValue);
-        }
-
-        $('#add_user').on('click', function() {
-            activePop('add_user_template');
-        });
-
-        layui.use('table', function() {
-            var table = layui.table;
-            //监听工具条
-            table.on('tool(demo)', function(obj) {
-                var data = obj.data;
-                if (obj.event === 'del') {
-                    //执行删除
-                    layer.confirm('真的删除行么', function(index) {
-                        console.log(data);
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if (obj.event === 'edit') {
-                    //执行修改
-                    activePop('edit_user_template', data);
-                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
-                }
+            //监听提交
+            form.on('submit(demo1)', function(data) {
+                layer.alert(JSON.stringify(data.field), {
+                    title: '最终的提交信息'
+                })
+                return false;
             });
         });
     </script>
