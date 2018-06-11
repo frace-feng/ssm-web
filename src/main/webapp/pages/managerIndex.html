@@ -193,7 +193,7 @@
                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
             </script>
             <div style="display: none" id="add_user_template">
-                <form class="layui-form" action="" style="margin:20px;">
+                <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;">
                     <!--用户名-->
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
@@ -205,7 +205,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">密码</label>
                         <div class="layui-input-block">
-                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="clientName" placeholder="请输入密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <!--邮箱-->
@@ -217,10 +217,10 @@
                     </div>
                     <!--身份-->
                     <div class="layui-form-item">
-                        <label class="layui-form-label">单选框</label>
+                        <label class="layui-form-label">身份</label>
                         <div class="layui-input-block">
-                            <input type="radio" name="sex" value="男" title="男" checked>
-                            <input type="radio" name="sex" value="女" title="女">
+                            <input type="radio" name="depositSta" value="0" title="用户" checked>
+                            <input type="radio" name="depositSta" value="1" title="管理员">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -303,13 +303,6 @@
                         //     layedit.sync(editIndex);
                         // }
                 });
-                //监听指定开关
-                form.on('switch(switchTest)', function(data) {
-                    layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
-                        offset: '6px'
-                    });
-                    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-                });
                 //监听提交
                 form.on('submit(demo1)', function(data) {
                     layer.alert(JSON.stringify(data.field), {
@@ -318,7 +311,9 @@
                     return false;
                 });
                 //表单初始赋值
-                form.val('edit_user', initValue)
+                if (initValue) {
+                    form.val('edit_user', initValue);
+                }
             });
         }
         //触发事件
@@ -362,8 +357,6 @@
                     // layer.alert('编辑行：<br>'+ JSON.stringify(data))
                 }
             });
-
-
         });
     </script>
 </body>
