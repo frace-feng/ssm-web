@@ -141,6 +141,10 @@
     <delete id="deleteOrder" parameterType="java.lang.Integer">  
         delete from f_order where orderCode= #{orderCode}  
     </delete> 
+    <!-- 查询所有订单 -->
+    <select id="selectAll" parameterType="com.example.demo.entity.Order" resultType="com.example.demo.entity.Order">
+    	select * from f_order limit #{limit} offset #{offset}
+    </select>
 </mapper>
 
 

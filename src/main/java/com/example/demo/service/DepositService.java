@@ -15,4 +15,6 @@ public interface DepositService {
 			@Param("etime") String etime);
 
 	public int updateDeposit(Deposit deposit);
+	
+	public List<Deposit> getDeposit(@Param("limit") int limit, @Param("offset") int offset);
 }

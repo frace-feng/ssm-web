@@ -215,7 +215,8 @@
     </select>
     
     <!-- 查询多条用户 -->
-    <select id="selectList" resultType="java.util.Map" parameterType="com.example.demo.entity.User">
-    select * from client where  <![CDATA[ id between 1 and 50]]>
+    <select id="selectList" resultType="com.example.demo.entity.User" parameterType="com.example.demo.entity.User">
+    select * from client limit #{limit} offset #{offset}
+    
     </select>
 </mapper>

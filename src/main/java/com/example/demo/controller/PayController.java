@@ -68,4 +68,15 @@ public class PayController {
 			request.getRequestDispatcher("/pages/500.jhtml").forward(request, response);
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/showList" , method = RequestMethod.GET)
+	public List<Pay> showList(HttpServletRequest request, Model model,String page,String limit){
+		logger.info("pay list");
+		System.out.println(page);
+		System.out.println(limit);
+		List<Pay> paylist = this.payService.getPay(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+		return paylist;
+		
+	}
 }

@@ -77,5 +77,14 @@ public class CarController {
 
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/showList" , method = RequestMethod.GET)
+	public List<Car> showList(HttpServletRequest request, Model model,String page,String limit){
+		logger.info("car list");
+		System.out.println(page);
+		System.out.println(limit);
+		return this.carService.getCar(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+	}
 
 }

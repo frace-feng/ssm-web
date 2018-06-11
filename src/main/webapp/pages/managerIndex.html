@@ -229,7 +229,7 @@
         //获取输入的id值
         var clientName = document.getElementById("clientName").value;
         $.ajax({
-            url: "/user/show?clientName=" + clientName,
+            url: "/user/showList,
             type: "get",
             success: function(data) {
                 console.log(data)

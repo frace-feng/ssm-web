@@ -41,9 +41,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<Notice> getNoticeList() {
+	public List<Notice> getNoticeList(int limit, int offset) {
 		// TODO Auto-generated method stub
-		return noticeDao.getNoticeList();
+		return noticeDao.getNoticeList(limit, offset);
 	}
 
 }

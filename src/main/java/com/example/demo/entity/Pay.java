@@ -33,11 +33,6 @@ public class Pay {
 		this.payTime = payTime;
 	}
 	
-
-
-
-
-
 	public Integer getPayType() {
 		return payType;
 	}

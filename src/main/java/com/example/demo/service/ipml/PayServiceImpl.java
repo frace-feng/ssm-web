@@ -36,4 +36,10 @@ public class PayServiceImpl implements PayService {
 		return payDao.insertPay(pay);
 	}
 
+	@Override
+	public List<Pay> getPay(int limit, int offset) {
+		// TODO Auto-generated method stub
+		return payDao.selectAll(limit, offset);
+	}
+
 }

@@ -124,9 +124,11 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
-	public List<User> showList(HttpServletRequest request, Model model){
+	public List<User> showList(HttpServletRequest request, Model model,String page,String limit){
 		logger.info("userlist");
-		List<User> userlist = this.userService.getUserList();
+		System.out.println(page);
+		System.out.println(limit);
+		List<User> userlist = this.userService.getUserList(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
 		return userlist;
 		
 	}

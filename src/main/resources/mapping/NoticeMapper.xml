@@ -36,6 +36,6 @@
     
     <!-- 查询多条记录 -->
     <select id="getNoticeList" resultType="com.example.demo.entity.Notice" parameterType="com.example.demo.entity.Notice">
-       select * from notice
+       select * from notice limit #{limit} offset #{offset}
     </select>  
 </mapper>    

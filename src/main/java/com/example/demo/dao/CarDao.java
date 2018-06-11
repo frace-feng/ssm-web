@@ -3,6 +3,8 @@ package com.example.demo.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.demo.entity.Car;
 
 public interface CarDao {
@@ -20,4 +22,6 @@ public interface CarDao {
 	public int insertCar(Car car);
 	//更新车
 	public int updateCar(Car car);
+	//查询所有车
+	public List<Car> selectAll(@Param("limit") int limit, @Param("offset") int offset);
 }

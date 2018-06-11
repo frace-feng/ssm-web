@@ -20,6 +20,6 @@ public interface NoticeService {
 	public List<Map<String, Object>> getNotice(Integer id);
 
 	// 获得一个消息列表
-	public List<Notice> getNoticeList();
+	public List<Notice> getNoticeList(int limit, int offset);
 
 }

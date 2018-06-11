@@ -66,5 +66,14 @@ public class DepositController {
 
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/showList" , method = RequestMethod.GET)
+	public List<Deposit> showList(HttpServletRequest request, HttpServletResponse response, String page,String limit) throws Exception {
+		logger.info("deposit list");
+		System.out.println(page);
+		System.out.println(limit);
+		return this.depositService.getDeposit(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+	}
 
 }

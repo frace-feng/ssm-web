@@ -103,16 +103,18 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	@Override
-	public List<User> getUserList() {
-		// TODO Auto-generated method stub
-		return userDao.selectList();
-	}
+	
 
 	@Override
 	public List<Map<String, Object>> getUser(@Param("clientName") String clientName) {
 		// TODO Auto-generated method stub
 		return userDao.selectByName(clientName);
+	}
+	//查询多条用户分页查询
+	@Override
+	public List<User> getUserList( int limit, int offset) {
+		// TODO Auto-generated method stub
+		return userDao.selectList(limit, offset);
 	}
 
 	// 增加用户
