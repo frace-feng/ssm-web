@@ -37,19 +37,19 @@ public class ManagerLogin {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public void login(String loginname, String passwd, Model model, HttpServletRequest request,
+	public void login(String userName, String passwd, Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
 		List<Map<String, Object>> result = this.loginService.getLoginById();
 
-		logger.info("登录名：" + loginname + "密码：" + passwd);
+		logger.info("登录名：" + userName + "密码：" + passwd);
 		String passwdMD5 = MD5.getResult(passwd);
 		Map<String, Object> map = result.get(0);
 		String email = (String) map.get("email");
 		System.out.println(email);
 		String passWord = (String) map.get("passWord");
 		System.out.println(passWord);		
-		if (email.equals(loginname) && passWord.equals(passwdMD5)) {
+		if (userName.equals(userName) && passWord.equals(passwdMD5)) {
 			model.addAttribute("login", login);
 			response.sendRedirect("/pages/managerIndex.html");
 		} else {
