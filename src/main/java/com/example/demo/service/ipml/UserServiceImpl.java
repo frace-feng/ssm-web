@@ -104,11 +104,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserList() {
+	public List<User> getUserList(int page,int limit) {
 		// TODO Auto-generated method stub
-		return userDao.selectList();
+		return userDao.selectList(page,limit);
 	}
 
+	@Override
+	public int getUserNum() {
+		// TODO Auto-generated method stub
+		return userDao.userNum();
+	}
 	@Override
 	public List<Map<String, Object>> getUser(@Param("clientName") String clientName) {
 		// TODO Auto-generated method stub

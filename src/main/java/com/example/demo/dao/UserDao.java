@@ -56,7 +56,9 @@ public interface UserDao {
 	//删除
 	public int deleteUser(int id);
 	//查询多条数据
-	public List<User> selectList();	
+	public List<User> selectList(@Param("limit") int limit,@Param("offset") int offset);
+	//查询用户总数量
+	public int userNum();
 	//查询单个用户
 	public List<Map<String, Object>> selectByName(String clientName);
 	

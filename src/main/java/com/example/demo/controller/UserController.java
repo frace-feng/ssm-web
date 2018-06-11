@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -124,10 +125,20 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
-	public List<User> showList(HttpServletRequest request, Model model){
+	public Map<String, Object> showList(HttpServletRequest request,HttpServletResponse response, String page,String limit){
 		logger.info("userlist");
-		List<User> userlist = this.userService.getUserList();
-		return userlist;
+		logger.info(page);
+		logger.info(limit);
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<User> userlist = this.userService.getUserList(Integer.parseInt(limit),offset);
+		int count=this.userService.getUserNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data",userlist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+
+		return map;
 		
 	}
 

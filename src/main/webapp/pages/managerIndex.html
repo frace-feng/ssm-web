@@ -1,122 +1,123 @@
 <!doctype html>
 <html class="no-js">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>后台管理系统--添加用户</title>
-<meta name="description" content="这是一个 index 页面">
-<meta name="keywords" content="index">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="renderer" content="webkit">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
-<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统--添加用户</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
     <link rel="stylesheet" href="/layui/css/layui.css">
-<meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
-<link rel="stylesheet" href="/admin/assets/css/admin.css">
-<script src="/admin/assets/js/jquery.min.js"></script>
-<script src="/admin/assets/js/app.js"></script>
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <script src="/admin/assets/js/jquery.min.js"></script>
+    <script src="/admin/assets/js/app.js"></script>
     <script src="/layui/layui.js"></script>
 </head>
 
 
 <body>
-<header class="am-topbar admin-header">
-  <div class="am-topbar-brand"><img src="/admin/assets/i/logo.png"></div>
+    <header class="am-topbar admin-header">
+        <div class="am-topbar-brand"><img src="/admin/assets/i/logo.png"></div>
 
-  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
 
-   <li class="am-dropdown tognzhi" data-am-dropdown>
- <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
-  <ul class="am-dropdown-content">
- 	
-    <li class="am-dropdown-header">&nbsp;&nbsp;跳到到...</li>
-    <li><a href="/pages/main.html">数据可视化 <span class="am-badge am-badge-danger am-round"></span></a></li>
-  	<li><a href="/pages/managerLogin.html">注销 <span class="am-badge am-badge-danger am-round"></span></a></li>
-  </ul>
-</li>
+                <li class="am-dropdown tognzhi" data-am-dropdown>
+                    <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
+                    <ul class="am-dropdown-content">
 
- <li class="kuanjie">
- 	
- 	<a href="/pages/managerIndex.html">用户管理</a>
- 	<a href="/pages/managerClient.html">客户管理</a>             
- 	<a href="/pages/managerOrder.html">订单管理</a> 
- 	<a href="/pages/managerCar.html">车辆管理</a>   
- 	<a href="/pages/managerMoney.html">收入管理</a> 
- 	<a href="/pages/managerNotice.html">反馈管理</a> 
- </li>
- 
-    </ul>
-  </div>
-</header>
+                        <li class="am-dropdown-header">&nbsp;&nbsp;跳到到...</li>
+                        <li><a href="/pages/main.html">数据可视化 <span class="am-badge am-badge-danger am-round"></span></a></li>
+                        <li><a href="/pages/managerLogin.html">注销 <span class="am-badge am-badge-danger am-round"></span></a></li>
+                    </ul>
+                </li>
 
-<div class="am-cf admin-main"> 
+                <li class="kuanjie">
 
-<div class="nav-navicon admin-main admin-sidebar">
-    
-    
-    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
-    <div class="sideMenu">
-      <h3 class="am-icon-flag"><em></em> <a href="/pages/managerIndex.html">用户管理</a></h3>
-      <ul>
-        <li><a href="/pages/managerIndex.html">添加用户</a></li>
-		 <li><a href="/pages/userUpdate.html">更新用户</a></li>
-        <li><a href="/pages/userDelete.html">删除用户</a></li>		 
-        
-      </ul>
-      <h3 class="am-icon-users"><em></em> <a href="/pages/managerClient.html">客户管理</a></h3>
-      <ul>
-        <li><a href="/pages/managerClient.html">添加客户</a> </li>
-        <li><a href="/pages/clientDelete.html">删除客户</a> </li>
-      </ul>
-      <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
-      <ul>
-        <li><a href="/pages/orderAdd.html">添加订单</a></li>
-        <li><a href="/pages/managerOrder.html">删除订单</a></li>
-        
-      </ul>
-      <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
-      <ul>
-      	 <li><a href="/pages/managerCar.html">增加车</a></li>
-      	 <li><a href="/pages/carUpdate.html">更新车</a></li>
-        <!-- <li>车辆范围 </li> -->
-      </ul>
-      <h3 class="am-icon-gears"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
-      <ul>
-        <li><a href="/pages/managerMoney.html">充值</a></li>
-        <li><a href="/pages/moneyDelete.html">退押金</a></li>
+                    <a href="/pages/managerIndex.html">用户管理</a>
+                    <a href="/pages/managerClient.html">客户管理</a>
+                    <a href="/pages/managerOrder.html">订单管理</a>
+                    <a href="/pages/managerCar.html">车辆管理</a>
+                    <a href="/pages/managerMoney.html">收入管理</a>
+                    <a href="/pages/managerNotice.html">反馈管理</a>
+                </li>
 
-      </ul>
-      <h3 class="am-icon-volume-up"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
-      <ul>
-        <li><a href="/pages/managerNotice.html">添加消息</a></li>
-		<li><a href="/pages/noticeUpdate.html">更新消息</a></li>
-		<li><a href="/pages/noticeDelete.html">删除消息</a></li>
-      </ul>
+            </ul>
+        </div>
+    </header>
 
-    </div>
-    <!-- sideMenu End --> 
-    <!-- 鼠标触发事件 -->
-    <script type="text/javascript">
-			jQuery(".sideMenu").slide({
-				titCell:"h3", //鼠标触发对象
-				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
-				effect:"slideDown", //targetCell下拉效果
-				delayTime:300 , //效果时间
-				triggerTime:150, //鼠标延迟触发时间（默认150）
-				defaultPlay:true,//默认是否执行效果（默认true）
-				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
-				});
-		</script>    
-</div>
+    <div class="am-cf admin-main">
 
-<div class=" admin-content">
-	
-		<div class="daohang">
-			<ul>
-				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户管理 > </li>
+        <div class="nav-navicon admin-main admin-sidebar">
+
+
+            <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
+            <div class="sideMenu">
+                <h3 class="am-icon-flag"><em></em> <a href="/pages/managerIndex.html">用户管理</a></h3>
+                <ul>
+                    <li><a href="/pages/managerIndex.html">添加用户</a></li>
+                    <li><a href="/pages/userUpdate.html">更新用户</a></li>
+                    <li><a href="/pages/userDelete.html">删除用户</a></li>
+
+                </ul>
+                <h3 class="am-icon-users"><em></em> <a href="/pages/managerClient.html">客户管理</a></h3>
+                <ul>
+                    <li><a href="/pages/managerClient.html">添加客户</a> </li>
+                    <li><a href="/pages/clientDelete.html">删除客户</a> </li>
+                </ul>
+                <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
+                <ul>
+                    <li><a href="/pages/orderAdd.html">添加订单</a></li>
+                    <li><a href="/pages/managerOrder.html">删除订单</a></li>
+
+                </ul>
+                <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
+                <ul>
+                    <li><a href="/pages/managerCar.html">增加车</a></li>
+                    <li><a href="/pages/carUpdate.html">更新车</a></li>
+                    <!-- <li>车辆范围 </li> -->
+                </ul>
+                <h3 class="am-icon-gears"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
+                <ul>
+                    <li><a href="/pages/managerMoney.html">充值</a></li>
+                    <li><a href="/pages/moneyDelete.html">退押金</a></li>
+
+                </ul>
+                <h3 class="am-icon-volume-up"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
+                <ul>
+                    <li><a href="/pages/managerNotice.html">添加消息</a></li>
+                    <li><a href="/pages/noticeUpdate.html">更新消息</a></li>
+                    <li><a href="/pages/noticeDelete.html">删除消息</a></li>
+                </ul>
+
+            </div>
+            <!-- sideMenu End -->
+            <!-- 鼠标触发事件 -->
+            <script type="text/javascript">
+                jQuery(".sideMenu").slide({
+                    titCell: "h3", //鼠标触发对象
+                    targetCell: "ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+                    effect: "slideDown", //targetCell下拉效果
+                    delayTime: 300, //效果时间
+                    triggerTime: 150, //鼠标延迟触发时间（默认150）
+                    defaultPlay: true, //默认是否执行效果（默认true）
+                    returnDefault: true //鼠标从.sideMen移走后返回默认状态（默认false）
+                });
+            </script>
+        </div>
+
+        <div class=" admin-content">
+
+            <div class="daohang">
+                <ul>
+                    <li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户管理 > </li>
 				<li><button type="button" onclick="getUser()">查询 </li>
 			</ul>
 
@@ -161,49 +162,114 @@
             <div class="am-btn-group am-btn-group-xs">
 
               <button type="submit" name="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-              <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/userUpdate.html">更新</a></button>
-              <button type="button" name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span><a href="/pages/userDelete.html">删除</a></button>              
+                        <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/userUpdate.html">更新</a></button>
+                        <button type="button" name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span><a href="/pages/userDelete.html">删除</a></button>
             </div>
-          <div id="table_content"></div>
-      
-          
-          
-         
-        </form>
-    <table class="layui-table" lay-data="{width: 892, height:332, url:'/user/showList', page:false, id:'idTest'}" lay-filter="demo">
-        <thead>
-        <tr>
-            <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-            <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
-            <th lay-data="{field:'username', width:80}">用户名</th>
-            <th lay-data="{field:'sex', width:80, sort: true}">性别</th>
-            <th lay-data="{field:'city', width:80}">城市</th>
-            <th lay-data="{field:'sign', width:160}">签名</th>
-            <th lay-data="{field:'experience', width:80, sort: true}">积分</th>
+            <div id="table_content"></div>
 
-            <th lay-data="{field:'classify', width:80}">职业</th>
-            <th lay-data="{field:'wealth', width:135, sort: true}">财富</th>
-            <th lay-data="{field:'score', width:80, sort: true, fixed: 'right'}">评分</th>
-            <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
-        </tr>
-        </thead>
-    </table>
 
-    <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-    </script>
 
-    <!--      <ul class="am-pagination am-fr">
+
+            </form>
+            <button id="add_user" data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">添加用户</button>
+            <!--数据展示及操作table-->
+            <div style="padding:20px">
+                <table class="layui-table" lay-data="{url:'/user/showList', page:true, id:'idTest'}" lay-filter="demo">
+                    <thead>
+                        <tr>
+                            <!-- <th lay-data="{type:'checkbox', fixed: 'left'}"></th> -->
+                            <th lay-data="{field:'id', width:80, sort: true}">ID</th>
+                            <th lay-data="{field:'clientName', width:180}">用户名</th>
+                            <th lay-data="{field:'driverCode', width:180, sort: true}">牌照</th>
+                            <th lay-data="{field:'mobile', width:180}">电话</th>
+
+                            <th lay-data="{ width:178, align:'center', toolbar: '#barDemo'}">操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <div style="display: none" id="add_user_template">
+                <form class="layui-form" action="" style="margin:20px;">
+                    <!--用户名-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <!--密码-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱</label>
+                        <div class="layui-input-block">
+                            <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                        </div>
+                    </div>
+                    <!--身份-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">单选框</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="sex" value="男" title="男" checked>
+                            <input type="radio" name="sex" value="女" title="女">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div style="text-align: center;">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="display: none" id="edit_user_template">
+                <form class="layui-form" action="" lay-filter="edit_user" style="margin:20px;">
+                    <!--用户名-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="clientName" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱</label>
+                        <div class="layui-input-block">
+                            <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                        </div>
+                    </div>
+                    <!--身份-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">身份</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="depositSta" value="0" title="用户" checked>
+                            <input type="radio" name="depositSta" value="1" title="管理员">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div style="text-align: center;">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--      <ul class="am-pagination am-fr">
                     <li class="am-disabled"><a href="#">«</a></li>
                     <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
                     <li><a href="/pages/deleteClient.html">2</a></li>
                     <li><a href="/pages/updateClient.html">3</a></li>
                     <li><a href="#">»</a></li>
                   </ul> -->
- 
-<!--  <div class="foods">
+
+            <!--  <div class="foods">
   <ul>
     版权所有@2018
   </ul>
@@ -215,58 +281,93 @@
 
 
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-	</div>
-<script src="/admin/assets/js/amazeui.min.js"></script>
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-        //监听表格复选框选择
-        table.on('checkbox(demo)', function(obj){
-            console.log(obj)
-        });
-        //监听工具条
-        table.on('tool(demo)', function(obj){
-            var data = obj.data;
-            if(obj.event === 'detail'){
-                layer.msg('ID：'+ data.id + ' 的查看操作');
-            } else if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
+    </div>
+    <script src="/admin/assets/js/amazeui.min.js"></script>
+    <script>
+        function setForm(initValue) {
+            layui.use(['form'], function() {
+                var form = layui.form
+                    //自定义验证规则
+                form.verify({
+                    // title: function(value){
+                    //     if(value.length < 5){
+                    //         return '标题至少得5个字符啊';
+                    //     }
+                    // },
+                    pass: [/(.+){6,12}$/, '密码必须6到12位']
+                        // ,content: function(value){
+                        //     layedit.sync(editIndex);
+                        // }
                 });
-            } else if(obj.event === 'edit'){
-                layer.alert('编辑行：<br>'+ JSON.stringify(data))
-            }
+                //监听指定开关
+                form.on('switch(switchTest)', function(data) {
+                    layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                        offset: '6px'
+                    });
+                    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+                });
+                //监听提交
+                form.on('submit(demo1)', function(data) {
+                    layer.alert(JSON.stringify(data.field), {
+                        title: '最终的提交信息'
+                    })
+                    return false;
+                });
+                //表单初始赋值
+                form.val('edit_user', initValue)
+            });
+        }
+        //触发事件
+        function activePop(id, initValue) {
+            layer.open({
+                type: 1,
+                area: ['500px', '360px'],
+                content: document.getElementById(id).innerHTML //传入表单html
+                    // ,btn: '关闭全部'
+                    ,
+                btnAlign: 'c' //按钮居中
+                    ,
+                shade: 0 //不显示遮罩
+                    // ,yes: function(){
+                    //     layer.closeAll();
+                    // }
+            });
+            //打开后设置form
+            setForm(initValue);
+        }
+
+        $('#add_user').on('click', function() {
+            activePop('add_user_template');
         });
 
-        var $ = layui.$, active = {
-            getCheckData: function(){ //获取选中数据
-                var checkStatus = table.checkStatus('idTest')
-                    ,data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
-            }
-            ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('idTest')
-                    ,data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-            }
-            ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('idTest');
-                layer.msg(checkStatus.isAll ? '全选': '未全选')
-            }
-        };
+        layui.use('table', function() {
+            var table = layui.table;
+            //监听工具条
+            table.on('tool(demo)', function(obj) {
+                var data = obj.data;
+                if (obj.event === 'del') {
+                    //执行删除
+                    layer.confirm('真的删除行么', function(index) {
+                        console.log(data);
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    //执行修改
+                    activePop('edit_user_template', data);
+                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
+            });
 
-        $('.demoTable .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
+
         });
-    });
-</script>
+    </script>
 </body>
+
 </html>
 <script type="text/javascript">
     function createTable() {

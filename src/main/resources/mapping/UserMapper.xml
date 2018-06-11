@@ -215,7 +215,11 @@
     </select>
     
     <!-- 查询多条用户 -->
-    <select id="selectList" resultType="java.util.Map" parameterType="com.example.demo.entity.User">
-    select * from client where  <![CDATA[ id between 1 and 50]]>
+    <select id="selectList" resultType="java.util.Map" parameterType="java.lang.Integer">
+    select * from client limit #{limit} offset #{offset}
+    </select>
+	<!-- 计算用户数量 -->
+	<select id="userNum" resultType="java.lang.Integer">
+    select count(*) from client
     </select>
 </mapper>
