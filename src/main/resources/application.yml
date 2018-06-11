@@ -1,0 +1,36 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+# 配置jsp文件的位置，默认位置为：src/main/webapp
+# 配置jsp文件的后缀
+#开发配置
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html      
+
+#公共配置与profiles选择无关 mapperLocations指的路径是src/main/resources
+mybatis:
+  typeAliasesPackage: com.example.demo.entity
+  mapperLocations: classpath:mapping/*.xml
+
+---
+
+#配置mysql数据库
+spring:
+  jpa:
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect     
+  datasource:
+    url: jdbc:mysql://localhost:3306/analysis?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    driverClassName : com.mysql.jdbc.Driver
+    username: root
+    password: root
+    testOnBorrow: true     #当系统长时间闲置后，再访问数据库时报'Could not open JPA EntityManager for transaction' 的异常，添加这个后解决
+    validationQuery: SELECT 1  #当系统长时间闲置后，再访问数据库时报'Could not open JPA EntityManager for transaction' 的异常，添加这个后解决
+    

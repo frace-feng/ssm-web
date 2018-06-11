@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.PayDao">
+	<resultMap type="com.example.demo.entity.Pay" id="PayResultMap">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="clientCode" property="clientCode" jdbcType="VARCHAR"/>
+		<result column="payBalance" property="payBalance" jdbcType="INTEGER"/>
+		<result column="payType" property="payType" jdbcType="INTEGER"/>
+		<result column="payTime" property="payTime" jdbcType="DATE"/>
+	</resultMap>
+		
+
+	<select id="selectByPrimaryKeyT2" resultType="java.util.Map">
+	select sum(payBalance) as money, count(clientCode) as number , date_format( payTime, '%m-%d' ) as time 
+	from pay 
+    where   <![CDATA[payTime > #{stime} and payTime< #{etime}]]>
+	group by date_format( payTime, '%m-%d' ) 
+    </select> 
+	
+	 <insert id="insertPay" parameterType="com.example.demo.entity.Pay">
+        insert into pay
+        (
+            clientCode,payBalance,payType,payTime
+        )VALUES(
+            #{clientCode},#{payBalance},#{payType},#{payTime}
+        )
+    </insert>
+
+</mapper>

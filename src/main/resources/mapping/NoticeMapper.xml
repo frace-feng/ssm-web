@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.NoticeDao" >
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Notice" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+    </resultMap>
+    
+         <insert id="insertNotice"  parameterType="com.example.demo.entity.Notice">
+        INSERT INTO
+           notice
+        (
+            id,title,content,createDate,userName
+        )VALUES(
+            #{id},#{title},#{content},#{createDate},#{userName}
+        )
+    </insert>
+    
+     <!-- 删除用户(Remove) -->  
+    <delete id="deleteNotice" parameterType="java.lang.Integer">  
+        delete from notice where id=#{id}  
+    </delete>  
+      
+    <!-- 修改用户(Update) -->  
+    <update id="updateNotice" parameterType="com.example.demo.entity.Notice">  
+        update notice set title=#{title},content=#{content} where id=#{id}  
+    </update>  
+      
+    <!-- 查询单条记录 -->
+    <select id="getNotice" parameterType="Integer" resultType="java.util.Map">
+        SELECT * FROM notice WHERE id = #{id}
+    </select>
+    
+    <!-- 查询多条记录 -->
+    <select id="getNoticeList" resultType="com.example.demo.entity.Notice" parameterType="com.example.demo.entity.Notice">
+       select * from notice
+    </select>  
+</mapper>    

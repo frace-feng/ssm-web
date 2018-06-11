@@ -1,0 +1,328 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>首页展示</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/admin/assets/css/admin.css">
+<script src="/admin/assets/js/jquery.min.js"></script>
+<script  src="/js/echarts.js"></script>
+<script src="/admin/assets/js/app.js"></script>
+  <style>
+  /*body{padding: 20px;}*/
+  .demo-input{padding-left: 10px; height: 38px; min-width: 262px; line-height: 38px; border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 2px;}
+  .demo-footer{padding: 50px 0; color: #999; font-size: 14px;}
+  .demo-footer a{padding: 0 5px; color: #01AAED;}
+  </style>
+</head>
+
+
+<body>
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand"><img src="/admin/assets/i/Weblogo.png"></div>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+   <li class="am-dropdown tognzhi" data-am-dropdown>
+  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 
+   	跳&nbsp;&nbsp;&nbsp;转
+   <span class="am-badge am-badge-danger am-round">^</span>
+   </button>
+  <ul class="am-dropdown-content">
+    <li class="am-dropdown-header">&nbsp;&nbsp;跳到到...</li>
+    <li><a href="/pages/managerLogin.html">后台<span class="am-badge am-badge-danger am-round"></span></a></li>
+  	<li><a href="/pages/login.html">注销 <span class="am-badge am-badge-danger am-round"></span></a></li>
+  </ul>
+</li>
+
+ <li class="kuanjie">
+ 	
+ 	<a href="/pages/clientList.html">用户展示</a>          
+ 	<a href="/pages/orderList.html">订单展示</a> 
+ 	<a href="/pages/carList.html">车辆展示</a>   
+ 	<a href="/pages/moneyList.html">收入展示</a> 
+ 	<a href="/pages/notice.html">消息展示</a> 
+ </li>
+ 
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main"> 
+
+<div class="nav-navicon admin-main admin-sidebar">
+    
+    
+    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员frs</div>
+    <div class="sideMenu">
+      <h3 class="am-icon-flag"><em></em> <a href="/pages/clientList.html">用户展示</a></h3>
+      <ul>
+        <li><a href="/pages/clientList6.html">用户列表</a></li>
+        <li>注册量</li>
+        <li>注册+身份通过</li>
+        <li>注册+交押金数 </li>
+        <li>利润</li>
+        <li>性别+年龄占比 </li>       
+        <li>客户身份 </li>
+        <li>流失人群 </li>
+        
+      </ul>
+      <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/orderList.html"> 订单展示</a></h3>
+      <ul>
+        <li>时间段订单</li>
+        <li>有效订单</li>
+        <li>推广绩点</li>
+      </ul>
+      <h3 class="am-icon-users"><em></em> <a href="/pages/carList.html">车辆展示</a></h3>
+      <ul>
+        <li>车辆状态 </li>
+        <li>加油量</li>
+        <li>车展</li>
+        <li>车辆地址</li>
+      </ul>
+      <h3 class="am-icon-gears"><em></em> <a href="/pages/moneyList.html">收入展示</a></h3>
+      <ul>
+        <li>充值</li>
+        <li>退押金</li>
+        <li>月现金收入</li>
+        <li>总收入</li>
+
+      </ul>
+      <h3 class="am-icon-volume-up"><em></em> <a href="/pages/notice.html">消息展示</a></h3>
+      <ul>
+        <li>站内消息 /留言 </li>
+        <li>上传文件</li>
+      </ul>
+
+    </div>
+    <!-- sideMenu End --> 
+    
+    <script type="text/javascript">
+			jQuery(".sideMenu").slide({
+				titCell:"h3", //鼠标触发对象
+				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+				effect:"slideDown", //targetCell下拉效果
+				delayTime:300 , //效果时间
+				triggerTime:150, //鼠标延迟触发时间（默认150）
+				defaultPlay:true,//默认是否执行效果（默认true）
+				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
+				});
+		</script>    
+</div>
+
+<div class=" admin-content">
+	
+		<div class="daohang">
+			<ul>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 首页 </li>				
+			</ul>	
+		</div>
+
+<div class="admin">   
+   <div class="admin-index">
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 100}">
+        <dt class="qs"><i class="am-icon-users"></i></dt>
+        <dd>455</dd>
+        <dd class="f12">职员数量</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 300}">
+        <dt class="cs"><i class="am-icon-area-chart"></i></dt>
+        <dd>455</dd>
+        <dd class="f12">一月一号收入</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 600}">
+        <dt class="hs"><i class="am-icon-shopping-cart"></i></dt>
+        <dd>455</dd>
+        <dd class="f12">车辆数量</dd>
+      </dl>
+      <dl data-am-scrollspy="{animation: 'slide-right', delay: 900}">
+        <dt class="ls"><i class="am-icon-cny"></i></dt>
+        <dd>455</dd>
+        <dd class="f12">订单数量</dd>
+      </dl>
+    </div>
+    <div class="admin-biaoge">
+      <div class="xinxitj">车辆概况</div>
+      <table class="am-table">
+        <thead>
+          <tr>
+            <th>车的品牌</th>
+            <th>订单时间</th>
+            <th>车的数量</th>
+            <th>每车收入</th>
+            <th>车的订单</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>劳斯莱斯</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+          <tr>
+            <td>兰博基尼</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+          <tr>
+            <td>法拉利</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+          <tr>
+            <td>宾利</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+          <tr>
+            <td>迈巴赫</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+           <tr>
+            <td>阿斯顿马丁</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+           <tr>
+            <td>布加迪</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+           <tr>
+            <td>柯尼赛格</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+           <tr>
+            <td>帕加尼</td>
+            <td>1-1</td>
+            <td>10</td>
+            <td> 5000000￥ </td>
+			<td> 10 </td>
+          </tr>
+        </tbody>
+      </table>
+
+				</div>
+    <div class="shuju">
+      <div class="shujuone">
+        <dl>
+          <dt>一月理论收入：  1356666</dt>
+          <dt>一月实际收入：   5646465.98</dt>
+        </dl>
+        <ul>
+          <h2>26.83%</h2>
+          <li>占比</li>
+        </ul>
+      </div>
+      <div class="slideTxtBox">
+        <div class="hd">
+          <ul>
+            <li>工作进度表</li>
+            <li>详细信息</li>
+          </ul>
+        </div>
+        <div class="bd">
+          <ul>
+            <table width="100%" class="am-table">
+              <tbody>
+                <tr>
+                  <td width="17%"  align="center">第1步 </td>
+                  <td width="60%" >收集信息</td>
+                  <td width="23%"  align="center"><a href="/pages/upload.html">excel</a></td>
+                </tr>
+                <tr>
+                  <td align="center">第2步 </td>
+                  <td>板块设计</td>
+                  <td  align="center"><a href="/pages/upload.html">Visio</a></td>
+                </tr>
+                <tr>
+                  <td  align="center">第3步 </td>
+                  <td>代码实现</td>
+                  <td  align="center"><a href="/pages/upload.html">file</a></td>
+                </tr>
+                <tr>
+                  <td  align="center">第4步 </td>
+                  <td>测试结果</td>
+                  <td  align="center"><a href="/pages/upload.html">file</a></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </ul>
+          <ul>
+            <table class="am-table">
+              <tbody>
+                <tr>
+                  <td>收集信息</td>
+                  <td>板块设计</td>
+                  <td>代码实现</td>
+                  <td>测试结果</td>
+                </tr>
+                <tr>
+                  <td>运营数据需求</td>
+                  <td>运营板块设计</td>
+                  <td>运营代码实现</td>
+                  <td>00</td>
+                </tr>
+                <tr>
+                  <td>地勤数据需求</td>
+                  <td>地勤板块设计</td>
+                  <td>地勤代码实现</td>
+                  <td>00</td>
+                </tr>
+                <tr>
+                  <td>客服数据需求</td>
+                  <td>客服板块设计</td>
+                  <td>客服代码实现</td>
+                  <td>00</td>
+                </tr>
+              </tbody>
+            </table>
+          </ul>
+        </div>
+      </div>
+      <script type="text/javascript">jQuery(".slideTxtBox").slide();</script> 
+</div>
+
+    <div class="foods">
+    	<ul>版权所有@2018</ul>
+    	<dl><a href="/pages/main.html" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a></dl>
+
+    </div>
+</div>
+
+</div>
+</div>
+
+</body>
+<script src="/assets/js/amazeui.min.js"></script>
+</html>

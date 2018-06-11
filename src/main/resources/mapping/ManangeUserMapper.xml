@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.ManageUserDao" >
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Login" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+    
+         <insert id="insertUser"  parameterType="com.example.demo.entity.Login">
+        INSERT INTO
+           user
+        (
+            userName,passWord,email,status
+        )VALUES(
+            #{userName},#{passWord},#{email},#{status}
+        )
+    </insert>
+    
+     <!-- 删除用户(Remove) -->  
+    <delete id="deleteUser" parameterType="java.lang.Integer">  
+        delete from user where id=#{id}  
+    </delete>  
+      
+    <!-- 修改用户(Update) -->  
+    <update id="updateUser" parameterType="com.example.demo.entity.Login">  
+        update user set userName=#{userName},passWord=#{passWord} where id=#{id}  
+    </update>  
+      
+    <!-- 查询单条记录 -->
+    <select id="getUser" parameterType="Integer" resultType="java.util.Map">
+        select id,userName,email from user WHERE id = #{id}
+    </select>
+    
+    <select id="getUser1" parameterType="Integer" resultType="java.util.Map">
+        select id,userName,email from user WHERE id = #{id}
+    </select>
+    
+    <!-- 查询多条记录 -->
+    <select id="getLoginList" resultType="java.util.Map">
+       select id,userName,email from user
+    </select>  
+</mapper>    

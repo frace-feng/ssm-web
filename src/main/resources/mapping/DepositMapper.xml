@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.DepositDao">
+	<resultMap type="com.example.demo.entity.Deposit" id="DepositResultMap">
+		<result column="id" property="id" jdbcType="INTEGER"/>
+		<result column="depositCode" property="depositCode" jdbcType="INTEGER"/>
+		<result column="payMode" property="payMode" jdbcType="INTEGER"/>		
+	</resultMap>
+		
+
+	<select id="selectByPrimaryKeyT3" resultType="java.util.Map">
+	select  count(clientCode) as number , date_format( createTime, '%m-%d' ) as time 
+	from deposit
+    where  payStatus = '1' 
+    and <![CDATA[createTime > #{stime}]]> 
+    and <![CDATA[createTime< #{etime}]]>
+	group by date_format( createTime, '%m-%d' ) 
+    </select> 
+	
+	<!-- 退押金 -->
+	
+	<update id="updateDeposit" parameterType="com.example.demo.entity.Deposit">  
+        update deposit set payMode=1 where depositCode=#{depositCode}  
+    </update>
+
+
+</mapper>

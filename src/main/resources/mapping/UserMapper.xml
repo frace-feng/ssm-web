@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.UserDao" >
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="clientName" property="clientName" jdbcType="VARCHAR" />
+        <result column="clientCode" property="clientCode" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="driverCode" property="driverCode" jdbcType="VARCHAR" />
+        <result column="depositSta" property="depositSta" jdbcType="INTEGER" />
+        <result column="auditingStatus" property="auditingStatus" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="DATE" />
+    </resultMap>
+ 
+    <resultMap id="PartResultMap" type="HashMap" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="clientName" property="clientName" jdbcType="VARCHAR" /> 
+	</resultMap>
+    
+     <select id="selectByPrimaryKeyT1" resultType="java.util.Map">
+     select count(*) as number, date_format( createTime, '%m-%d' ) as time 
+     FROM client
+     where  <![CDATA[createTime > #{stime} and createTime < #{etime}]]>
+     group by date_format( createTime, '%m-%d' ) 
+    </select> 
+    
+    <select id="selectByPrimaryKeyT5" resultType="java.util.Map">
+	SELECT
+	count(clientCode ) as num2
+	FROM
+	client
+	WHERE
+	auditingStatus = 2	
+	AND <![CDATA[createTime > #{stime} AND createTime < #{etime}]]>
+	AND clientCode IN ( SELECT clientCode FROM client WHERE mobile =#{mobile} )
+	</select>
+	
+	<select id="selectByPrimaryKeyT6" resultType="java.util.Map">
+	SELECT count(clientCode) as num3 
+	FROM client WHERE depositSta=1
+	AND <![CDATA[createTime > #{stime} AND createTime < #{etime}]]>
+    AND clientCode IN ( SELECT clientCode FROM client WHERE mobile = #{mobile} )	
+	</select>
+	
+	<select id="selectByPrimaryKeyT8" resultType="java.util.Map">
+	SELECT COUNT(clientCode ) as cli1,
+	 DATE_FORMAT(createTime,'%Y-%m') as time
+	 FROM client
+	GROUP BY DATE_FORMAT(createTime,'%Y-%m')   
+	</select>
+	
+	<select id="selectByPrimaryKeyT9" resultType="java.util.Map"> 		
+	SELECT	
+	COUNT( clientCode ) AS cli2,
+	DATE_FORMAT( createTime, '%Y-%m' ) AS time 
+	FROM
+	client 
+	WHERE
+	auditingStatus = 2 
+	GROUP BY time
+	</select>
+	
+	<select id="selectByPrimaryKeyT10" resultType="java.util.Map">
+  	SELECT	
+	COUNT( c.clientCode ) AS cli3,
+	DATE_FORMAT( c.createTime, '%Y-%m' ) AS time 
+	FROM
+	client  c
+	LEFT JOIN deposit d on c.clientCode = d.clientCode
+	WHERE
+	auditingStatus = 2 	
+	AND payStatus = 1	
+	GROUP BY
+	time
+	</select>
+	
+	<!-- 查询女性的 -->
+	<select id="selectByPrimaryKeyT31" resultType="java.lang.Integer">
+	SELECT
+		COUNT( SUBSTRING( client.driverCode, 17, 1 ) ) AS count
+	FROM
+		client 
+	WHERE
+		  length(client.driverCode) = 18
+		AND  SUBSTRING( client.driverCode, 17, 1 ) % 2 = 0;
+	</select>
+	
+	<!--查询男性的人数  -->
+	<select id="selectByPrimaryKeyT32" resultType="java.lang.Integer">
+		SELECT
+	COUNT( SUBSTRING( client.driverCode, 17, 1 ) ) AS count
+	FROM
+	client 
+	WHERE
+	 auditingStatus = 2
+	AND  length(client.driverCode) = 18
+	AND  SUBSTRING( client.driverCode, 17, 1 ) % 2 != 0 
+	</select>
+	<!-- 查询年龄开始 -->
+	<select id="selectByPrimaryKeyT33" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 'nianLing'
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2
+	) a
+	<![CDATA[WHERE   num1 >= 18 and num1 <=23]]>
+	GROUP BY num1
+	) b
+	</select>
+	
+	<select id="selectByPrimaryKeyT34" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2
+	) a
+	<![CDATA[WHERE   num1 >= 24 and num1 <= 29]]>
+	GROUP BY num1
+	) b
+	</select>
+	
+	<select id="selectByPrimaryKeyT35" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2
+	) a
+	<![CDATA[WHERE   num1 >= 30 and num1 <= 35]]>
+	GROUP BY num1
+	) b
+	</select>
+	
+	<select id="selectByPrimaryKeyT36" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2 
+	) a
+	<![CDATA[WHERE   num1 >= 36 and num1 <= 41]]>
+	GROUP BY num1
+	) b
+	</select>
+	
+	<select id="selectByPrimaryKeyT37" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2 
+	) a
+	<![CDATA[WHERE   num1 >= 42 and num1 <= 47]]>
+	GROUP BY num1
+	) b
+	</select>
+	
+	<select id="selectByPrimaryKeyT38" resultType="java.lang.Integer">
+	SELECT sum(b.result) as number from
+	(
+	SELECT COUNT(a.num1) result ,num1 
+	FROM
+	(
+	SELECT  2018 - SUBSTRING( client.driverCode, 7, 4 ) as num1
+	FROM client
+	WHERE length(client.driverCode) = 18 AND auditingStatus = 2 
+	) a
+	<![CDATA[WHERE  num1 > 47]]>
+	GROUP BY num1
+	) b
+	</select>
+	<!-- 查询年龄结束 -->
+	
+	 <!-- 添加客户 -->
+	 <insert id="insertUser"  parameterType="com.example.demo.entity.User">
+        INSERT INTO
+           client
+        (
+            id,clientName,mobile,driverCode,createTime
+        )VALUES(
+            #{id},#{clientName},#{mobile},#{driverCode},#{createTime}
+        )
+    </insert>
+    
+    <!-- 修改用户(Update) -->  
+    <update id="updateUser" parameterType="com.example.demo.entity.User">  
+        update client set clientCode=#{clientCode}, depositSta=#{depositSta},auditingStatus=#{auditingStatus} where id=#{id}  
+    </update>  
+    
+    <!-- 删除用户(Remove) -->  
+    <delete id="deleteUser" parameterType="java.lang.Integer">  
+        delete from client where id=#{id}  
+    </delete> 
+    
+    <!-- 查询单个用户 -->
+    <select id="selectByName" resultType="java.util.Map" >
+    	select * from client where clientName = #{clientName} or  <![CDATA[ id between 1 and 50]]>
+    </select>
+    
+    <!-- 查询多条用户 -->
+    <select id="selectList" resultType="com.example.demo.entity.User" parameterType="com.example.demo.entity.User">
+    select * from client where  <![CDATA[ id between 1 and 50]]>
+    </select>
+</mapper>
