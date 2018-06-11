@@ -4,7 +4,7 @@ $(function(){
 		type:"get",
 		success:function(data){
 			console.log(data)
-			var o1 = data["o1"] ;
+			var o1 = data["o1"];//map类型
 			var o2 = data["o2"];
 			var o3 = data["o3"];
 			var o4 = data["o4"];
