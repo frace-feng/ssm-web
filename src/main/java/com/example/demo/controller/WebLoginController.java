@@ -37,7 +37,7 @@ public class WebLoginController {
 	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
 	public void checkLogin(Login login, Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		login = loginService.checkLogin(login.getEmail(), login.getpassWord());
+		login = loginService.checkLogin(login.getUserName(), login.getpassWord());
 		 if(login != null) {
 			 model.addAttribute("login", login);
 			 response.sendRedirect("/pages/main.html");

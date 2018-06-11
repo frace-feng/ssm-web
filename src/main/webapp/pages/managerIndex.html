@@ -115,7 +115,7 @@
 		<div class="daohang">
 			<ul>
 				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户管理 > </li>
-				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 添加->更新->删除 </li>
+				<li><button type="button" onclick="getUser()">查询 </li>
 			</ul>
 
        
@@ -155,14 +155,14 @@
              
             </tbody>
           </table>
-          
-                 <div class="am-btn-group am-btn-group-xs">
+           
+            <div class="am-btn-group am-btn-group-xs">
 
               <button type="submit" name="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
               <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/userUpdate.html">更新</a></button>
               <button type="button" name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span><a href="/pages/userDelete.html">删除</a></button>              
             </div>
-          
+          <div id="table_content"></div>
       
           
           
@@ -198,3 +198,80 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    function createTable() {
+        tableNode = document.createElement("table"); //获得对象 
+        tableNode.setAttribute("id", "table")
+        var row = parseInt(document.getElementsByName("row1")[0].value); //获得行号 
+        //alert(row); 
+        if (row <= 0 || isNaN(row)) {
+            alert("输入的行号错误，不能创建表格，请重新输入：");
+            return;
+        }
+        var cols = parseInt(document.getElementsByName("cols1")[0].value);
+        if (isNaN(cols) || cols <= 0) {
+            alert("输入的列号错误，不能创建表格，请重新输入：");
+            return;
+        }
+        //上面确定了 现在开始创建 
+        for (var x = 0; x < row; x++) {
+            var trNode = tableNode.insertRow();
+            for (var y = 0; y < cols; y++) {
+                var tdNode = trNode.insertCell();
+                tdNode.innerHTML = "单元格" + (x + 1) + "-" + (y + 1);
+            }
+        }
+        table_content.
+        document.body.appendChild(tableNode); //添加到那个位置 
+    }
+
+    function getUser() {
+        //获取输入的id值
+        var clientName = document.getElementById("clientName").value;
+        $.ajax({
+            url: "/user/show?clientName=" + clientName,
+            type: "get",
+            success: function(data) {
+                console.log(data)
+                createTable(data);
+            }
+        })
+    }
+
+    function createTable(notices) {
+        //创建一个table对象
+        tableNode = document.createElement("table");
+        var cols = ['id', '电话', '编号', '用户名', '驾驶证号', '身份通过0：N  2：Y', '押金状态0:N 1:Y'];
+        var keys = ['id', 'mobile', 'clientCode', 'clientName', 'driverCode', 'auditingStatus', 'depositSta'];
+        //列数
+        var rows = notices.length;
+        //先创建一个表头tr用来放表头标题
+        var tr = document.createElement("TR");
+        tableNode.appendChild(tr);
+        //上面确定了 现在开始创建 
+        for (var i = 0; i < cols.length; i++) {
+            var th = document.createElement("TH");
+            //设置表头
+            th.innerText = cols[i];
+            tr.appendChild(th);
+        }
+        //遍历notices,填充表格数据
+        notices.forEach(function(notice) {
+                var trNode = tableNode.insertRow();
+                for (var i = 0; i < cols.length; i++) {
+                    //插入一个td
+                    var tdNode = trNode.insertCell();
+                    tdNode.innerHTML = notice[keys[i]];
+                }
+            })
+            //获取table容器
+        var contentNode = document.getElementById("table_content");
+        //存在就替换
+        if (contentNode.childNodes[0]) {
+            contentNode.replaceChild(tableNode, contentNode.childNodes[0])
+                //不存在就添加
+        } else {
+            contentNode.appendChild(tableNode);
+        }
+    }
+</script>

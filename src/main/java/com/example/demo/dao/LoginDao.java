@@ -9,7 +9,7 @@ import com.example.demo.entity.Login;
 
 public interface LoginDao {
 	// 通过Mapper映射得出登录的用户名，密码
-	Login selectByEmail(String email);
+	Login selectByUserName(String userName);
 	List<Map<String, Object>> selectById();
 
 }

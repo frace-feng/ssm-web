@@ -122,9 +122,10 @@ public class UserController {
 		}
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
 	public List<User> showList(HttpServletRequest request, Model model){
-		System.out.println("userlist");
+		logger.info("userlist");
 		List<User> userlist = this.userService.getUserList();
 		return userlist;
 		
@@ -134,7 +135,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
 	public List<Map<String, Object>> show(HttpServletRequest request, Model model,String clientName){
-		System.out.println("showOne");
+		logger.info("show one");
 		return this.userService.getUser(clientName);
 	}
 }

@@ -19,9 +19,9 @@ public class LoginServiceImpl implements LoginService {
 	
 	
 	@Override
-	public Login checkLogin(String email, String passWord) {
+	public Login checkLogin(String userName, String passWord) {
 		// TODO Auto-generated method stub
-		Login login = loginDao.selectByEmail(email);
+		Login login = loginDao.selectByUserName(userName);
 		String passwd = MD5.getResult(passWord);
 		if(login != null && login.getpassWord().equals(passwd)){
 		
