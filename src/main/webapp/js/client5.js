@@ -13,8 +13,7 @@ option = {
 	    },
 	    legend: {
 	        x : 'center',
-	        y : 'bottom',
-	        data:['白领','学生','教师','家庭','金领']
+	        y : 'bottom'
 	    },
 	    toolbox: {
 	        show : true,
@@ -32,7 +31,7 @@ option = {
 	    calculable : true,
 	    series : [
 	        {
-	            name:'客户身份',
+	            name:'车用途种类',
 	            type:'pie',
 	            radius : [20, 110],
 	            center : ['25%', '50%'],
@@ -54,11 +53,12 @@ option = {
 	                }
 	            },
 	            data:[
-	                {value:10, name:'白领'},
-	                {value:5, name:'学生'},
-	                {value:15, name:'教师'},
-	                {value:25, name:'家庭'},
-	                {value:20, name:'金领'}
+	                {value:10, name:'长租车'},
+	                {value:15, name:'政府用车'},
+	                {value:45, name:'短租车'},
+	                {value:35, name:'公司用车'},
+	                {value:25, name:'破损车'},
+	                {value:100, name:'一般用车'}
 	            ]
 	        },
 	        {

@@ -4,10 +4,10 @@ $(function(){
 		type:"get",
 		success:function(data){
 			console.log(data)
-			var number1 = [];
+			var number1 = [];//list泛型类型
 			var times = [];
 			//获取时间和数量
-			for(var i = 0 ; i < data.length  ; i++){			
+			for(var i = 0 ; i < data.length ; i++){			
 				number1.push(data[i].cli1);	
 			    times.push(data[i].time);			
 			}			

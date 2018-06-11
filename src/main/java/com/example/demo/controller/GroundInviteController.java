@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.service.GroundInviteService;
 
 @Controller
-// @RestController
 @RequestMapping("/groundInvite")
 public class GroundInviteController {
 	@Resource
 	private GroundInviteService groundInviteService;
 
-	// 鏌ヨ鏃堕棿鑼冨洿
+	//Encapsulation datas
 	@ResponseBody
 	@RequestMapping(value = "/ajaxshowGroundInviteT", method = RequestMethod.GET)
 	public Map<String, Object> ajax(HttpServletRequest request, Model model) {
