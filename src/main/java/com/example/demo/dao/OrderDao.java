@@ -36,14 +36,14 @@ public interface OrderDao {
 	List<Map<String, Object>> selectByPrimaryKeyT18();
 
 	List<Map<String, Object>> selectByPrimaryKeyT19();
-
-
-
+	
 	// 删除
 	public int deleteOrder(Integer orderCode);
-	
+	//插入
 	public int insertOrder(Order order);
-
+	//查询所有
+	List<Order> selectAll(@Param("limit") int limit, @Param("offset") int offset);
+	
 	//List<Map<String, Object>> selectByPrimaryKeyT20();
 
 	//List<Map<String, Object>> selectByPrimaryKeyT28();

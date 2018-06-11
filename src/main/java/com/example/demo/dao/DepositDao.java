@@ -17,4 +17,6 @@ public interface DepositDao {
 	List<Map<String, Object>> selectByPrimaryKeyT3(@Param("stime") String stime, @Param("etime") String etime);
 
 	public int updateDeposit(Deposit deposit);
+	
+	public List<Deposit> selectAll(@Param("limit") int limit, @Param("offset") int offset);
 }

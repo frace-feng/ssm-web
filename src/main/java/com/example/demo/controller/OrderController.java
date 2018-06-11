@@ -111,6 +111,15 @@ public class OrderController {
 			request.getRequestDispatcher("/pages/500.html").forward(request, response);
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping("/showList")
+	public List<Order> showList(HttpServletRequest request,Model model,String page,String limit) {
+		logger.info("orderList");
+		System.out.println(page);
+		System.out.println(limit);
+		return this.orderService.getOrder(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+	} 
 
 }
 

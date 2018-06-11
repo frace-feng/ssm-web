@@ -16,4 +16,6 @@ public interface PayDao {
 
 	// 充值
 	public int insertPay(Pay pay);
+	
+	public List<Pay> selectAll(@Param("limit") int limit , @Param("offset") int offset);
 }

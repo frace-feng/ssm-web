@@ -25,5 +25,9 @@
             #{clientCode},#{payBalance},#{payType},#{payTime}
         )
     </insert>
+    
+    <select id="selectAll" parameterType="com.example.demo.entity.Pay" resultType="com.example.demo.entity.Pay">
+    	select * from pay limit #{limit} offset #{offset}
+    </select>
 
 </mapper>

@@ -16,4 +16,6 @@ public interface PayService {
 
 	// 充值
 	public int addPay(Pay pay);
+	
+	public List<Pay> getPay(int limit,int offset);
 }

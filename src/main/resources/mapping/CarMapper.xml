@@ -52,4 +52,8 @@
 		status=#{status},percent=#{percent}, updateTime=#{updateTime} where
 		id=#{id}
 	</update> 
+	
+	<select id="selectAll" parameterType="com.example.demo.entity.Car" resultType="com.example.demo.entity.Car">
+		select * from car limit #{limit} offset #{offset}	
+	</select>
 </mapper>	

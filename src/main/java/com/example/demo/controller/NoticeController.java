@@ -100,9 +100,11 @@ public class NoticeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/showList", method = RequestMethod.GET)
-	public List<Notice> showList(HttpServletRequest request, Model model) {
-		System.out.println("list");
-		List<Notice> notice = this.noticeService.getNoticeList();
+	public List<Notice> showList(HttpServletRequest request, Model model, String page, String limit) {
+		logger.info("notice list");
+		System.out.println(page);
+		System.out.println(limit);
+		List<Notice> notice = this.noticeService.getNoticeList(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
 		return notice;
 	}
 }

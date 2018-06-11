@@ -35,4 +35,10 @@ public class DepositServiceImpl implements DepositService {
 		return depositDao.updateDeposit(deposit);
 	}
 
+	@Override
+	public List<Deposit> getDeposit(int limit, int offset) {
+		// TODO Auto-generated method stub
+		return depositDao.selectAll(limit, offset);
+	}
+
 }

@@ -70,6 +70,12 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		return orderDao.insertOrder(order);
 	}
+
+	@Override
+	public List<Order> getOrder(int limit, int offset) {
+		// TODO Auto-generated method stub
+		return orderDao.selectAll(limit, offset);
+	}
 }
 
 
