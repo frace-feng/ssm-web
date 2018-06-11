@@ -79,12 +79,13 @@ public class ManageUserController {
 	 * @Description: 更新用户信息
 	 * @param request
 	 * @param response
-	 * @param user
+	 * @param login
 	 * @throws Exception
 	 *             参数
 	 */
+
 	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, Login login) throws Exception {
+	public void updateUser(HttpServletRequest request, HttpServletResponse response, Login login) throws IOException, ServletException {
 		int result = manageUserService.updateUser(login);
 		if (result > 0) {
 			logger.info("更新用户数据成功");
