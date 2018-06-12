@@ -15,10 +15,16 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
+    <script src="/layui/layui.js"></script>
     <style>
         /*body{padding: 20px;}*/
+        
+        label {
+            white-space: nowrap;
+        }
         
         .demo-input {
             padding-left: 10px;
@@ -102,8 +108,8 @@
                 </ul>
                 <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerCar.html">增加车</a></li>
-                    <li><a href="/pages/carUpdate.html">更新车</a></li>
+                    <li><a href="/pages/managerCar.html">增加车辆</a></li>
+                    <li><a href="/pages/carUpdate.html">车辆管理</a></li>
                     <!-- <li>车辆范围 </li> -->
                 </ul>
                 <h3 class="am-icon-gears"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
@@ -115,8 +121,8 @@
                 <h3 class="am-icon-volume-up on"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
                 <ul>
                     <li><a href="/pages/managerNotice.html">添加消息</a></li>
-                    <li><a href="/pages/noticeUpdate.html">更新消息</a></li>
-                    <li><a href="/pages/noticeDelete.html">删除消息</a></li>
+                    <li><a href="/pages/noticeUpdate.html">消息管理</a></li>
+
                 </ul>
 
             </div>
@@ -151,7 +157,7 @@
 <div class="admin-biaogelist">
     
 
-    <form class="am-form am-g" action="/notice/insert" >
+    <!-- <form class="am-form am-g" action="/notice/insert" >
           <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
             <thead>
               <tr class="am-success">
@@ -189,6 +195,42 @@
 
 
 
+            </form> -->
+            <form class="layui-form" action="" lay-filter="add_notice" style="margin:20px;">
+                <!--标题-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="required" autocomplete="nope" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <!--内容-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">内容</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="content" lay-verify="required" placeholder="请输入内容" autocomplete="new-password" class="layui-input">
+                    </div>
+                </div>
+                <!--时间-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="createDate" autocomplete="off" lay-verify="required" placeholder="请选择时间" class="layui-input" id="createDate">
+                    </div>
+                </div>
+                <!-- 发布人 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发布人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="userName" class="layui-input" placeholder="请输入发布人">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div style="text-align: center;">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
+                    </div>
+                </div>
             </form>
         </div>
 
@@ -198,18 +240,48 @@
     <script src="/admin/assets/js/amazeui.min.js"></script>
 
 </body>
-<script src="/laydate/laydate.js"></script>
-<script>
-    lay('#version').html('-v' + laydate.v);
 
-    //执行一个laydate实例
-    laydate.render({
-        elem: '#test1', //指定元素
-        //range: true
-    });
-    laydate.render({
-        elem: '#test2', //指定元素
-        //range: true
+<script>
+    //  设置form显示
+    layui.use(['form', 'laydate'], function() {
+        var form = layui.form,
+            laydate = layui.laydate
+        laydate.render({
+            elem: '#createDate'
+        });
+        //监听提交
+        form.on('submit(demo1)', function(data) {
+            $.ajax({
+                url: " /notice/insert",
+                type: "POST",
+                data: JSON.stringify(data.field),
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                    // 关闭弹窗
+                    layer.closeAll();
+                    // 修改成功之后刷新
+                    form.val('add_notice', {
+                        brand: "",
+                        plateNumber: "",
+                        oilNumber: "",
+                        createTime: "",
+                    });
+                    layer.msg(data.message);
+                },
+                error: function(data) {
+                    layer.msg('出现错误');
+                }
+            })
+
+            return false;
+        });
+        form.val('add_notice', {
+            brand: "",
+            plateNumber: "",
+            oilNumber: "",
+            createTime: "",
+        });
     });
 </script>
 
