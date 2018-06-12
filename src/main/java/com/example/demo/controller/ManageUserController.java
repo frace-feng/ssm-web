@@ -117,16 +117,26 @@ public class ManageUserController {
 	 * @throws Exception
 	 *             参数
 	 */
-	@RequestMapping("/delete")
-	public void deleteUserById(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
+	@ResponseBody
+	@RequestMapping(value="/delete",method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String,Object>> deleteUserById(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
 		int result = manageUserService.deleteUser(Integer.parseInt(id));
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
-			logger.info("删除用户数据成功..");
-			response.sendRedirect("/pages/userDelete.html");
+			logger.info("删除用户成功..");
+//			response.sendRedirect("/pages/userDelete.html");
+			String message="删除用户成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 
 		} else {
-			logger.error("删除用户数据失败..");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			logger.error("删除用户失败..");
+			String message="删除用户失败";
+			map.put("message", message);
+
+//			返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
+//			request.getRequestDispatcher("/pages/500.html").forward(request, response);
 
 		}
 	}

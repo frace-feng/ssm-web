@@ -264,10 +264,23 @@
                 var data = obj.data;
                 if (obj.event === 'del') {
                     //执行删除
-                    layer.confirm('真的删除行么', function(index) {
+                    layer.confirm('确认删除用户吗', function(index) {
                         console.log(data);
-                        obj.del();
-                        layer.close(index);
+                        $.ajax({
+                            url: "/manage/delete?id=" + data.id,
+                            type: "DELETE",
+                            success: function(message) {
+                                console.log(message);
+                                // 关闭弹窗
+                                layer.closeAll();
+                                // 修改成功之后刷新
+                                active['reload']();
+                                layer.msg('删除成功');
+                            },
+                            error: function(data) {
+                                layer.msg('出现错误');
+                            }
+                        })
                     });
                 } else if (obj.event === 'edit') {
                     //执行修改
