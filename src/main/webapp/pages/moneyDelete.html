@@ -132,10 +132,10 @@
                     <!-- <a class="layui-btn layui-btn-xs" lay-event="money_back">退押金</a> -->
                     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="money_back">退押金</a>
                 </script>
-                <script type="text/html" id="status">
+                <script type="text/html" id="payMode">
                     <!-- 这里的 checked 的状态只是演示 -->
 
-                    {{ d.status==1 ? '支付宝' : '微信' }}
+                    {{ d.payMode==1 ? '支付宝' : '微信' }}
 
                 </script>
                 <!-- <form class="am-form am-g" action="/deposit/update">
