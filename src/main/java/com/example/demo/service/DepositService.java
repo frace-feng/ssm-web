@@ -17,4 +17,6 @@ public interface DepositService {
 	public int updateDeposit(Deposit deposit);
 	
 	public List<Deposit> getDeposit(@Param("limit") int limit, @Param("offset") int offset);
+
+	public int getDepositNum();
 }

@@ -18,5 +18,6 @@ public interface CarService {
 	public int updateCar(Car car);
 	//查询所有车
 	public List<Car> getCar(int limit, int offset);
+	public int getCarNum();
 	
 }

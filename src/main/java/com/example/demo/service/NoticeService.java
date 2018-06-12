@@ -22,4 +22,5 @@ public interface NoticeService {
 	// 获得一个消息列表
 	public List<Notice> getNoticeList(int limit, int offset);
 
+	public int getNoticeNum();
 }

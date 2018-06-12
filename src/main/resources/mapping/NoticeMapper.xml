@@ -38,4 +38,8 @@
     <select id="getNoticeList" resultType="com.example.demo.entity.Notice" parameterType="com.example.demo.entity.Notice">
        select * from notice limit #{limit} offset #{offset}
     </select>  
+    
+    <select id="noticeNum" resultType="java.lang.Integer">
+    	select count(*) from notice
+    </select>
 </mapper>    

@@ -41,4 +41,10 @@ public class DepositServiceImpl implements DepositService {
 		return depositDao.selectAll(limit, offset);
 	}
 
+	@Override
+	public int getDepositNum() {
+		// TODO Auto-generated method stub
+		return depositDao.depositNum();
+	}
+
 }

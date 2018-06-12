@@ -56,4 +56,8 @@
 	<select id="selectAll" parameterType="com.example.demo.entity.Car" resultType="com.example.demo.entity.Car">
 		select * from car limit #{limit} offset #{offset}	
 	</select>
+	<!-- 计算车辆数量 -->
+    <select id="carNum" resultType="java.lang.Integer">
+    select count(*) from car
+    </select>
 </mapper>	

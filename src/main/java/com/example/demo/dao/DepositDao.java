@@ -19,4 +19,6 @@ public interface DepositDao {
 	public int updateDeposit(Deposit deposit);
 	
 	public List<Deposit> selectAll(@Param("limit") int limit, @Param("offset") int offset);
+
+	public int depositNum();
 }
