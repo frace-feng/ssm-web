@@ -14,19 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Login;
 import com.example.demo.entity.MD5;
 import com.example.demo.service.ManageUserService;
 
 @Controller
-@RequestMapping(value = "/manage")
+@RequestMapping("/manage")
 public class ManageUserController {
 
 	@Resource
@@ -83,18 +84,27 @@ public class ManageUserController {
 	 * @throws Exception
 	 *             参数
 	 */
+	@ResponseBody
+	@RequestMapping(value="/updateuser",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody Login login) throws IOException, ServletException {
 
-	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, Login login) throws IOException, ServletException {
 		int result = manageUserService.updateUser(login);
+		Map<String,Object> map = new HashMap<String,Object>();
+
 		if (result > 0) {
 			logger.info("更新用户数据成功");
-			response.sendRedirect("/pages/userUpdate.html");
-
+//			response.sendRedirect("/pages/userUpdate.html");
+			String message="更新用户数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
 			logger.error("更新用户数据失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+//			request.getRequestDispatcher("/pages/500.html").forward(request, response);这句话存在就不行
+			String message="更新用户数据失败";
+			map.put("message", message);
 
+//			返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 

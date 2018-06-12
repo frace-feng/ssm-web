@@ -129,17 +129,8 @@
 
             <!--数据展示及操作table-->
             <div style="padding:20px">
-                <table class="layui-table" lay-data="{url:'/manage/showlist', page:true, id:'idTest'}" lay-filter="demo">
-                    <thead>
-                        <tr>
-                            <!-- <th lay-data="{type:'checkbox', fixed: 'left'}"></th> -->
-                            <th lay-data="{field:'id', width:80, sort: true}">ID</th>
-                            <th lay-data="{field:'userName', width:180}">用户名</th>
-                            <th lay-data="{field:'email', width:180, sort: true}">邮箱</th>
-                            <th lay-data="{field:'status', width:180, sort: true}">身份</th>
-                            <th lay-data="{ width:178, align:'center', toolbar: '#barDemo'}">操作</th>
-                        </tr>
-                    </thead>
+                <table class="layui-table" id="LAY_table_user">
+                    
                 </table>
             </div>
             <script type="text/html" id="barDemo">
@@ -149,6 +140,7 @@
             <!-- 修改用户 -->
             <div style="display: none" id="edit_user_template">
                 <form class="layui-form" action="" lay-filter="edit_user" style="margin:20px;">
+
                     <!--用户名-->
                     <div class="layui-form-item">
                         <label class="layui-form-label">用户名</label>
@@ -178,6 +170,12 @@
         </div>
         </form>
     </div>
+    <script type="text/html" id="status">
+        <!-- 这里的 checked 的状态只是演示 -->
+
+        {{ d.status==1 ? '管理员' : '用户' }}
+
+    </script>
     <!--      <ul class="am-pagination am-fr">
                 <li class="am-disabled"><a href="#">«</a></li>
                 <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
@@ -205,6 +203,81 @@
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
     <script>
+        // 生成table
+        layui.use('table', function() {
+            var table = layui.table;
+            //方法级渲染
+
+            table.render({
+                elem: '#LAY_table_user',
+                url: '/manage/showlist',
+                cols: [
+                    [{
+                        field: 'id',
+                        title: 'ID',
+                        width: 80,
+                        sort: true,
+                    }, {
+                        field: 'userName',
+                        title: '用户名',
+                        width: 180
+                    }, {
+                        field: 'email',
+                        title: '邮箱',
+                        width: 180,
+                        sort: true
+                    }, {
+                        field: 'status',
+                        title: '身份',
+                        templet: '#status'
+                    }, {
+                        width: 178,
+                        align: 'center',
+                        toolbar: '#barDemo'
+                    }]
+                ],
+                id: 'testReload',
+                page: true,
+            });
+
+            active = {
+                reload: function() {
+                    var demoReload = $('#demoReload');
+
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            key: {
+                                id: demoReload.val()
+                            }
+                        }
+                    });
+                }
+            };
+
+
+            //监听工具条
+            table.on('tool', function(obj) {
+                var data = obj.data;
+                if (obj.event === 'del') {
+                    //执行删除
+                    layer.confirm('真的删除行么', function(index) {
+                        console.log(data);
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    //执行修改
+                    // console.log(data);
+                    activePop('edit_user_template', data);
+                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
+            });
+        });
+
         function setForm(initValue) {
             layui.use(['form'], function() {
                 var form = layui.form
@@ -222,16 +295,24 @@
                 });
                 //监听提交
                 form.on('submit(demo1)', function(data) {
+                    data.field.id = initValue.id;
                     $.ajax({
-                        url: "/manage/update",
+                        url: "/manage/updateuser",
                         type: "POST",
-                        data: data.field,
-                        success: function() {
+                        data: JSON.stringify(data.field),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(message) {
+                            console.log(message);
+                            // 关闭弹窗
                             layer.closeAll();
+                            // 修改成功之后刷新
+                            active['reload']();
+                            layer.msg('修改成功');
+                        },
+                        error: function(data) {
+                            layer.msg('出现错误');
                         }
-                    })
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
                     })
                     return false;
                 });
@@ -261,27 +342,6 @@
             //打开后设置form
             setForm(initValue);
         }
-
-        layui.use('table', function() {
-            var table = layui.table;
-            //监听工具条
-            table.on('tool(demo)', function(obj) {
-                var data = obj.data;
-                if (obj.event === 'del') {
-                    //执行删除
-                    layer.confirm('真的删除行么', function(index) {
-                        console.log(data);
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if (obj.event === 'edit') {
-                    //执行修改
-                    console.log(data);
-                    activePop('edit_user_template', data);
-                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
-                }
-            });
-        });
     </script>
 </body>
 

@@ -26,7 +26,7 @@
       
     <!-- 修改用户(Update) -->  
     <update id="updateUser" parameterType="com.example.demo.entity.Login">  
-        update user set userName=#{userName},passWord=#{passWord} where id=#{id}  
+        update user set userName=#{userName},status=#{status},email=#{email} where id=#{id}
     </update>  
       
     <!-- 查询单条记录 -->
