@@ -129,19 +129,19 @@
 <div class="admin-biaogelist">
     
 
-            <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;">
+            <form class="layui-form" action="" lay-filter="add_user" style="margin:20px;" >
                 <!--用户名-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="userName" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                        <input type="text" name="userName" lay-verify="required" autocomplete="nope" placeholder="请输入用户名" class="layui-input">
                     </div>
                 </div>
                 <!--密码-->
                 <div class="layui-form-item">
                     <label class="layui-form-label">密码</label>
                     <div class="layui-input-block">
-                        <input type="password" name="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="password" name="passWord" lay-verify="required" placeholder="请输入密码" autocomplete="new-password" class="layui-input">
                     </div>
                 </div>
                 <!--邮箱-->
@@ -210,6 +210,7 @@
                 return false;
             });
             form.val('add_user', {
+                userName: "",
                 email: '',
                 passWord: ""
             });
