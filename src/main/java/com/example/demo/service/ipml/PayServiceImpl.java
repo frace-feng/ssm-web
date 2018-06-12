@@ -42,4 +42,10 @@ public class PayServiceImpl implements PayService {
 		return payDao.selectAll(limit, offset);
 	}
 
+	@Override
+	public int getPayNum() {
+		// TODO Auto-generated method stub
+		return payDao.payNum();
+	}
+
 }

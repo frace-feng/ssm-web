@@ -29,5 +29,9 @@
     <select id="selectAll" parameterType="com.example.demo.entity.Pay" resultType="com.example.demo.entity.Pay">
     	select * from pay limit #{limit} offset #{offset}
     </select>
+    
+    <select id="payNum" resultType="java.lang.Integer">
+    	select count(*) from pay
+    </select>
 
 </mapper>

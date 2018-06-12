@@ -59,7 +59,7 @@ public class ManageUserController {
 	 *             参数
 	 */
 	@RequestMapping(value="/insert",method = RequestMethod.POST)
-	public ResponseEntity<Map<String,Object>> insert(HttpServletRequest request, HttpServletResponse response,@RequestBody Login login)
+	public ResponseEntity<Map<String,Object>> insert(@RequestBody Login login)
 			throws IOException, ServletException {
 		int result = 0;
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -72,15 +72,12 @@ public class ManageUserController {
 			String message="添加用户成功";
 			map.put("message", message);
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
-//			response.sendRedirect("/pages/managerIndex.html");
 		} else {
 			logger.error("注册失败");
 			String message="添加用户失败";
 			map.put("message", message);
-
-//			返回状态码400，代表请求错误
+			//返回状态码400，代表请求错误
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
-//			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
 		}
 	}
 
@@ -95,7 +92,7 @@ public class ManageUserController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/updateuser",method = RequestMethod.PUT)
-	public ResponseEntity<Map<String,Object>> updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody Login login) throws IOException, ServletException {
+	public ResponseEntity<Map<String,Object>> updateUser(@RequestBody Login login) throws IOException, ServletException {
 
 		int result = manageUserService.updateUser(login);
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -133,7 +130,6 @@ public class ManageUserController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
 			logger.info("删除用户成功..");
-//			response.sendRedirect("/pages/userDelete.html");
 			String message="删除用户成功";
 			map.put("message", message);
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
@@ -142,10 +138,9 @@ public class ManageUserController {
 			logger.error("删除用户失败..");
 			String message="删除用户失败";
 			map.put("message", message);
-
-//			返回状态码400，代表请求错误
+			//返回状态码400，代表请求错误
 			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
-//			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+
 
 		}
 	}

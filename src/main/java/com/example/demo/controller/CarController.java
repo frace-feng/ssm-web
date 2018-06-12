@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,37 +48,43 @@ public class CarController {
 		return car;
 	}
 	
-	@RequestMapping("/insert")
-	public void insert(HttpServletRequest request, HttpServletResponse response, Car car)
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> insert(@RequestBody Car car)
 			throws IOException, ServletException {
 		int result = 0;
 		if (car != null) {
 			result = carService.addCar(car);
 		}
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
-			logger.info("添加成功..");
-			response.sendRedirect("/pages/success.html");
+			logger.info("注册成功..");
+			String message="添加车辆成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
-			logger.error("添加失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			logger.error("注册失败");
+			String message="添加车辆失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, Car car) throws Exception {
-		int result = 0;
-		if (car != null) {
-			result = carService.updateCar(car);
-		} 
-		
+	@RequestMapping(value="/update",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String,Object>> updateCar(@RequestBody Car car) throws Exception {
+		int result = this.carService.updateCar(car);
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
 			logger.info("更新车数据成功");
-			response.sendRedirect("/pages/success.html");
-
+			String message="更新车数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
 			logger.error("更新车数据失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
-
+			String message="更新车数据失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 	
