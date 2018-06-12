@@ -19,4 +19,5 @@ public interface NoticeDao {
 
 	public List<Notice> getNoticeList(@Param("limit") int limit, @Param("offset") int offset);
 
+	public int noticeNum();
 }

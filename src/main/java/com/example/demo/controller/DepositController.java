@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,11 +70,18 @@ public class DepositController {
 	
 	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
-	public List<Deposit> showList(HttpServletRequest request, HttpServletResponse response, String page,String limit) throws Exception {
+	public Map<String, Object> showList(HttpServletRequest request, HttpServletResponse response, String page,String limit) throws Exception {
 		logger.info("deposit list");
 		System.out.println(page);
 		System.out.println(limit);
-		return this.depositService.getDeposit(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<Deposit> depositlist = this.depositService.getDeposit(Integer.parseInt(limit), offset);
+		int count = this.depositService.getDepositNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", depositlist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+		return map;
 	}
-
 }

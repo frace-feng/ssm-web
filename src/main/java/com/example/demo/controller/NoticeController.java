@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -100,11 +101,18 @@ public class NoticeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/showList", method = RequestMethod.GET)
-	public List<Notice> showList(HttpServletRequest request, Model model, String page, String limit) {
+	public Map<String, Object> showList(HttpServletRequest request, Model model, String page, String limit) {
 		logger.info("notice list");
 		System.out.println(page);
 		System.out.println(limit);
-		List<Notice> notice = this.noticeService.getNoticeList(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
-		return notice;
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<Notice> noticelist = this.noticeService.getNoticeList(Integer.parseInt(limit), offset);
+		int count = this.noticeService.getNoticeNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", noticelist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+		return map;
 	}
 }

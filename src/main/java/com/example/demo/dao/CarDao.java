@@ -24,4 +24,6 @@ public interface CarDao {
 	public int updateCar(Car car);
 	//查询所有车
 	public List<Car> selectAll(@Param("limit") int limit, @Param("offset") int offset);
+	//
+	public int carNum();
 }

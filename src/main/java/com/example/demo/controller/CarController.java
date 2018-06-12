@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -80,11 +81,19 @@ public class CarController {
 	
 	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
-	public List<Car> showList(HttpServletRequest request, Model model,String page,String limit){
+	public Map<String, Object> showList(HttpServletRequest request, Model model,String page,String limit){
 		logger.info("car list");
 		System.out.println(page);
 		System.out.println(limit);
-		return this.carService.getCar(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<Car> carlist = this.carService.getCar(Integer.parseInt(limit), offset);
+		int count = this.carService.getCarNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", carlist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+		return map;
 	}
 
 }

@@ -26,5 +26,8 @@
 	<select id="selectAll" parameterType="com.example.demo.entity.Deposit" resultType="com.example.demo.entity.Deposit">
 		select * from deposit limit #{limit} offset #{offset}
 	</select>
-
+	
+	<select id="depositNum" resultType="java.lang.Integer">
+	select count(*) from deposit
+	</select>
 </mapper>

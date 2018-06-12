@@ -53,4 +53,10 @@ public class CarServiceImpl implements CarService {
 		return carDao.selectAll(limit, offset);
 	}
 
+	@Override
+	public int getCarNum() {
+		// TODO Auto-generated method stub
+		return carDao.carNum();
+	}
+
 }
