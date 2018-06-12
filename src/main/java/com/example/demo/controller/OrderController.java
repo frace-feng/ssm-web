@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -10,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,29 +100,46 @@ public class OrderController {
 	}
 	
 	//添加订单
-	@RequestMapping("/insert")
-	public void insert(HttpServletRequest request, HttpServletResponse response, Order order)
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> insert(HttpServletRequest request, HttpServletResponse response,@RequestBody Order order)
 			throws IOException, ServletException {
 		int result = 0;
+		Map<String,Object> map = new HashMap<String,Object>();
+		
 		if (order != null) {
+			System.out.println(order);
 			result = orderService.addOrder(order);
 		}
 		if (result > 0) {
 			logger.info("添加成功..");
-			response.sendRedirect("/pages/orderAdd.html");
+			String message="添加用户成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
 			logger.error("添加失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			String message="添加用户失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@ResponseBody
 	@RequestMapping("/showList")
-	public List<Order> showList(HttpServletRequest request,Model model,String page,String limit) {
+	public Map<String, Object> showList(HttpServletRequest request,Model model,String page,String limit) {
 		logger.info("orderList");
 		System.out.println(page);
 		System.out.println(limit);
-		return this.orderService.getOrder(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
+		int offset=Integer.parseInt(limit)*(Integer.parseInt(page)-1);
+		List<Order> orderlist = this.orderService.getOrder(Integer.parseInt(limit), offset);
+		int count = this.orderService.getOrderNum();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", orderlist);
+		map.put("code",0);
+		map.put("msg","");
+		map.put("count",count);
+		return map;
+		//return this.orderService.getOrder(Integer.parseInt(limit), Integer.parseInt(limit)*(Integer.parseInt(page)-1));
 	} 
 
 }

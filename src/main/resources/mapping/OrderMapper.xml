@@ -131,9 +131,9 @@
         INSERT INTO
            f_order
         (
-            id,orderCode,clientCode,allKm,allTime,amount
+            orderCode,clientCode,allKm,allTime,amount,createTime
         )VALUES(
-            #{id},#{orderCode},#{clientCode},#{allKm},#{allTime},#{amount}
+            #{orderCode},#{clientCode},#{allKm},#{allTime},#{amount},#{createTime}
         )
     </insert>
     
@@ -143,7 +143,11 @@
     </delete> 
     <!-- 查询所有订单 -->
     <select id="selectAll" parameterType="com.example.demo.entity.Order" resultType="com.example.demo.entity.Order">
-    	select * from f_order limit #{limit} offset #{offset}
+    	select id,orderCode,clientCode,allKm,allTime,amount from f_order limit #{limit} offset #{offset}
+    </select>
+    <!-- 计算所有订单  -->
+    <select id="orderNum">
+    	select count(*) from f_order
     </select>
 </mapper>
 
