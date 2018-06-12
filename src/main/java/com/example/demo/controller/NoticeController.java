@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,19 +31,25 @@ public class NoticeController {
 	private NoticeService noticeService;
 	private static final Log logger = (Log) LogFactory.getLog(NoticeController.class);
 
-	@RequestMapping("/insert")
-	public void insert(HttpServletRequest request, HttpServletResponse response,@Valid Notice notice,BindingResult bindingResult)
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> insert(@RequestBody Notice notice)
 			throws IOException, ServletException {
 		int result = 0;
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (notice != null) {
 			result = noticeService.addNotice(notice);
 		}
 		if (result > 0) {
-			logger.info("添加消息成功..");
-			response.sendRedirect("/pages/managerNotice.html");
+			logger.info("注册成功..");
+			String message="添加消息成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
-			logger.error("注册消息失败");
-			request.getRequestDispatcher("/pages/500.jhtml").forward(request, response);
+			logger.error("注册失败");
+			String message="添加消息失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -53,17 +62,21 @@ public class NoticeController {
 	 * @throws Exception
 	 *             参数
 	 */
-	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, Notice notice) throws Exception {
+	@RequestMapping(value="/update",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String,Object>> updateNotice(@RequestBody Notice notice) throws Exception {
 		int result = noticeService.updateNotice(notice);
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
 			logger.info("更新消息数据成功");
-			response.sendRedirect("/pages/noticeUpdate.html");
-
+			String message="更新消息数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
 			logger.error("更新消息数据失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
-
+			String message="更新消息数据失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -76,17 +89,22 @@ public class NoticeController {
 	 * @throws Exception
 	 *             参数
 	 */
-	@RequestMapping("/delete")
-	public void deleteUserById(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
+	@RequestMapping(value="/delete",method = RequestMethod.DELETE)
+	public ResponseEntity<Map<String,Object>> deleteNoticeById( String id) throws Exception {
 		int result = noticeService.deleteNotice(Integer.parseInt(id));
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
-			logger.info("删除消息数据成功..");
-			response.sendRedirect("/pages/noticeDelete.html");
+			logger.info("删除消息成功..");
+			String message="删除消息成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 
 		} else {
-			logger.error("删除消息数据失败..");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
-
+			logger.error("删除消息失败..");
+			String message="删除消息失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 

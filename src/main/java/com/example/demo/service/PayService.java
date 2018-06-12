@@ -18,4 +18,6 @@ public interface PayService {
 	public int addPay(Pay pay);
 	
 	public List<Pay> getPay(int limit,int offset);
+	
+	public int getPayNum();
 }

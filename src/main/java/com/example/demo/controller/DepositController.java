@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,21 +56,25 @@ public class DepositController {
 		List<Map<String, Object>> deposit = this.depositService.getDepositByIdT(1, stime, etime);
 		return deposit;
 	}
-	
-	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, Deposit deposit) throws Exception {
+	//更新
+	@RequestMapping(value="/update",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String,Object>> updateUser(@RequestBody Deposit deposit) throws Exception {
 		int result = depositService.updateDeposit(deposit);
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
-			logger.info("退押金成功");
-			response.sendRedirect("/pages/moneyDelete.html");
-
+			logger.info("更新押金数据成功");
+			String message="更新押金数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
-			logger.error("退押金失败");
-			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
-
+			logger.error("更新押金数据失败");
+			String message="更新押金数据失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+	//查询所有
 	@ResponseBody
 	@RequestMapping(value="/showList" , method = RequestMethod.GET)
 	public Map<String, Object> showList(HttpServletRequest request, HttpServletResponse response, String page,String limit) throws Exception {

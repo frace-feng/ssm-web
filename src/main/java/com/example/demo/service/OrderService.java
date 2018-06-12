@@ -25,7 +25,7 @@ public interface OrderService {
 	public int updateOrder(Order order);
 
 	// 删除订单
-	public int deleteOrder(Integer orderCode);
+	public int deleteOrder(Integer id);
 
 	//添加订单
 	public int addOrder(Order order);
