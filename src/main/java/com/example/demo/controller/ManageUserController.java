@@ -58,20 +58,29 @@ public class ManageUserController {
 	 * @throws ServletException
 	 *             参数
 	 */
-	@RequestMapping("/insert")
-	public void insert(HttpServletRequest request, HttpServletResponse response, Login login)
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> insert(HttpServletRequest request, HttpServletResponse response,@RequestBody Login login)
 			throws IOException, ServletException {
 		int result = 0;
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (login != null) {
 			login.setpassWord(MD5.getResult(login.getpassWord()));
 			result = manageUserService.addUser(login);
 		}
 		if (result > 0) {
 			logger.info("注册成功..");
-			response.sendRedirect("/pages/managerIndex.html");
+			String message="添加用户成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+//			response.sendRedirect("/pages/managerIndex.html");
 		} else {
 			logger.error("注册失败");
-			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
+			String message="添加用户失败";
+			map.put("message", message);
+
+//			返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
+//			request.getRequestDispatcher("/pages/fail.html").forward(request, response);
 		}
 	}
 
@@ -85,7 +94,7 @@ public class ManageUserController {
 	 *             参数
 	 */
 	@ResponseBody
-	@RequestMapping(value="/updateuser",method = RequestMethod.POST)
+	@RequestMapping(value="/updateuser",method = RequestMethod.PUT)
 	public ResponseEntity<Map<String,Object>> updateUser(HttpServletRequest request, HttpServletResponse response, @RequestBody Login login) throws IOException, ServletException {
 
 		int result = manageUserService.updateUser(login);

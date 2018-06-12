@@ -202,11 +202,25 @@
                 $.ajax({
                     url: "/manage/insert",
                     type: "POST",
-                    data: data.field
+                    data: JSON.stringify(data.field),
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log(data);
+                        // 关闭弹窗
+                        layer.closeAll();
+                        // 修改成功之后刷新
+                        form.val('add_user', {
+                            userName: "",
+                            email: '',
+                            passWord: ""
+                        });
+                        layer.msg(data.message);
+                    },
+                    error: function(data) {
+                        layer.msg('出现错误');
+                    }
                 })
-                layer.alert(JSON.stringify(data.field), {
-                    title: '最终的提交信息'
-                })
+
                 return false;
             });
             form.val('add_user', {

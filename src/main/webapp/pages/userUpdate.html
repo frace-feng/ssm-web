@@ -311,7 +311,7 @@
                     data.field.id = initValue.id;
                     $.ajax({
                         url: "/manage/updateuser",
-                        type: "POST",
+                        type: "PUT",
                         data: JSON.stringify(data.field),
                         contentType: "application/json",
                         dataType: 'json',
