@@ -324,7 +324,7 @@
                 var data = obj.data;
                 if (obj.event === 'del') {
                     //执行删除
-                    layer.confirm('确认删除用户吗', function(index) {
+                    layer.confirm('确认删除订单吗', function(index) {
                         console.log(data);
                         $.ajax({
                             url: "/order/delete?id=" + data.id,

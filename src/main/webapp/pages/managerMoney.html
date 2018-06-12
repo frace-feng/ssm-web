@@ -231,7 +231,7 @@
         //监听提交
         form.on('submit(demo1)', function(data) {
             $.ajax({
-                url: " /money/insert",
+                url: "/pay/insert",
                 type: "POST",
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
