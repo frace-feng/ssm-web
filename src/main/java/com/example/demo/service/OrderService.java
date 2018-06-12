@@ -21,6 +21,8 @@ public interface OrderService {
 	// 查询月总收入
 	public List<Map<String, Object>> getOrderById2(int id);
 
+	//
+	public int updateOrder(Order order);
 
 	// 删除订单
 	public int deleteOrder(Integer orderCode);

@@ -85,9 +85,9 @@ public class OrderController {
 
 	// 删除一条订单记录
 	@RequestMapping("/delete")
-	public void deleteOrderById(HttpServletRequest request, HttpServletResponse response, String orderCode)
+	public void deleteOrderById(HttpServletRequest request, HttpServletResponse response, String id)
 			throws Exception {
-		int result = orderService.deleteOrder(Integer.parseInt(orderCode));
+		int result = orderService.deleteOrder(Integer.parseInt(id));
 		if (result > 0) {
 			logger.info("删除订单数据成功..");
 			response.sendRedirect("/pages/managerOrder.html");
@@ -96,6 +96,26 @@ public class OrderController {
 			logger.error("删除订单数据失败..");
 			request.getRequestDispatcher("/pages/500.html").forward(request, response);
 
+		}
+	}
+	
+	//
+	@ResponseBody
+	@RequestMapping(value="/updateorder",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String,Object>> updateorder(HttpServletRequest request,  @RequestBody Order order) throws IOException, ServletException {
+		int result = this.orderService.updateOrder(order);
+		Map<String,Object> map = new HashMap<String,Object>();
+		if (result > 0) {
+			logger.info("更改订单数据成功");
+			String message="更新订单数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+		} else {
+			logger.error("更新订单数据失败");
+			String message="更新订单数据失败";
+			map.put("message", message);
+			//返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 	

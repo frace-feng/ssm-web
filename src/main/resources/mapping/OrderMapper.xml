@@ -139,16 +139,23 @@
     
 	<!-- 删除订单(Remove) -->  
     <delete id="deleteOrder" parameterType="java.lang.Integer">  
-        delete from f_order where orderCode= #{orderCode}  
+        delete from f_order where id= #{id}  
     </delete> 
     <!-- 查询所有订单 -->
-    <select id="selectAll" parameterType="com.example.demo.entity.Order" resultType="com.example.demo.entity.Order">
-    	select id,orderCode,clientCode,allKm,allTime,amount from f_order limit #{limit} offset #{offset}
+    <select id="selectAll" parameterType="java.lang.Integer" resultType="java.util.Map">
+    	select id,orderCode,clientCode,orderStatus,cancel_time,totalMoney from f_order limit #{limit} offset #{offset}
     </select>
+    
+    <update id="updateOrder" parameterType="java.util.Map">
+    	update f_order set orderStatus=#{orderStatus},cancel_time=#{cancel_time},totalMoney=#{totalMoney}
+    
+    </update>
     <!-- 计算所有订单  -->
-    <select id="orderNum">
+    <select id="orderNum" resultType="java.lang.Integer">
     	select count(*) from f_order
     </select>
+    
+    
 </mapper>
 
 
