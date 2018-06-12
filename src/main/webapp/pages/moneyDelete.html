@@ -15,8 +15,10 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
+    <script src="/layui/layui.js"></script>
 </head>
 
 
@@ -79,7 +81,7 @@
                 <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
                 <ul>
                     <li><a href="/pages/managerCar.html">增加车辆</a></li>
-                    <li><a href="/pages/carUpdate.html">更新车</a> </li>
+                    <li><a href="/pages/carUpdate.html">车辆管理</a> </li>
                 </ul>
                 <h3 class="am-icon-gears on"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
                 <ul>
@@ -123,9 +125,15 @@
             </div>
 
             <div class="admin-biaogelist">
+                <table class="layui-table" id="LAY_table_money">
 
+                </table>
+                <script type="text/html" id="barDemo">
+                    <!-- <a class="layui-btn layui-btn-xs" lay-event="money_back">退押金</a> -->
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="money_back">退押金</a>
+                </script>
 
-                <form class="am-form am-g" action="/deposit/update">
+                <!-- <form class="am-form am-g" action="/deposit/update">
                     <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
                         <thead>
                             <tr class="am-success">
@@ -152,7 +160,7 @@
 
 
 
-                </form>
+                </form> -->
 
                 <!--      <ul class="am-pagination am-fr">
                 <li class="am-disabled"><a href="#">«</a></li>
@@ -180,7 +188,163 @@
 
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
+    <script>
+        // 生成table
+        layui.use('table', function() {
+            var table = layui.table;
+            //方法级渲染
 
+            table.render({
+                elem: '#LAY_table_notice',
+                url: '/notice/showList',
+                cols: [
+                    [{
+                        field: 'id',
+                        title: 'ID',
+                        width: 80,
+                        sort: true,
+                    }, {
+                        field: 'title',
+                        title: '标题',
+                        width: 180,
+                    }, {
+                        field: 'content',
+                        title: '内容',
+                        width: 180,
+                    }, {
+                        field: 'createDate',
+                        title: '时间',
+                        width: 180,
+                    }, {
+                        field: 'userName',
+                        title: '发布人',
+                    }, {
+                        width: 178,
+                        title: '操作',
+                        align: 'center',
+                        toolbar: '#barDemo'
+                    }]
+                ],
+                id: 'testReload',
+                page: true,
+            });
+
+            active = {
+                reload: function() {
+                    var demoReload = $('#demoReload');
+
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            key: {
+                                id: demoReload.val()
+                            }
+                        }
+                    });
+                }
+            };
+
+
+            //监听工具条
+            table.on('tool', function(obj) {
+                var data = obj.data;
+                if (obj.event === 'del') {
+                    //执行删除
+                    layer.confirm('确认删除用户吗', function(index) {
+                        console.log(data);
+                        $.ajax({
+                            url: "/notice/delete?id=" + data.id,
+                            type: "DELETE",
+                            success: function(message) {
+                                console.log(message);
+                                // 关闭弹窗
+                                layer.closeAll();
+                                // 修改成功之后刷新
+                                active['reload']();
+                                layer.msg('删除成功');
+                            },
+                            error: function(data) {
+                                layer.msg('出现错误');
+                            }
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    //执行修改
+                    // console.log(data);
+                    activePop('edit_user_template', data);
+                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
+            });
+        });
+
+        function setForm(initValue) {
+            layui.use(['form'], function() {
+                var form = layui.form
+                    //自定义验证规则
+                form.verify({
+                    // title: function(value){
+                    //     if(value.length < 5){
+                    //         return '标题至少得5个字符啊';
+                    //     }
+                    // },
+                    pass: [/(.+){6,12}$/, '密码必须6到12位']
+                        // ,content: function(value){
+                        //     layedit.sync(editIndex);
+                        // }
+                });
+                //监听提交
+                form.on('submit(demo1)', function(data) {
+                    data.field.id = initValue.id;
+                    $.ajax({
+                        url: "/notice/update",
+                        type: "PUT",
+                        data: JSON.stringify(data.field),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(message) {
+                            console.log(message);
+                            // 关闭弹窗
+                            layer.closeAll();
+                            // 修改成功之后刷新
+                            active['reload']();
+                            layer.msg('修改成功');
+                        },
+                        error: function(data) {
+                            layer.msg('出现错误');
+                        }
+                    })
+                    return false;
+                });
+                // 防止status为数字类型，导致无法设置默认值
+                // initValue.status = initValue.status.toString();
+                //表单初始赋值
+                if (initValue) {
+                    form.val('edit_notice', initValue);
+                }
+            });
+        }
+        //触发事件
+        function activePop(id, initValue) {
+            layer.open({
+                type: 1,
+                area: ['500px', '360px'],
+                content: document.getElementById(id).innerHTML //传入表单html
+                    // ,btn: '关闭全部'
+                    ,
+                btnAlign: 'c' //按钮居中
+                    ,
+                shade: 0 //不显示遮罩
+                    // ,yes: function(){
+                    //     layer.closeAll();
+                    // }
+            });
+            //打开后设置form
+            setForm(initValue);
+        }
+    </script>
 </body>
 
 </html>

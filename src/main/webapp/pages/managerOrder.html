@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统--添加订单</title>
-    <meta name="description" content="这是一个 index 页面">
+    <title>后台管理系统--管理订单</title>
+    <meta name="description" content="这是一个 后台订单 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
@@ -13,35 +13,13 @@
     <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="/layui/css/layui.css">
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
-    <script src="/laydate/laydate.js"></script>
     <script src="/layui/layui.js"></script>
     <style>
-        .demo-input {
-            padding-left: 10px;
-            height: 38px;
-            min-width: 262px;
-            line-height: 38px;
-            border: 1px solid #e6e6e6;
-            background-color: #fff;
-            border-radius: 2px;
-        }
-        
-        .demo-footer {
-            padding: 50px 0;
-            color: #999;
-            font-size: 14px;
-        }
-        
-        .demo-footer a {
-            padding: 0 5px;
-            color: #01AAED;
-        }
-        
         label {
             white-space: nowrap;
         }
@@ -60,8 +38,8 @@
                     <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
                     <ul class="am-dropdown-content">
 
-                        <li class="am-dropdown-header">跳到到后台首页</li>
-                        <li><a href="/pages/managerIndex.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
+                        <li class="am-dropdown-header">跳到到数据可视化</li>
+                        <li><a href="/pages/main.html">数据可视化 <span class="am-badge am-badge-danger am-round"></span></a></li>
 
                     </ul>
                 </li>
@@ -108,8 +86,7 @@
                 <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
                 <ul>
                     <li><a href="/pages/managerCar.html">增加车辆</a></li>
-                    <li><a href="/pages/carUpdate.html">车辆管理</a></li>
-                    <!-- <li>车辆范围 </li> -->
+                    <li><a href="/pages/carUpdate.html">车辆管理</a> </li>
                 </ul>
                 <h3 class="am-icon-gears"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
                 <ul>
@@ -126,7 +103,7 @@
 
             </div>
             <!-- sideMenu End -->
-
+            <!-- 鼠标触发事件 -->
             <script type="text/javascript">
                 jQuery(".sideMenu").slide({
                     titCell: "h3", //鼠标触发对象
@@ -155,119 +132,276 @@
 
 <div class="admin-biaogelist">
     
-<form class="layui-form" action="" lay-filter="add_order" style="margin:20px;" >
-                <!--用户名-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">订单编号</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="orderCode" lay-verify="required" autocomplete="nope" placeholder="请输入订单编号" class="layui-input">
-                    </div>
-                </div>
-                <!--用户编号-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户编号</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="clientCode" lay-verify="required" placeholder="请输入用户编号" autocomplete="nope" class="layui-input">
-                    </div>
-                </div>
-                <!--所行公里-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">所行公里(km)</label>
-                    <div class="layui-input-block">
-                        <input type="number" name="allKm" autocomplete="off" lay-verify="required" placeholder="请输入所行公里" class="layui-input">
-                    </div>
-                </div>
-                <!--所行时长-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">所行时长(min)</label>
-                    <div class="layui-input-block">
-                        <input type="number" name="allTime" lay-verify="required" placeholder="请输入所行时长" autocomplete="nope" class="layui-input">
-                    </div>
-                </div>
-                  <!--现金收入-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">现金收入</label>
-                    <div class="layui-input-block">
-                        <input type="number" name="amount" vlay-verify="required" placeholder="请输入现金收入" autocomplete="nope" class="layui-input">
-                    </div>
-                </div>
-                  <!--现金收入-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">添加时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="createTime" vlay-verify="required" placeholder="请输入时间" autocomplete="nope" class="layui-input" id="test1">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div style="text-align: center;">
-                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
+
+    <!-- <form class="am-form am-g" action="/order/insert">
+          <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
+            <thead>
+              <tr class="am-success">
+                <th class="table-check"><input type="checkbox" /></th>
+				<th class="table-title" >ID</th>
+                <th class="table-title">订单编号</th>               
+                <th class="table-author am-hide-sm-only" >客户编号</th>
+                <th class="table-date am-hide-sm-only">所用里程</th>
+                 <th class="table-type">所用时长</th>
+                 <th class="table-type">现金收入</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td><input type="text" name="id" class="id"></td>
+                <td><input type="text"  name="orderCode" id="orderCode"></td>
+				
+				<td ><input  type="text" name="clientCode" id="clientCode"></td>
+                <td><input  type="text" name="all_km" id="all_km"> </td>
+                <td><input  type="text" name="all_time" id="all_time"></td>
+                <td><input type="text" name="amount" id="amount" ></td>
+              </tr>
+             
+            </tbody>
+          </table>
+          
+                 <div class="am-btn-group am-btn-group-xs">
+
+              <button type="submit" onclick="成功" name="add" class="am-btn am-btn-default">
+              <span class="am-icon-plus"></span> 新增
+              </button>
+                        <button type="button" name="delete" class="am-btn am-btn-default">
+              <span class="am-icon-trash-o"></span>
+              <a href="/pages/managerOrder.html">删除</a>
+              </button>
+
             </div>
+
+
+
+
+
+            </form> -->
+            <table class="layui-table" id="LAY_table_order">
+
+            </table>
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-xs" lay-event="edit">更新</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <!-- 修改用户 -->
+            <div style="display: none" id="edit_order_template">
+                <form class="layui-form" action="" lay-filter="edit_notice" style="margin:20px;">
+
+                    <!--用户名-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所用里程</label>
+                        <div class="layui-input-block">
+                            <input type="number" name="allKm" autocomplete="off" placeholder="请输入里程" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所用时长</label>
+                        <div class="layui-input-block">
+                            <input type="number" name="allTime" autocomplete="off" placeholder="请输入时长" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">现金收入</label>
+                        <div class="layui-input-block">
+                            <input type="number" name="amount" autocomplete="off" placeholder="请输入发布人" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div style="text-align: center;">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即更新</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--      <ul class="am-pagination am-fr">
+                <li class="am-disabled"><a href="#">«</a></li>
+                <li class="am-active"><a href="/pages/managerIndex.html">1</a></li>
+                <li><a href="/pages/deleteClient.html">2</a></li>
+                <li><a href="/pages/updateClient.html">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul> -->
+
+            <!--  <div class="foods">
+  <ul>
+    版权所有@2018
+  </ul>
+  <dl>
+    <a href="/pages/managerIndex.html" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a>
+  </dl>
+</div> -->
+
+
+
+
         </div>
-        </form>
-
-
-
-
-
 
     </div>
-
 
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
     <script>
-        //  设置form显示
-        layui.use(['form'], function() {
-            var form = layui.form
-                //监听提交
-            form.on('submit(demo1)', function(data) {
-                $.ajax({
-                    url: "/order/insert",
-                    type: "POST",
-                    data: JSON.stringify(data.field),
-                    contentType: "application/json",
-                    success: function(data) {
+        // 生成table
+        layui.use('table', function() {
+            var table = layui.table;
+            //方法级渲染
+
+            table.render({
+                elem: '#LAY_table_order',
+                url: '/order/showList',
+                cols: [
+                    [{
+                        field: 'id',
+                        title: 'ID',
+                        width: 80,
+                        sort: true,
+                    }, {
+                        field: 'orderCode',
+                        title: '订单编号',
+                        width: 180,
+                    }, {
+                        field: 'clientCode',
+                        title: '客户编号',
+                        width: 180,
+                    }, {
+                        field: 'allKm',
+                        title: '所用里程(km)',
+                        width: 180,
+                    }, {
+                        field: 'allTime',
+                        title: '所用时长(h)',
+                    }, {
+                        field: 'amount',
+                        title: '现金收入(元)',
+                    }, {
+                        width: 178,
+                        title: '操作',
+                        align: 'center',
+                        toolbar: '#barDemo'
+                    }]
+                ],
+                id: 'testReload',
+                page: true,
+            });
+
+            active = {
+                reload: function() {
+                    var demoReload = $('#demoReload');
+
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            key: {
+                                id: demoReload.val()
+                            }
+                        }
+                    });
+                }
+            };
+
+
+            //监听工具条
+            table.on('tool', function(obj) {
+                var data = obj.data;
+                if (obj.event === 'del') {
+                    //执行删除
+                    layer.confirm('确认删除用户吗', function(index) {
                         console.log(data);
-                        // 关闭弹窗
-                        layer.closeAll();
-                        // 修改成功之后刷新
-                        form.val('add_order', {
-                            orderCode: "",
-                            clientCode: "",
-                            allKm: "",
-                            allTime: "",
-                            amount: "",
-                            createTime: ""
-                        });
-                        layer.msg(data.message);
-                    },
-                    error: function(data) {
-                        layer.msg('出现错误');
-                    }
-                })
-
-                return false;
-            });
-            form.val('add_order', {
-                orderCode: "",
-                clientCode: "",
-                allKm: "",
-                allTime: "",
-                amount: "",
-                createTime: ""
+                        $.ajax({
+                            url: "/order/delete?id=" + data.id,
+                            type: "DELETE",
+                            success: function(message) {
+                                console.log(message);
+                                // 关闭弹窗
+                                layer.closeAll();
+                                // 修改成功之后刷新
+                                active['reload']();
+                                layer.msg('删除成功');
+                            },
+                            error: function(data) {
+                                layer.msg('出现错误');
+                            }
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    //执行修改
+                    // console.log(data);
+                    activePop('edit_order_template', data);
+                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
             });
         });
-    </script>
 
-
-    <script>
-        lay('#version').html('-v' + laydate.v);
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#test1', //指定元素
-            //range: true
-        });
+        function setForm(initValue) {
+            layui.use(['form'], function() {
+                var form = layui.form
+                    //自定义验证规则
+                form.verify({
+                    // title: function(value){
+                    //     if(value.length < 5){
+                    //         return '标题至少得5个字符啊';
+                    //     }
+                    // },
+                    pass: [/(.+){6,12}$/, '密码必须6到12位']
+                        // ,content: function(value){
+                        //     layedit.sync(editIndex);
+                        // }
+                });
+                //监听提交
+                form.on('submit(demo1)', function(data) {
+                    data.field.id = initValue.id;
+                    $.ajax({
+                        url: "/order/update",
+                        type: "PUT",
+                        data: JSON.stringify(data.field),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(message) {
+                            console.log(message);
+                            // 关闭弹窗
+                            layer.closeAll();
+                            // 修改成功之后刷新
+                            active['reload']();
+                            layer.msg('修改成功');
+                        },
+                        error: function(data) {
+                            layer.msg('出现错误');
+                        }
+                    })
+                    return false;
+                });
+                // 防止status为数字类型，导致无法设置默认值
+                // initValue.status = initValue.status.toString();
+                //表单初始赋值
+                if (initValue) {
+                    form.val('edit_notice', initValue);
+                }
+            });
+        }
+        //触发事件
+        function activePop(id, initValue) {
+            layer.open({
+                type: 1,
+                area: ['500px', '300px'],
+                content: document.getElementById(id).innerHTML //传入表单html
+                    // ,btn: '关闭全部'
+                    ,
+                btnAlign: 'c' //按钮居中
+                    ,
+                shade: 0 //不显示遮罩
+                    // ,yes: function(){
+                    //     layer.closeAll();
+                    // }
+            });
+            //打开后设置form
+            setForm(initValue);
+        }
     </script>
 </body>
 

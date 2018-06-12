@@ -146,7 +146,7 @@
     	select id,orderCode,clientCode,allKm,allTime,amount from f_order limit #{limit} offset #{offset}
     </select>
     <!-- 计算所有订单  -->
-    <select id="orderNum">
+    <select id="orderNum" resultType="java.lang.Integer">
     	select count(*) from f_order
     </select>
 </mapper>

@@ -15,8 +15,15 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
+    <script src="/layui/layui.js"></script>
+    <style>
+        label {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 
@@ -127,7 +134,7 @@
 <div class="admin-biaogelist">
     
 
-    <form class="am-form am-g" action="/pay/insert">
+    <!-- <form class="am-form am-g" action="/pay/insert">
           <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
             <thead>
               <tr class="am-success">
@@ -167,7 +174,44 @@
               </button>
 
             </div>
+            </form> -->
+            <form class="layui-form" action="" lay-filter="add_money" style="margin:20px;">
+                <!--用户名-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户code</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="clientCode" lay-verify="required" autocomplete="nope" placeholder="请输入用户code" class="layui-input">
+                    </div>
+                </div>
+                <!--密码-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">充值金额</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="payBalance" lay-verify="required" placeholder="请输入充值金额" autocomplete="new-password" class="layui-input">
+                    </div>
+                </div>
+                <!--身份-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">充值方式</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="payType" value="0" title="微信" checked>
+                        <input type="radio" name="payType" value="1" title="支付宝">
+                    </div>
+                </div>
+                <!-- 注册时间 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">充值时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="createTime" class="layui-input" placeholder="请选择日期" id="createTime">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div style="text-align: center;">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即充值</button>
+                    </div>
+                </div>
             </form>
+
         </div>
 
     </div>
@@ -176,18 +220,45 @@
     <script src="/admin/assets/js/amazeui.min.js"></script>
 
 </body>
-<script src="/laydate/laydate.js"></script>
 <script>
-    lay('#version').html('-v' + laydate.v);
+    //  设置form显示
+    layui.use(['form', 'laydate'], function() {
+        var form = layui.form,
+            laydate = layui.laydate
+        laydate.render({
+            elem: '#createTime'
+        });
+        //监听提交
+        form.on('submit(demo1)', function(data) {
+            $.ajax({
+                url: " /money/insert",
+                type: "POST",
+                data: JSON.stringify(data.field),
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                    // 关闭弹窗
+                    layer.closeAll();
+                    // 修改成功之后刷新
+                    form.val('add_money', {
+                        clientCode: "",
+                        payBalance: "",
+                        createTime: "",
+                    });
+                    layer.msg(data.message);
+                },
+                error: function(data) {
+                    layer.msg('出现错误');
+                }
+            })
 
-    //执行一个laydate实例
-    laydate.render({
-        elem: '#test1', //指定元素
-        //range: true
-    });
-    laydate.render({
-        elem: '#test2', //指定元素
-        //range: true
+            return false;
+        });
+        form.val('add_money', {
+            clientCode: "",
+            payBalance: "",
+            createTime: "",
+        });
     });
 </script>
 
