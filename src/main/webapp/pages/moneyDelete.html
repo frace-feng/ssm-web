@@ -75,7 +75,7 @@
                 <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
                 <ul>
                     <li><a href="/pages/orderAdd.html">添加订单</a></li>
-                    <li><a href="/pages/managerOrder.html">删除订单</a></li>
+                    <li><a href="/pages/managerOrder.html">订单管理</a></li>
 
                 </ul>
                 <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
@@ -132,7 +132,12 @@
                     <!-- <a class="layui-btn layui-btn-xs" lay-event="money_back">退押金</a> -->
                     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="money_back">退押金</a>
                 </script>
+                <script type="text/html" id="status">
+                    <!-- 这里的 checked 的状态只是演示 -->
 
+                    {{ d.status==1 ? '支付宝' : '微信' }}
+
+                </script>
                 <!-- <form class="am-form am-g" action="/deposit/update">
                     <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
                         <thead>
@@ -195,8 +200,8 @@
             //方法级渲染
 
             table.render({
-                elem: '#LAY_table_notice',
-                url: '/notice/showList',
+                elem: '#LAY_table_money',
+                url: '/deposit/showList',
                 cols: [
                     [{
                         field: 'id',
@@ -204,20 +209,14 @@
                         width: 80,
                         sort: true,
                     }, {
-                        field: 'title',
-                        title: '标题',
+                        field: 'depositCode',
+                        title: '退款码',
                         width: 180,
                     }, {
-                        field: 'content',
-                        title: '内容',
+                        field: 'payMode',
+                        title: '付款方式',
+                        templet: '#payMode',
                         width: 180,
-                    }, {
-                        field: 'createDate',
-                        title: '时间',
-                        width: 180,
-                    }, {
-                        field: 'userName',
-                        title: '发布人',
                     }, {
                         width: 178,
                         title: '操作',
@@ -251,12 +250,12 @@
             //监听工具条
             table.on('tool', function(obj) {
                 var data = obj.data;
-                if (obj.event === 'del') {
+                if (obj.event === 'money_back') {
                     //执行删除
-                    layer.confirm('确认删除用户吗', function(index) {
+                    layer.confirm('确认退押金吗', function(index) {
                         console.log(data);
                         $.ajax({
-                            url: "/notice/delete?id=" + data.id,
+                            url: "/money/delete?id=" + data.id,
                             type: "DELETE",
                             success: function(message) {
                                 console.log(message);
@@ -271,10 +270,10 @@
                             }
                         })
                     });
-                } else if (obj.event === 'edit') {
+                } else if (obj.event === 'del') {
                     //执行修改
                     // console.log(data);
-                    activePop('edit_user_template', data);
+                    activePop('edit_money_template', data);
                     // layer.alert('编辑行：<br>'+ JSON.stringify(data))
                 }
             });
@@ -299,7 +298,7 @@
                 form.on('submit(demo1)', function(data) {
                     data.field.id = initValue.id;
                     $.ajax({
-                        url: "/notice/update",
+                        url: "/money/update",
                         type: "PUT",
                         data: JSON.stringify(data.field),
                         contentType: "application/json",
@@ -322,7 +321,7 @@
                 // initValue.status = initValue.status.toString();
                 //表单初始赋值
                 if (initValue) {
-                    form.val('edit_notice', initValue);
+                    form.val('edit_money', initValue);
                 }
             });
         }
