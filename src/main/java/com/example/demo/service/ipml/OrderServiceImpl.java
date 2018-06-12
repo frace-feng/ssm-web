@@ -82,6 +82,12 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		return orderDao.orderNum();
 	}
+
+	@Override
+	public int updateOrder(Order order) {
+		// TODO Auto-generated method stub
+		return orderDao.updateOrder(order);
+	}
 }
 
 
