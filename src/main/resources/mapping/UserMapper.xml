@@ -193,15 +193,15 @@
         INSERT INTO
            client
         (
-            id,clientName,mobile,driverCode,createTime
+            clientName,mobile,driverCode,createTime
         )VALUES(
-            #{id},#{clientName},#{mobile},#{driverCode},#{createTime}
+            #{clientName},#{mobile},#{driverCode},#{createTime}
         )
     </insert>
     
     <!-- 修改用户(Update) -->  
     <update id="updateUser" parameterType="com.example.demo.entity.User">  
-        update client set clientCode=#{clientCode}, depositSta=#{depositSta},auditingStatus=#{auditingStatus} where id=#{id}  
+        update client set driverCode=#{driverCode},clientName=#{clientName},clientCode=#{clientCode}, depositSta=#{depositSta},auditingStatus=#{auditingStatus} where id=#{id}
     </update>  
     
     <!-- 删除用户(Remove) -->  

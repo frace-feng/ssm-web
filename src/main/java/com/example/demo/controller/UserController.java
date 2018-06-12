@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -78,34 +81,50 @@ public class UserController {
 		Map<String, Integer> user = this.userService.getUserById5(1);
 		return user;
 	}
-	
-	@RequestMapping("/insert")
-	public void insert(HttpServletRequest request, HttpServletResponse response, User user)
+	@ResponseBody
+	@RequestMapping(value="/insert",method = RequestMethod.POST)
+	public ResponseEntity<Map<String,Object>> insert(HttpServletRequest request, HttpServletResponse response, @RequestBody User user)
 			throws IOException, ServletException {
 		int result = 0;
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (user != null) {
 			result = userService.addUser(user);
 		}
 		if (result > 0) {
 			logger.info("添加成功..");
-			response.sendRedirect("/pages/managerClient.html");
+//			response.sendRedirect("/pages/managerClient.html");
+			String message="添加成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
 			logger.error("添加失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			String message="添加失败";
+			map.put("message", message);
+
+//			返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
+//			request.getRequestDispatcher("/pages/500.html").forward(request, response);
 		}
 	}
-	
-	@RequestMapping("/update")
-	public void updateUser(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
+	@ResponseBody
+	@RequestMapping(value="/update",method = RequestMethod.PUT)
+	public ResponseEntity<Map<String,Object>> updateUser(HttpServletRequest request, HttpServletResponse response,@RequestBody User user) throws Exception {
 		int result = userService.updateUser(user);
+		Map<String,Object> map = new HashMap<String,Object>();
 		if (result > 0) {
 			logger.info("更新客户数据成功");
-			response.sendRedirect("/pages/clientUpdate.html");
-
+//			response.sendRedirect("/pages/clientUpdate.html");
+			String message="更新客户数据成功";
+			map.put("message", message);
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 		} else {
-			logger.error("更新用户数据失败");
-			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			logger.error("更新客户数据失败");
+//			request.getRequestDispatcher("/pages/500.html").forward(request, response);
+			String message="更新客户数据失败";
+			map.put("message", message);
 
+//			返回状态码400，代表请求错误
+			return new ResponseEntity<Map<String,Object>>(map,HttpStatus.BAD_REQUEST);
 		}
 	}
 	
