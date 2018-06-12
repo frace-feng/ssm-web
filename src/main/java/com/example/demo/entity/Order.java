@@ -54,8 +54,6 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
-
-
 	public BigDecimal getAllKm() {
 		return allKm;
 	}

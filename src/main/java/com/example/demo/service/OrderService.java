@@ -27,8 +27,10 @@ public interface OrderService {
 
 	//添加订单
 	public int addOrder(Order order);
-	//查询所有
+	//查询所有订单
 	public List<Order> getOrder(int limit, int offset);
+	//查询订单数
+	public int getOrderNum();
 }
 
 

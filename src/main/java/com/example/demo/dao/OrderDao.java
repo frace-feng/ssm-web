@@ -41,9 +41,10 @@ public interface OrderDao {
 	public int deleteOrder(Integer orderCode);
 	//插入
 	public int insertOrder(Order order);
-	//查询所有
+	//查询所有订单
 	List<Order> selectAll(@Param("limit") int limit, @Param("offset") int offset);
-	
+	//订单总数
+	public int orderNum();
 	//List<Map<String, Object>> selectByPrimaryKeyT20();
 
 	//List<Map<String, Object>> selectByPrimaryKeyT28();

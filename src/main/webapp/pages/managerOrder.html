@@ -2,6 +2,7 @@
 <html class="no-js">
 
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>后台管理系统--删除订单</title>
@@ -17,6 +18,31 @@
     <link rel="stylesheet" href="/admin/assets/css/admin.css">
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
+=======
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>后台管理系统--添加订单</title>
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="/layui/css/layui.css">
+<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/admin/assets/css/admin.css">
+<script src="/admin/assets/js/jquery.min.js"></script>
+<script src="/admin/assets/js/app.js"></script>
+<script src="/laydate/laydate.js"></script>
+<script src="/layui/layui.js"></script>
+  <style>
+  	lable {
+  		white-space: nowrap;
+  	}
+  </style>
+>>>>>>> a2ebce3073a0975c9590644d9e5d4eecea648c6c
 </head>
 
 
@@ -126,6 +152,7 @@
 
 <div class="admin-biaogelist">
     
+<<<<<<< HEAD
 
     <form class="am-form am-g" action="/order/delete">
           <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
@@ -151,17 +178,74 @@
               <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/orderAdd.html">新增</a></button>
                         <button type="submit" name="remove" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
             </div>
+=======
+<form class="layui-form" action="" lay-filter="add_order" style="margin:20px;" >
+                <!--用户名-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="orderCode" lay-verify="required" autocomplete="nope" placeholder="请输入订单编号" class="layui-input">
+                    </div>
+                </div>
+                <!--用户编号-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="clientCode" lay-verify="required" placeholder="请输入用户编号" autocomplete="nope" class="layui-input">
+                    </div>
+                </div>
+                <!--所行公里-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所行公里(km)</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="allKm" autocomplete="off" lay-verify="required" placeholder="请输入所行公里" class="layui-input">
+                    </div>
+                </div>
+                <!--所行时长-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所行时长(min)</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="allTime" lay-verify="required" placeholder="请输入所行时长" autocomplete="nope" class="layui-input">
+                    </div>
+                </div>
+                  <!--现金收入-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">现金收入</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="amount" vlay-verify="required" placeholder="请输入现金收入" autocomplete="nope" class="layui-input">
+                    </div>
+                </div>
+                  <!--现金收入-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">添加时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="createTime" vlay-verify="required" placeholder="请输入时间" autocomplete="nope" class="layui-input" id="test1">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div style="text-align: center;">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
+            </div>
+        </div>
+        </form>
+>>>>>>> a2ebce3073a0975c9590644d9e5d4eecea648c6c
 
 
 
 
 
+<<<<<<< HEAD
             </form>
 
 
 
+=======
+
+</div>
+>>>>>>> a2ebce3073a0975c9590644d9e5d4eecea648c6c
 
 
+<<<<<<< HEAD
         </div>
 
     </div>
@@ -169,6 +253,64 @@
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
 
+=======
+	</div>
+<script src="/admin/assets/js/amazeui.min.js"></script>
+<script>
+//  设置form显示
+layui.use(['form'], function() {
+    var form = layui.form
+        //监听提交
+    form.on('submit(demo1)', function(data) {
+        $.ajax({
+            url: "/order/insert",
+            type: "POST",
+            data: JSON.stringify(data.field),
+            contentType: "application/json",
+            success: function(data) {
+                console.log(data);
+                // 关闭弹窗
+                layer.closeAll();
+                // 修改成功之后刷新
+                form.val('add_order', {
+                	orderCode: "",
+                	clientCode: "",
+                	allKm: "",
+                	allTime: "",
+                	amount: "",
+                	createTime: ""
+                });
+                layer.msg(data.message);
+            },
+            error: function(data) {
+                layer.msg('出现错误');
+            }
+        })
+
+        return false;
+    });
+    form.val('add_order', {
+    	orderCode: "",
+    	clientCode: "",
+    	allKm: "",
+    	allTime: "",
+    	amount: "",
+    	createTime: ""
+    });
+});
+</script>
+
+
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1',//指定元素
+  //range: true
+});
+</script>
+>>>>>>> a2ebce3073a0975c9590644d9e5d4eecea648c6c
 </body>
 
 </html>
