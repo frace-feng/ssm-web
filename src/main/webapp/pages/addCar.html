@@ -1,0 +1,227 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统--添加车辆</title>
+    <meta name="description" content="这是一个 car 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/admin/assets/css/admin.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/admin/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/charts/echarts.min.js"></script>
+    <script src="/js/carMap.js"></script>
+    <script src="/admin/assets/js/app.js"></script>
+    <script src="/layui/layui.js"></script>
+    <style>
+        label {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header class="am-topbar admin-header">
+        <div class="am-topbar-brand"><img src="/admin/assets/i/logo.png"></div>
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+
+                <li class="am-dropdown tognzhi" data-am-dropdown>
+                    <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
+                    <ul class="am-dropdown-content">
+
+                        <li class="am-dropdown-header">跳到到首页</li>
+                        <li><a href="/pages/managerUser.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
+
+                    </ul>
+                </li>
+
+                <li class="kuanjie">
+
+                    <a href="/pages/managerUser.html">用户管理</a>
+                    <a href="/pages/managerClient.html">客户管理</a>
+                    <a href="/pages/managerOrder.html">订单管理</a>
+                    <a href="/pages/managerCar.html">车辆管理</a>
+                    <a href="/pages/managerDeposit.html">收入管理</a>
+                    <a href="/pages/managerNotice.html">消息管理</a>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+
+    <div class="am-cf admin-main">
+
+        <div class="nav-navicon admin-main admin-sidebar">
+
+
+            <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
+            <div class="sideMenu">
+                <h3 class="am-icon-flag"><em></em> <a href="#">用户管理</a></h3>
+                <ul>
+                    <li><a href="/pages/userAdd.html">添加用户</a></li>
+
+                    <li><a href="/pages/ManagerUser.html">用户管理</a></li>
+
+                </ul>
+                <h3 class="am-icon-users"><em></em> <a href="#">客户管理</a></h3>
+                <ul>
+                    <li><a href="/pages/addClient.html">添加客户</a> </li>
+                    <li><a href="/pages/managerClient.html">客户管理</a> </li>
+                </ul>
+                <h3 class="am-icon-cart-plus"><em></em> <a href="#"> 订单管理</a></h3>
+                <ul>
+                    <li><a href="/pages/addOrder.html">添加订单</a></li>
+                    <li><a href="/pages/managerOrder.html">订单管理</a></li>
+
+                </ul>
+                <h3 class="am-icon-users on"><em></em> <a href="#">车辆管理</a></h3>
+                <ul>
+                    <li><a href="/pages/addCar.html">增加车辆</a></li>
+                    <li><a href="/pages/managerCar.html">车辆管理</a></li>
+                </ul>
+                <h3 class="am-icon-gears"><em></em> <a href="#">收入管理</a></h3>
+                <ul>
+                    <li><a href="/pages/addPay.html">充值</a></li>
+                    <li><a href="/pages/managerDeposit.html">退押金</a></li>
+
+                </ul>
+                <h3 class="am-icon-volume-up"><em></em> <a href="#">消息管理</a></h3>
+                <ul>
+                    <li><a href="/pages/addNotice.html">添加消息</a></li>
+                    <li><a href="/pages/managerNotice.html">消息管理</a></li>
+
+                </ul>
+
+            </div>
+            <!-- sideMenu End -->
+
+            <script type="text/javascript">
+                jQuery(".sideMenu").slide({
+                    titCell: "h3", //鼠标触发对象
+                    targetCell: "ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
+                    effect: "slideDown", //targetCell下拉效果
+                    delayTime: 300, //效果时间
+                    triggerTime: 150, //鼠标延迟触发时间（默认150）
+                    defaultPlay: true, //默认是否执行效果（默认true）
+                    returnDefault: true //鼠标从.sideMen移走后返回默认状态（默认false）
+                });
+            </script>
+        </div>
+
+        <div class=" admin-content">
+
+            <div class="daohang">
+                <ul>
+                    <li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 车辆管理 > </li>
+				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 添加->更新 </li>
+			</ul>
+
+       
+
+	
+</div>
+
+<div class="admin-biaogelist">
+
+            <form class="layui-form" action="" lay-filter="add_car" style="margin:20px;">
+                <!--车品牌-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">车品牌</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="brand" lay-verify="required" autocomplete="nope" placeholder="请输入车品牌" class="layui-input">
+                    </div>
+                </div>
+                <!--车牌号-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">车牌号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="plateNumber" lay-verify="required" placeholder="请输入车牌号" autocomplete="new-password" class="layui-input">
+                    </div>
+                </div>
+                <!--现有油量（升）-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">现有油量（升）</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="oilNumber" autocomplete="off" lay-verify="required" placeholder="请输入现有油量" class="layui-input">
+                    </div>
+                </div>
+                <!-- 注册时间 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">注册时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="createTime" class="layui-input" placeholder="请选择日期" id="createTime">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div style="text-align: center;">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    </div>
+    <script src="/admin/assets/js/amazeui.min.js"></script>
+
+</body>
+
+<script>
+    //  设置form显示
+    layui.use(['form', 'laydate'], function() {
+        var form = layui.form,
+            laydate = layui.laydate
+        laydate.render({
+            elem: '#createTime'
+        });
+        //监听提交
+        form.on('submit(demo1)', function(data) {
+            $.ajax({
+                url: " /car/insert",
+                type: "POST",
+                data: JSON.stringify(data.field),
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                    // 关闭弹窗
+                    layer.closeAll();
+                    // 修改成功之后刷新
+                    form.val('add_car', {
+                        brand: "",
+                        plateNumber: "",
+                        oilNumber: "",
+                        createTime: "",
+                    });
+                    layer.msg(data.message);
+                },
+                error: function(data) {
+                    layer.msg('出现错误');
+                }
+            })
+
+            return false;
+        });
+        form.val('add_car', {
+            brand: "",
+            plateNumber: "",
+            oilNumber: "",
+            createTime: "",
+        });
+    });
+</script>
+
+</html>

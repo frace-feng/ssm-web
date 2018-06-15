@@ -143,11 +143,12 @@
     </delete> 
     <!-- 查询所有订单 -->
     <select id="selectAll" parameterType="java.lang.Integer" resultType="java.util.Map">
-    	select id,orderCode,clientCode,orderStatus,cancel_time,totalMoney from f_order limit #{limit} offset #{offset}
+    	select id,orderCode,clientCode,orderStatus,cancel_time,amount,totalMoney from f_order limit #{limit} offset #{offset}
     </select>
     
     <update id="updateOrder" parameterType="java.util.Map">
-    	update f_order set orderStatus=#{orderStatus},cancel_time=#{cancel_time},totalMoney=#{totalMoney}
+    	update f_order set orderStatus=#{orderStatus},totalMoney=#{totalMoney}
+    	where id=#{id}
     
     </update>
     <!-- 计算所有订单  -->

@@ -4,7 +4,9 @@
 	<resultMap type="com.example.demo.entity.Deposit" id="DepositResultMap">
 		<result column="id" property="id" jdbcType="INTEGER"/>
 		<result column="depositCode" property="depositCode" jdbcType="INTEGER"/>
-		<result column="payMode" property="payMode" jdbcType="INTEGER"/>		
+		<result column="payMode" property="payMode" jdbcType="INTEGER"/>
+		<result column="payType" property="payType" jdbcType="INTEGER"/>
+		<result column="payStatus" property="payStatus" jdbcType="INTEGER"/>		
 	</resultMap>
 		
 
@@ -19,8 +21,8 @@
 	
 	<!-- 退押金 -->
 	
-	<update id="updateDeposit" parameterType="com.example.demo.entity.Deposit">  
-        update deposit set payMode=1 where depositCode=#{depositCode}  
+	<update id="updateDeposit" parameterType="java.lang.Integer">  
+        update deposit set payMode=#{payMode},payStatus=#{payStatus} where id=#{id}  
     </update>
 	
 	<select id="selectAll" parameterType="com.example.demo.entity.Deposit" resultType="com.example.demo.entity.Deposit">

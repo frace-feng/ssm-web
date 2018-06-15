@@ -36,22 +36,22 @@
 
                 <li class="am-dropdown tognzhi" data-am-dropdown>
                     <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 后台管理<span class="am-badge am-badge-danger am-round">^</span></button>
-                    <ul class="am-dropdown-content">
+                     <ul class="am-dropdown-content">
 
-                        <li class="am-dropdown-header">跳到到后台首页</li>
-                        <li><a href="/pages/managerIndex.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
+                        <li class="am-dropdown-header">跳到到首页</li>
+                        <li><a href="/pages/managerUser.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
 
                     </ul>
                 </li>
 
                 <li class="kuanjie">
 
-                    <a href="/pages/managerIndex.html">用户管理</a>
+                    <a href="/pages/managerUser.html">用户管理</a>
                     <a href="/pages/managerClient.html">客户管理</a>
                     <a href="/pages/managerOrder.html">订单管理</a>
                     <a href="/pages/managerCar.html">车辆管理</a>
-                    <a href="/pages/managerMoney.html">收入管理</a>
-                    <a href="/pages/managerNotice.html">反馈管理</a>
+                    <a href="/pages/managerDeposit.html">收入管理</a>
+                    <a href="/pages/managerNotice.html">消息管理</a>
                 </li>
 
             </ul>
@@ -65,40 +65,39 @@
 
             <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
             <div class="sideMenu">
-                <h3 class="am-icon-flag"><em></em> <a href="/pages/managerIndex.html">用户管理</a></h3>
+                <h3 class="am-icon-flag"><em></em> <a href="#">用户管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerIndex.html">添加用户</a></li>
+                    <li><a href="/pages/userAdd.html">添加用户</a></li>
 
-                    <li><a href="/pages/userUpdate.html">用户管理</a></li>
+                    <li><a href="/pages/ManagerUser.html">用户管理</a></li>
 
                 </ul>
-                <h3 class="am-icon-users"><em></em> <a href="/pages/managerClient.html">客户管理</a></h3>
+                <h3 class="am-icon-users"><em></em> <a href="#">客户管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerClient.html">添加客户</a> </li>
-                    <li><a href="/pages/clientDelete.html">客户管理</a> </li>
+                    <li><a href="/pages/addClient.html">添加客户</a> </li>
+                    <li><a href="/pages/managerClient.html">客户管理</a> </li>
                 </ul>
-                <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
+                <h3 class="am-icon-cart-plus"><em></em> <a href="#"> 订单管理</a></h3>
                 <ul>
-                    <li><a href="/pages/orderAdd.html">添加订单</a></li>
+                    <li><a href="/pages/addOrder.html">添加订单</a></li>
                     <li><a href="/pages/managerOrder.html">订单管理</a></li>
 
                 </ul>
-                <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
+                <h3 class="am-icon-users"><em></em> <a href="#">车辆管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerCar.html">增加车辆</a></li>
-                    <li><a href="/pages/carUpdate.html">车辆管理</a></li>
-                    <!-- <li>车辆范围 </li> -->
+                    <li><a href="/pages/addCar.html">增加车辆</a></li>
+                    <li><a href="/pages/managerCar.html">车辆管理</a></li>
                 </ul>
-                <h3 class="am-icon-gears on"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
+                <h3 class="am-icon-gears on"><em></em> <a href="#">收入管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerMoney.html">充值</a></li>
-                    <li><a href="/pages/moneyDelete.html">退押金</a></li>
+                    <li><a href="/pages/addPay.html">充值</a></li>
+                    <li><a href="/pages/managerDeposit.html">退押金</a></li>
 
                 </ul>
-                <h3 class="am-icon-volume-up"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
+                <h3 class="am-icon-volume-up"><em></em> <a href="#">消息管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerNotice.html">添加消息</a></li>
-                    <li><a href="/pages/noticeUpdate.html">消息管理</a></li>
+                    <li><a href="/pages/addNotice.html">添加消息</a></li>
+                    <li><a href="/pages/managerNotice.html">消息管理</a></li>
 
                 </ul>
 
@@ -132,49 +131,7 @@
 </div>
 
 <div class="admin-biaogelist">
-    
 
-    <!-- <form class="am-form am-g" action="/pay/insert">
-          <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
-            <thead>
-              <tr class="am-success">
-                <th class="table-check"><input type="checkbox" /></th>           
-                <th class="table-author am-hide-sm-only" >用户code</th>
-                <th class="table-date am-hide-sm-only">充值金额</th>
-                 <th class="table-type">充值方式</th>
-                 <th class="table-type">充值时间</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" /></td>				
-				<td ><input  type="text" name="clientCode" id="clientCode"></td>
-                <td><input  type="number" name="payBalance" id="payBalance"> </td>
-                <td>
-					<select id="sid" onchange="selectcity()"  name="payType" id="payType">
-							<option>0:微信,1:支付宝</option>
-							<option>0</option>
-							<option>1</option>
-					</select>
-				</td>
-				<td><input type="text" name="createTime" class="demo-input" placeholder="请选择日期" id="test1"></td>
-              </tr>
-             
-            </tbody>
-          </table>
-          
-                 <div class="am-btn-group am-btn-group-xs">
-
-              <button type="submit"  name="add" class="am-btn am-btn-default">
-              	<span class="am-icon-plus"></span> 充值
-              </button>
-                        <button type="button" name="delete" class="am-btn am-btn-default">
-              	<span class="am-icon-trash-o"></span>
-              	<a href="/pages/moneyDelete.html">退押金</a>
-              </button>
-
-            </div>
-            </form> -->
             <form class="layui-form" action="" lay-filter="add_money" style="margin:20px;">
                 <!--用户名-->
                 <div class="layui-form-item">

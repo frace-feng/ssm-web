@@ -7,6 +7,10 @@ public class Deposit {
 	
 	private Integer payMode;
 	
+	private Integer payType;
+	
+	private Integer payStatus;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -30,6 +34,23 @@ public class Deposit {
 	public void setPayMode(Integer payMode) {
 		this.payMode = payMode;
 	}
+
+	public Integer getPayType() {
+		return payType;
+	}
+
+	public void setPayType(Integer payType) {
+		this.payType = payType;
+	}
+
+	public Integer getPayStatus() {
+		return payStatus;
+	}
+
+	public void setPayStatus(Integer payStatus) {
+		this.payStatus = payStatus;
+	}
+	
 	
 
 }

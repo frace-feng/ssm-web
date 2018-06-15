@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统--添加消息</title>
+    <title>后台管理系统--更新消息</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -19,34 +19,6 @@
     <script src="/admin/assets/js/jquery.min.js"></script>
     <script src="/admin/assets/js/app.js"></script>
     <script src="/layui/layui.js"></script>
-    <style>
-        /*body{padding: 20px;}*/
-        
-        label {
-            white-space: nowrap;
-        }
-        
-        .demo-input {
-            padding-left: 10px;
-            height: 38px;
-            min-width: 262px;
-            line-height: 38px;
-            border: 1px solid #e6e6e6;
-            background-color: #fff;
-            border-radius: 2px;
-        }
-        
-        .demo-footer {
-            padding: 50px 0;
-            color: #999;
-            font-size: 14px;
-        }
-        
-        .demo-footer a {
-            padding: 0 5px;
-            color: #01AAED;
-        }
-    </style>
 </head>
 
 
@@ -62,19 +34,19 @@
                     <ul class="am-dropdown-content">
 
                         <li class="am-dropdown-header">跳到到首页</li>
-                        <li><a href="/pages/managerIndex.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
+                        <li><a href="/pages/managerUser.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
 
                     </ul>
                 </li>
 
                 <li class="kuanjie">
 
-                    <a href="/pages/managerIndex.html">用户管理</a>
+                    <a href="/pages/managerUser.html">用户管理</a>
                     <a href="/pages/managerClient.html">客户管理</a>
                     <a href="/pages/managerOrder.html">订单管理</a>
                     <a href="/pages/managerCar.html">车辆管理</a>
-                    <a href="/pages/managerMoney.html">收入管理</a>
-                    <a href="/pages/managerNotice.html">反馈管理</a>
+                    <a href="/pages/managerDeposit.html">收入管理</a>
+                    <a href="/pages/managerNotice.html">消息管理</a>
                 </li>
 
             </ul>
@@ -88,40 +60,39 @@
 
             <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员admin</div>
             <div class="sideMenu">
-                <h3 class="am-icon-flag"><em></em> <a href="/pages/managerIndex.html">用户管理</a></h3>
+                <h3 class="am-icon-flag"><em></em> <a href="#">用户管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerIndex.html">添加用户</a></li>
+                    <li><a href="/pages/userAdd.html">添加用户</a></li>
 
-                    <li><a href="/pages/userUpdate.html">用户管理</a></li>
+                    <li><a href="/pages/ManagerUser.html">用户管理</a></li>
 
                 </ul>
-                <h3 class="am-icon-users"><em></em> <a href="/pages/managerClient.html">客户管理</a></h3>
+                <h3 class="am-icon-users"><em></em> <a href="#">客户管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerClient.html">添加客户</a> </li>
-                    <li><a href="/pages/clientDelete.html">客户管理</a> </li>
+                    <li><a href="/pages/addClient.html">添加客户</a> </li>
+                    <li><a href="/pages/managerClient.html">客户管理</a> </li>
                 </ul>
-                <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/managerOrder.html"> 订单管理</a></h3>
+                <h3 class="am-icon-cart-plus"><em></em> <a href="#"> 订单管理</a></h3>
                 <ul>
-                    <li><a href="/pages/orderAdd.html">添加订单</a></li>
+                    <li><a href="/pages/addOrder.html">添加订单</a></li>
                     <li><a href="/pages/managerOrder.html">订单管理</a></li>
 
                 </ul>
-                <h3 class="am-icon-users"><em></em> <a href="/pages/managerCar.html">车辆管理</a></h3>
+                <h3 class="am-icon-users"><em></em> <a href="#">车辆管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerCar.html">增加车辆</a></li>
-                    <li><a href="/pages/carUpdate.html">车辆管理</a></li>
-                    <!-- <li>车辆范围 </li> -->
+                    <li><a href="/pages/addCar.html">增加车辆</a></li>
+                    <li><a href="/pages/managerCar.html">车辆管理</a></li>
                 </ul>
-                <h3 class="am-icon-gears"><em></em> <a href="/pages/managerMoney.html">收入管理</a></h3>
+                <h3 class="am-icon-gears"><em></em> <a href="#">收入管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerMoney.html">充值</a></li>
-                    <li><a href="/pages/moneyDelete.html">退押金</a></li>
+                    <li><a href="/pages/addPay.html">充值</a></li>
+                    <li><a href="/pages/managerDeposit.html">退押金</a></li>
 
                 </ul>
-                <h3 class="am-icon-volume-up on"><em></em> <a href="/pages/managerNotice.html">反馈管理</a></h3>
+                <h3 class="am-icon-volume-up on"><em></em> <a href="#">消息管理</a></h3>
                 <ul>
-                    <li><a href="/pages/managerNotice.html">添加消息</a></li>
-                    <li><a href="/pages/noticeUpdate.html">消息管理</a></li>
+                    <li><a href="/pages/addNotice.html">添加消息</a></li>
+                    <li><a href="/pages/managerNotice.html">消息管理</a></li>
 
                 </ul>
 
@@ -145,7 +116,7 @@
 
             <div class="daohang">
                 <ul>
-                    <li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 消息管理 > </li>
+                    <li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户管理 > </li>
 				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 添加->更新->删除 </li>
 			</ul>
 
@@ -155,134 +126,217 @@
 </div>
 
 <div class="admin-biaogelist">
-    
 
-    <!-- <form class="am-form am-g" action="/notice/insert" >
-          <table width="100%" class="am-table am-table-bordered am-table-radius am-table-striped">
-            <thead>
-              <tr class="am-success">
-                <th class="table-check"><input type="checkbox" /></th>
-				<th class="table-id" >ID</th>
-                <th class="table-title">标题</th>               
-                <th class="table-author am-hide-sm-only" >内容</th>
-                <th class="table-date am-hide-sm-only">时间</th>
-                 <th class="table-type">发布人</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td><input type="text" name="id" class="id"></td>
-                <td><input type="text"  name="title" id="title"></td>				
-				<td ><input  type="text" name="content" id="content"></td>
-                <td><input  type="text" name="createDate" class="demo-input" placeholder="请选择日期" id="test1"> </td>
-                <td> <input type="text" name="userName" id="userName">
-				</td>
-              </tr>
-             
-            </tbody>
-          </table>
-          
-                 <div class="am-btn-group am-btn-group-xs">
+            <table class="layui-table" id="LAY_table_notice">
 
-              <button type="submit" name="add" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+            </table>
+            <script type="text/html" id="barDemo">
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
+            <!-- 修改用户 -->
+            <div style="display: none" id="edit_user_template">
+                <form class="layui-form" action="" lay-filter="edit_notice" style="margin:20px;">
 
-                        <button type="button" name="update" class="am-btn am-btn-default"><span class="am-icon-archive"></span><a href="/pages/noticeUpdate.html">更新</a></button>
-                        <button type="button" name="delete" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span><a href="/pages/noticeDelete.html">删除</a></button>
+                    <!--用户名-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">内容</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="content" autocomplete="off" placeholder="请输入内容" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="createDate" autocomplete="off" placeholder="请输入时间" class="layui-input">
+                        </div>
+                    </div>
+                    <!--邮箱-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">发布人</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="userName" autocomplete="off" placeholder="请输入发布人" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div style="text-align: center;">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-
-
-
-
-            </form> -->
-            <form class="layui-form" action="" lay-filter="add_notice" style="margin:20px;">
-                <!--标题-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">标题</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="title" lay-verify="required" autocomplete="nope" placeholder="请输入标题" class="layui-input">
-                    </div>
-                </div>
-                <!--内容-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">内容</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="content" lay-verify="required" placeholder="请输入内容" autocomplete="new-password" class="layui-input">
-                    </div>
-                </div>
-                <!--时间-->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="createDate" autocomplete="off" lay-verify="required" placeholder="请选择时间" class="layui-input" id="createDate">
-                    </div>
-                </div>
-                <!-- 发布人 -->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">发布人</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="userName" class="layui-input" placeholder="请输入发布人">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <div style="text-align: center;">
-                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即添加</button>
-                    </div>
-                </div>
-            </form>
         </div>
 
     </div>
 
     </div>
     <script src="/admin/assets/js/amazeui.min.js"></script>
+    <script>
+        // 生成table
+        layui.use('table', function() {
+            var table = layui.table;
+            //方法级渲染
 
-</body>
+            table.render({
+                elem: '#LAY_table_notice',
+                url: '/notice/showList',
+                cols: [
+                    [{
+                        field: 'id',
+                        title: 'ID',
+                        width: 80,
+                        sort: true,
+                    }, {
+                        field: 'title',
+                        title: '标题',
+                        width: 180,
+                    }, {
+                        field: 'content',
+                        title: '内容',
+                        width: 180,
+                    }, {
+                        field: 'createDate',
+                        title: '时间',
+                        width: 180,
+                    }, {
+                        field: 'userName',
+                        title: '发布人',
+                    }, {
+                        width: 178,
+                        title: '操作',
+                        align: 'center',
+                        toolbar: '#barDemo'
+                    }]
+                ],
+                id: 'testReload',
+                page: true,
+            });
 
-<script>
-    //  设置form显示
-    layui.use(['form', 'laydate'], function() {
-        var form = layui.form,
-            laydate = layui.laydate
-        laydate.render({
-            elem: '#createDate'
-        });
-        //监听提交
-        form.on('submit(demo1)', function(data) {
-            $.ajax({
-                url: " /notice/insert",
-                type: "POST",
-                data: JSON.stringify(data.field),
-                contentType: "application/json",
-                success: function(data) {
-                    console.log(data);
-                    // 关闭弹窗
-                    layer.closeAll();
-                    // 修改成功之后刷新
-                    form.val('add_notice', {
-                        brand: "",
-                        plateNumber: "",
-                        oilNumber: "",
-                        createTime: "",
+            active = {
+                reload: function() {
+                    var demoReload = $('#demoReload');
+
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            key: {
+                                id: demoReload.val()
+                            }
+                        }
                     });
-                    layer.msg(data.message);
-                },
-                error: function(data) {
-                    layer.msg('出现错误');
                 }
-            })
+            };
 
-            return false;
+
+            //监听工具条
+            table.on('tool', function(obj) {
+                var data = obj.data;
+                if (obj.event === 'del') {
+                    //执行删除
+                    layer.confirm('确认删除用户吗', function(index) {
+                        console.log(data);
+                        $.ajax({
+                            url: "/notice/delete?id=" + data.id,
+                            type: "DELETE",
+                            success: function(message) {
+                                console.log(message);
+                                // 关闭弹窗
+                                layer.closeAll();
+                                // 修改成功之后刷新
+                                active['reload']();
+                                layer.msg('删除成功');
+                            },
+                            error: function(data) {
+                                layer.msg('出现错误');
+                            }
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    //执行修改
+                    // console.log(data);
+                    activePop('edit_user_template', data);
+                    // layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
+            });
         });
-        form.val('add_notice', {
-            brand: "",
-            plateNumber: "",
-            oilNumber: "",
-            createTime: "",
-        });
-    });
-</script>
+
+        function setForm(initValue) {
+            layui.use(['form'], function() {
+                var form = layui.form
+                    //自定义验证规则
+                form.verify({
+                    // title: function(value){
+                    //     if(value.length < 5){
+                    //         return '标题至少得5个字符啊';
+                    //     }
+                    // },
+                    pass: [/(.+){6,12}$/, '密码必须6到12位']
+                        // ,content: function(value){
+                        //     layedit.sync(editIndex);
+                        // }
+                });
+                //监听提交
+                form.on('submit(demo1)', function(data) {
+                    data.field.id = initValue.id;
+                    $.ajax({
+                        url: "/notice/update",
+                        type: "PUT",
+                        data: JSON.stringify(data.field),
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function(message) {
+                            console.log(message);
+                            // 关闭弹窗
+                            layer.closeAll();
+                            // 修改成功之后刷新
+                            active['reload']();
+                            layer.msg('修改成功');
+                        },
+                        error: function(data) {
+                            layer.msg('出现错误');
+                        }
+                    })
+                    return false;
+                });
+                // 防止status为数字类型，导致无法设置默认值
+                // initValue.status = initValue.status.toString();
+                //表单初始赋值
+                if (initValue) {
+                    form.val('edit_notice', initValue);
+                }
+            });
+        }
+        //触发事件
+        function activePop(id, initValue) {
+            layer.open({
+                type: 1,
+                area: ['500px', '360px'],
+                content: document.getElementById(id).innerHTML //传入表单html
+                    // ,btn: '关闭全部'
+                    ,
+                btnAlign: 'c' //按钮居中
+                    ,
+                shade: 0 //不显示遮罩
+                    // ,yes: function(){
+                    //     layer.closeAll();
+                    // }
+            });
+            //打开后设置form
+            setForm(initValue);
+        }
+    </script>
+</body>
 
 </html>

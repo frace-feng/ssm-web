@@ -51,7 +51,7 @@ public class ManagerLogin {
 		System.out.println(passWord);		
 		if (userName.equals(userName) && passWord.equals(passwdMD5)) {
 			model.addAttribute("login", login);
-			response.sendRedirect("/pages/managerIndex.html");
+			response.sendRedirect("/pages/managerUser.html");
 		} else {
 			logger.info("重新登录");
 			response.sendRedirect("/pages/fail.html");
