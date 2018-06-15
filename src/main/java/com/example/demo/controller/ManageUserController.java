@@ -19,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Login;
@@ -185,24 +184,6 @@ public class ManageUserController {
 		map.put("msg","");
 		map.put("count",count);
 		return map;
-		// response.sendRedirect("/pages/test.html");
 	}
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/insert1", method = RequestMethod.POST) public void
-	 * insert(HttpServletRequest request, Model model){ String id =
-	 * request.getParameter("id"); String userName =
-	 * request.getParameter("userName"); String passWord =
-	 * request.getParameter("passWord"); String email =
-	 * request.getParameter("email"); String status =
-	 * request.getParameter("status"); System.out.println(id);
-	 * System.out.println(userName); System.out.println(passWord);
-	 * System.out.println(email); System.out.println(status);
-	 * 
-	 * 
-	 * // return String.valueOf(manageUserService.addUserById(id, userName,
-	 * passWord, email, status)); }
-	 */
 
 }
