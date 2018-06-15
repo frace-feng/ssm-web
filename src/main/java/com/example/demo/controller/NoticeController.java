@@ -7,15 +7,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -119,7 +116,7 @@ public class NoticeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/showList", method = RequestMethod.GET)
-	public Map<String, Object> showList(HttpServletRequest request, Model model, String page, String limit) {
+	public Map<String, Object> showList(Model model, String page, String limit) {
 		logger.info("notice list");
 		System.out.println(page);
 		System.out.println(limit);

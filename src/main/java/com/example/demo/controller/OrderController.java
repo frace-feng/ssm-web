@@ -85,7 +85,7 @@ public class OrderController {
 
 	// 删除一条订单记录
 	@RequestMapping(value="/delete",method = RequestMethod.DELETE)
-	public ResponseEntity<Map<String,Object>> deleteOrderById( String id)
+	public ResponseEntity<Map<String,Object>> deleteOrderById(String id)
 			throws Exception {
 		int result = this.orderService.deleteOrder(Integer.parseInt(id));
 		Map<String,Object> map = new HashMap<String,Object>();

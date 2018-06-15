@@ -60,7 +60,7 @@
 		 <dependency>
 		        <groupId>org.apache.tomcat.embed</groupId>
 		        <artifactId>tomcat-embed-jasper</artifactId>
-		        <version>7.0.59</version>
+		        <!-- <version>7.0.59</version> -->
 		 </dependency>
         <!-- jsp标签库 -->
         <dependency>
@@ -87,22 +87,6 @@
 	     <version>1.2</version>
 	  	</dependency>
 	  	
-	  	 <!-- 需要的log4j2日志包依赖 -->
-      <dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-core</artifactId>
-		<version>2.5</version>
-	  </dependency>
-	  <dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-web</artifactId>
-		<version>2.5</version>
-	  </dependency>
-	  <dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-1.2-api</artifactId>
-		<version>2.5</version>
-	  </dependency>
 </dependencies>
 
 	<build>
