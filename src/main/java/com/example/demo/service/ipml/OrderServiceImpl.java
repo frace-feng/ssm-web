@@ -31,7 +31,6 @@ public class OrderServiceImpl implements OrderService {
 		Integer o5 = orderDao.selectByPrimaryKeyT16();
 		Integer o6 = orderDao.selectByPrimaryKeyT17();
 		Map<String, Integer> result = new HashMap<>();
-		/* System.out.println("--eeee---"+new Date()); */
 		result.put("o1", o1);
 		result.put("o2", o2);
 		result.put("o3", o3);

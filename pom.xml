@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.1.0</version>
+			<version>1.0.5</version>
 		</dependency>
 		 <dependency>
 		        <groupId>org.apache.tomcat.embed</groupId>
@@ -63,16 +63,16 @@
 		        <!-- <version>7.0.59</version> -->
 		 </dependency>
         <!-- jsp标签库 -->
-        <dependency>
+        <!-- <dependency>
            <groupId>javax.servlet</groupId>
            <artifactId>jstl</artifactId>
-       </dependency>
+       </dependency> -->
        <!-- jwt的jar包 -->
-       	<dependency>
+		<!--<dependency>
    		<groupId>com.auth0</groupId>
     	<artifactId>java-jwt</artifactId>
     	<version>3.1.0</version>
-		</dependency>
+		</dependency> -->
 		<!-- 文件上传 -->
 		<dependency>
 		<groupId>commons-fileupload</groupId>
@@ -81,11 +81,11 @@
 		</dependency>
 		
 		<!-- JSTL 标签库 -->
-	 	 <dependency>
+	 	 <!-- <dependency>
 	     <groupId>jstl</groupId>
 	     <artifactId>jstl</artifactId>
 	     <version>1.2</version>
-	  	</dependency>
+	  	</dependency> -->
 	  	
 </dependencies>
 

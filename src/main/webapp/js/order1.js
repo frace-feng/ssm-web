@@ -5,7 +5,7 @@ $(function(){
 var	option = {
 	    title : {
 	        text: '2017的订单量和取消量',
-	        subtext: '纯属虚构'
+	        subtext: '情景模拟数据'
 	    },
 	    tooltip : {
 	        trigger: 'axis'

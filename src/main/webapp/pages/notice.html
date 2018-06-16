@@ -6,18 +6,20 @@
 <title>反馈信息展示</title>
 <meta name="description" content="这是一个 反馈 页面">
 <meta name="keywords" content="index">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="icon" type="image/png" href="/admin/assets/i/favicon.png">
-<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+<link rel="apple-touch-icon-precomposed"
+	href="/admin/assets/i/app-icon72x72@2x.png">
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
 <script src="/admin/assets/js/jquery.min.js"></script>
-<script  src="/js/echarts.js"></script>
+<script src="/js/echarts.js"></script>
 <script src="/admin/assets/js/app.js"></script>
-    <style type="text/css">
+<style type="text/css">
 * {
 	padding: 0;
 	margin: 0;
@@ -66,86 +68,98 @@ td {
 </style>
 </head>
 <body>
-<header class="am-topbar admin-header">
-  <div class="am-topbar-brand"><img src="/admin/assets/i/Weblogo.png"></div>
+	<header class="am-topbar admin-header">
+		<div class="am-topbar-brand">
+			<img src="/admin/assets/i/Weblogo.png">
+		</div>
 
-  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+			<ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
 
-   <li class="am-dropdown tognzhi" data-am-dropdown>
-  <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 
-   	数据可视化
-   <span class="am-badge am-badge-danger am-round">^</span>
-   </button>
-  <ul class="am-dropdown-content">
- 	
-    <li class="am-dropdown-header">跳到到前台首页</li>
-    <li><a href="/pages/main.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
-  
-  </ul>
-</li>
+				<li class="am-dropdown tognzhi" data-am-dropdown>
+					<button
+						class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o"
+						data-am-dropdown-toggle>
+						数据可视化 <span class="am-badge am-badge-danger am-round">^</span>
+					</button>
+					<ul class="am-dropdown-content">
 
- <li class="kuanjie">
- 	
- 	<a href="/pages/clientList.html">用户展示</a>          
- 	<a href="/pages/orderList.html">订单展示</a> 
- 	<a href="/pages/carList.html">车辆展示</a>   
- 	<a href="/pages/moneyList.html">收入展示</a> 
- 	<a href="/pages/notice.html">消息展示</a> 
- </li>
- 
-    </ul>
-  </div>
-</header>
+						<li class="am-dropdown-header">跳到到前台首页</li>
+						<li><a href="/pages/main.html">首页 <span
+								class="am-badge am-badge-danger am-round"></span></a></li>
 
-<div class="am-cf admin-main"> 
+					</ul>
+				</li>
 
-<div class="nav-navicon admin-main admin-sidebar">
-    
-    
-    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员frs</div>
-    <div class="sideMenu">
-            <h3 class="am-icon-flag"><em></em> <a href="/pages/clientList.html">用户展示</a></h3>
-      <ul>
-        <li><a href="/pages/clientList6.html">用户列表</a></li>
-        <li><a href="/pages/clientList.html">注册量</a></li>
-        <li><a href="/pages/clientList.html">注册+身份通过</a></li>
-        <li><a href="/pages/clientList1.html">注册+交押金数</a> </li>
-        <li><a href="/pages/clientList1.html">利润</a></li>
-        <li><a href="/pages/clientList2.html">性别+年龄占比 </a></li>       
-        <li><a href="/pages/clientList3.html">客户身份</a> </li>
-        <li><a href="/pages/clientList4.html">流失人群 </a></li>
-        
-      </ul>
-      <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/orderList.html"> 订单展示</a></h3>
-      <ul>
-        <li><a href="/pages/orderList.html">时间段订单</a></li>
-        <li><a href="/pages/orderList1.html">有效订单</a></li>
-        <li><a href="/pages/orderList3.html">推广绩点</a></li>
-      </ul>
-      <h3 class="am-icon-users"><em></em> <a href="/pages/carList.html">车辆展示</a></h3>
-      <ul>
-        <li><a href="/pages/carList.html">车辆状态 </a></li>
-        <li><a href="/pages/carList.html">加油量</a></li>
-        <li><a href="/pages/carBrand.html">车展</a></li>
-        <li><a href="/pages/carBrand.html">车辆地址</a></li>
-      </ul>
-      <h3 class="am-icon-gears"><em></em> <a href="/pages/moneyList.html">收入展示</a></h3>
-      <ul>
-        <li><a href="/pages/moneyList.html">充值</a></li>
-        <li><a href="/pages/moneyList.html">退押金</a></li>
-        <li><a href="/pages/moneyList1.html">月现金收入</a></li>
-        <li><a href="/pages/moneyList1.html">总收入</a></li>
+				<li class="kuanjie"><a href="/pages/clientList.html">用户展示</a> <a
+					href="/pages/orderList.html">订单展示</a> <a href="/pages/carList.html">车辆展示</a>
+					<a href="/pages/moneyList.html">收入展示</a> <a
+					href="/pages/notice.html">消息展示</a></li>
 
-      </ul> 
-      <h3 class="am-icon-volume-up on"><em></em> <a href="/pages/notice.html">消息展示</a></h3>
-      <ul>
-        <li><a href="/pages/notice.html">站内消息 /留言 </a></li>
-        <li><a href="/pages/upload.html">上传文件</a></li>
-      </ul>
+			</ul>
+		</div>
+	</header>
 
-    </div>
-    <!-- sideMenu End -->
+	<div class="am-cf admin-main">
+
+		<div class="nav-navicon admin-main admin-sidebar">
+
+
+			<div class="sideMenu am-icon-dashboard"
+				style="color: #aeb2b7; margin: 10px 0 0 0;">欢迎系统管理员frs</div>
+			<div class="sideMenu">
+				<h3 class="am-icon-flag">
+					<em></em> <a href="/pages/clientList.html">用户展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/clientList6.html">用户列表</a></li>
+					<li><a href="/pages/clientList.html">注册量</a></li>
+					<li><a href="/pages/clientList.html">注册+身份通过</a></li>
+					<li><a href="/pages/clientList1.html">注册+交押金数</a></li>
+					<li><a href="/pages/clientList1.html">利润</a></li>
+					<li><a href="/pages/clientList2.html">性别+年龄占比 </a></li>
+					<li><a href="/pages/clientList3.html">客户身份</a></li>
+					<li><a href="/pages/clientList4.html">流失人群 </a></li>
+
+				</ul>
+				<h3 class="am-icon-cart-plus">
+					<em></em> <a href="/pages/orderList.html"> 订单展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/orderList.html">时间段订单</a></li>
+					<li><a href="/pages/orderList1.html">有效订单</a></li>
+					<li><a href="/pages/orderList2.html">日订单</a></li>
+					<li><a href="/pages/orderList3.html">推广绩点</a></li>
+				</ul>
+				<h3 class="am-icon-users">
+					<em></em> <a href="/pages/carList.html">车辆展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/carList.html">车辆状态 </a></li>
+					<li><a href="/pages/carList.html">加油量</a></li>
+					<li><a href="/pages/carBrand.html">车展</a></li>
+					<li><a href="/pages/carBrand.html">车辆地址</a></li>
+				</ul>
+				<h3 class="am-icon-gears">
+					<em></em> <a href="/pages/moneyList.html">收入展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/moneyList.html">充值</a></li>
+					<li><a href="/pages/moneyList.html">退押金</a></li>
+					<li><a href="/pages/moneyList1.html">月现金收入</a></li>
+					<li><a href="/pages/moneyList1.html">总收入</a></li>
+
+				</ul>
+				<h3 class="am-icon-volume-up on">
+					<em></em> <a href="/pages/notice.html">消息展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/notice.html">站内消息 /留言 </a></li>
+					<li><a href="/pages/upload.html">上传文件</a></li>
+				</ul>
+
+			</div>
+			<!-- sideMenu End -->
 
 			<script type="text/javascript">
 				jQuery(".sideMenu").slide({
@@ -161,126 +175,126 @@ td {
 			</script>
 		</div>
 
-<div class=" admin-content">
-	
-		<div class="daohang">
-			<ul>
-				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 反馈信息 </li>				
-			</ul>	
-		</div>
-<div class="admin-biaogelist">		
-		      <div class="am-tabs am-margin" data-am-tabs>
-    <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">站内消息</a></li>
-    </ul>
+		<div class=" admin-content">
 
-    <div class="am-tabs-bd">
-      <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-	id:<input id="notice_id" name="id" type="text">
-    <button onclick="getNotice()">查询</button>
-    <div id="table_content"></div>
-	</div>
-
-      <div class="am-tab-panel am-fade" id="tab2">
-        <div id="table_content1"></div>
-      </div>
-    </div>
-  </div>
-
-</div>	
-	
-				<div class="foods">
-					<ul>版权所有@2018
+			<div class="daohang">
+				<ul>
+					<li><button type="button"
+							class="am-btn am-btn-default am-radius am-btn-xs">反馈信息</li>
+				</ul>
+			</div>
+			<div class="admin-biaogelist">
+				<div class="am-tabs am-margin" data-am-tabs>
+					<ul class="am-tabs-nav am-nav am-nav-tabs">
+						<li class="am-active"><a href="#tab1">站内消息</a></li>
 					</ul>
-					<dl>
-						<a href="/pages/notice.html" title="返回头部"
-							class="am-icon-btn am-icon-arrow-up"></a>
-					</dl>
+
+					<div class="am-tabs-bd">
+						<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+							id:<input id="notice_id" name="id" type="text">
+							<button onclick="getNotice()">查询</button>
+							<div id="table_content"></div>
+						</div>
+
+						<div class="am-tab-panel am-fade" id="tab2">
+							<div id="table_content1"></div>
+						</div>
+					</div>
 				</div>
 
 			</div>
 
+			<div class="foods">
+				<ul>版权所有@2018
+				</ul>
+				<dl>
+					<a href="/pages/notice.html" title="返回头部"
+						class="am-icon-btn am-icon-arrow-up"></a>
+				</dl>
+			</div>
 
 		</div>
-</div>
-<script src="/admin/assets/js/amazeui.min.js"></script>
+
+
+	</div>
+	</div>
+	<script src="/admin/assets/js/amazeui.min.js"></script>
 
 </body>
 </html>
 <script type="text/javascript">
-    function createTable() {
-        tableNode = document.createElement("table"); //获得对象 
-        tableNode.setAttribute("id", "table")
-        var row = parseInt(document.getElementsByName("row1")[0].value); //获得行号 
-        //alert(row); 
-        if (row <= 0 || isNaN(row)) {
-            alert("输入的行号错误，不能创建表格，请重新输入：");
-            return;
-        }
-        var cols = parseInt(document.getElementsByName("cols1")[0].value);
-        if (isNaN(cols) || cols <= 0) {
-            alert("输入的列号错误，不能创建表格，请重新输入：");
-            return;
-        }
-        //上面确定了 现在开始创建 
-        for (var x = 0; x < row; x++) {
-            var trNode = tableNode.insertRow();
-            for (var y = 0; y < cols; y++) {
-                var tdNode = trNode.insertCell();
-                tdNode.innerHTML = "单元格" + (x + 1) + "-" + (y + 1);
-            }
-        }
-        table_content.
-        document.body.appendChild(tableNode); //添加到那个位置 
-    }
+	function createTable() {
+		tableNode = document.createElement("table"); //获得对象 
+		tableNode.setAttribute("id", "table")
+		var row = parseInt(document.getElementsByName("row1")[0].value); //获得行号 
+		//alert(row); 
+		if (row <= 0 || isNaN(row)) {
+			alert("输入的行号错误，不能创建表格，请重新输入：");
+			return;
+		}
+		var cols = parseInt(document.getElementsByName("cols1")[0].value);
+		if (isNaN(cols) || cols <= 0) {
+			alert("输入的列号错误，不能创建表格，请重新输入：");
+			return;
+		}
+		//上面确定了 现在开始创建 
+		for (var x = 0; x < row; x++) {
+			var trNode = tableNode.insertRow();
+			for (var y = 0; y < cols; y++) {
+				var tdNode = trNode.insertCell();
+				tdNode.innerHTML = "单元格" + (x + 1) + "-" + (y + 1);
+			}
+		}
+		table_content.document.body.appendChild(tableNode); //添加到那个位置 
+	}
 
-    function getNotice() {
-        //获取输入的id值
-        var id = document.getElementById("notice_id").value;
-        $.ajax({
-            url: "/notice/show?id=" + id,
-            type: "get",
-            success: function(data) {
-                console.log(data)
-                createTable(data);
-            }
-        })
-    }
+	function getNotice() {
+		//获取输入的id值
+		var id = document.getElementById("notice_id").value;
+		$.ajax({
+			url : "/notice/show?id=" + id,
+			type : "get",
+			success : function(data) {
+				console.log(data)
+				createTable(data);
+			}
+		})
+	}
 
-    function createTable(notices) {
-        //创建一个table对象
-        tableNode = document.createElement("table");
-        var cols = ['标题', '发布人', '内容'];
-        var keys = ['title', 'userName', 'content'];
-        //列数
-        var rows = notices.length;
-        //先创建一个表头tr用来放表头标题
-        var tr = document.createElement("TR");
-        tableNode.appendChild(tr);
-        //上面确定了 现在开始创建 
-        for (var i = 0; i < cols.length; i++) {
-            var th = document.createElement("TH");
-            //设置表头
-            th.innerText = cols[i];
-            tr.appendChild(th);
-        }
-        //遍历notices,填充表格数据
-        notices.forEach(function(notice) {
-                var trNode = tableNode.insertRow();
-                for (var i = 0; i < cols.length; i++) {
-                    //插入一个td
-                    var tdNode = trNode.insertCell();
-                    tdNode.innerHTML = notice[keys[i]];
-                }
-            })
-            //获取table容器
-        var contentNode = document.getElementById("table_content");
-        //存在就替换
-        if (contentNode.childNodes[0]) {
-            contentNode.replaceChild(tableNode, contentNode.childNodes[0])
-                //不存在就添加
-        } else {
-            contentNode.appendChild(tableNode);
-        }
-    }
+	function createTable(notices) {
+		//创建一个table对象
+		tableNode = document.createElement("table");
+		var cols = [ '标题', '发布人', '内容' ];
+		var keys = [ 'title', 'userName', 'content' ];
+		//列数
+		var rows = notices.length;
+		//先创建一个表头tr用来放表头标题
+		var tr = document.createElement("TR");
+		tableNode.appendChild(tr);
+		//上面确定了 现在开始创建 
+		for (var i = 0; i < cols.length; i++) {
+			var th = document.createElement("TH");
+			//设置表头
+			th.innerText = cols[i];
+			tr.appendChild(th);
+		}
+		//遍历notices,填充表格数据
+		notices.forEach(function(notice) {
+			var trNode = tableNode.insertRow();
+			for (var i = 0; i < cols.length; i++) {
+				//插入一个td
+				var tdNode = trNode.insertCell();
+				tdNode.innerHTML = notice[keys[i]];
+			}
+		})
+		//获取table容器
+		var contentNode = document.getElementById("table_content");
+		//存在就替换
+		if (contentNode.childNodes[0]) {
+			contentNode.replaceChild(tableNode, contentNode.childNodes[0])
+			//不存在就添加
+		} else {
+			contentNode.appendChild(tableNode);
+		}
+	}
 </script>

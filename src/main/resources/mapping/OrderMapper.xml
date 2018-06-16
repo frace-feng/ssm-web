@@ -13,7 +13,7 @@
 		<result column="totalMoney" property="totalMoney" jdbcType="DECIMAL" />
 	</resultMap>
 		
-	
+	<!-- 天数查询 -->
 	<select id="selectByPrimaryKey" resultType="java.util.HashMap"  >
 	select 
 	count(clientCode) as number, 
@@ -29,14 +29,14 @@
 	<select id="selectByPrimaryKeyT" resultType="java.util.HashMap">
 		select count(clientCode) as number, sum(totalMoney) as
 		totalAmount,
-		sum(amount) as amount, date_format( from_unixtime( order.createTime ), '%m-%d' )
+		sum(amount) as amount, date_format( from_unixtime(createTime ), '%m-%d' )
 		as time
 		from f_order
 		where 
-<![CDATA[  from_unixtime( order.createTime ) > #{stime} ]]>
+<![CDATA[  from_unixtime(createTime ) > #{stime} ]]>
 		and 
-<![CDATA[ from_unixtime( order.createTime )  < #{etime} ]]>
-		group by date_format( from_unixtime( order.createTime ),'%m-%d' )
+<![CDATA[ from_unixtime(createTime )  < #{etime} ]]>
+		group by date_format( from_unixtime(createTime ),'%m-%d' )
 	</select> 
     
     <select id="selectByPrimaryKeyT7" resultType="java.util.Map">

@@ -47,9 +47,11 @@ public class ManagerLogin {
 		Map<String, Object> map = result.get(0);
 		String email = (String) map.get("email");
 		System.out.println(email);
+		String username = (String) map.get("userName");
+		System.out.println(userName);
 		String passWord = (String) map.get("passWord");
 		System.out.println(passWord);		
-		if (userName.equals(userName) && passWord.equals(passwdMD5)) {
+		if (username.equals(userName) && passWord.equals(passwdMD5)) {
 			model.addAttribute("login", login);
 			response.sendRedirect("/pages/managerUser.html");
 		} else {

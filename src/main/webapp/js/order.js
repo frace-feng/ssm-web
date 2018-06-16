@@ -19,8 +19,8 @@ $(function(){
 		$.ajax({
 			url:"/order/ajaxshowOrderT",
 			data:{
-				stime:$("#stime").val(),
-				etime:$("#etime").val(),
+				stime:$("input[name='stime']").val(),
+				etime:$("input[name='etime']").val(),
 			},
 			type:"get",
 			success:function(data){
