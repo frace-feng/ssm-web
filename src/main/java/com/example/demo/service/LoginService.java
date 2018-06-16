@@ -11,4 +11,5 @@ public interface LoginService {
 	//public List<Map<String, Object>> getLoginById();
 	Login checkLogin(String userName,String password);
 	List<Map<String, Object>> getLoginById();
+	List<Map<String, Object>> getStatus();
 }

@@ -36,6 +36,13 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		return loginDao.selectById();
 	}
+
+
+	@Override
+	public List<Map<String, Object>> getStatus() {
+		// TODO Auto-generated method stub
+		return loginDao.selectByStatus();
+	}
 	
 
 

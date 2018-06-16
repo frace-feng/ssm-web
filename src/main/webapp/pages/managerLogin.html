@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>后台管理登录界面</title>	
-		<link rel="stylesheet" href="../assets/css/core.css" />
-		<link rel="stylesheet" href="../assets/css/menu.css" />
-		<link rel="stylesheet" href="../assets/css/amazeui.css" />
-		<link rel="stylesheet" href="../assets/css/component.css" />
-		<link rel="stylesheet" href="../assets/css/page/form.css" />
-	</head>
-	<body>
-		<div class="account-pages">
-			<div class="wrapper-page">
-				<div class="text-center">
-	                <a href="index.html" class="logo"><span>后台管理登录</span></a>
-	            </div>
-	            
-	            <div class="m-t-40 card-box">
-	            	<div class="text-center">
-	                    <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
-	                </div>
-	                <div class="panel-body">
-	                	<form action="/manager/login" method="POST" class="am-form">
-	                		<div class="am-g">
-	                			<div class="am-form-group">
-							      <input type="text" class="am-radius" name="userName" id="userName"  placeholder="Username">
-							    </div>
-							
-							    <div class="am-form-group form-horizontal m-t-20">
-							      <input type="password" name="passwd" id="passwd" class="am-radius"  placeholder="Password">
-							    </div>
-							    
-		                        <div class="am-form-group ">
-		                        	<button type="submit"  class="am-btn am-btn-primary am-radius" style="width: 100%;height: 100%;">登录</button>
-		                        </div>
-	                		</div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>后台管理登录界面</title>
+<link rel="stylesheet" href="../assets/css/core.css" />
+<link rel="stylesheet" href="../assets/css/menu.css" />
+<link rel="stylesheet" href="../assets/css/amazeui.css" />
+<link rel="stylesheet" href="../assets/css/component.css" />
+<link rel="stylesheet" href="../assets/css/page/form.css" />
+<link rel="stylesheet" href="/layui/css/layui.css">
+<script src="/layui/layui.js"></script>
+</head>
+<body>
+	<div class="account-pages">
+		<div class="wrapper-page">
+			<div class="text-center">
+				<a href="index.html" class="logo"><span>后台管理登录</span></a>
+			</div>
 
-	                	</form>
+			<div class="m-t-40 card-box">
+				<div class="text-center">
+					<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
+				</div>
+				<div class="panel-body">
+					<form class="layui-form" action="/manager/login" lay-filter="user"
+						method="POST" style="margin: 20px;">
+						<div class="layui-form-item">
+						<label class="layui-form-label">姓名</label>
+							<div class="layui-input-block">
 							
-	                </div>
-	            </div>
+								<input type="text" name="LoginName" required   lay-verify="required"
+									autocomplete="nope" placeholder="请输入用户名" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">密码</label>
+							<div class="layui-input-block">
+								<input type="password" required   name="passwd" lay-verify="required"
+									placeholder="请输入密码" autocomplete="new-password"
+									class="layui-input">
+							</div>
+						</div>
+						<div class="layui-form-item">
+						<div style="text-align: center;">
+							<button class="layui-btn" lay-submit="true" lay-filter="demo1">登录</button>
+						</div>
+					</div>
+					</form>
+					<!-- <form action="/manager/login" class="layui-form" method="POST" class="am-form">
+						<div class="am-g">
+							<div class="am-form-group">
+								<input type="text"  class="am-radius" name="LoginName"
+									id="LoginName" placeholder="用户名">
+							</div>
+
+							<div class="am-form-group form-horizontal m-t-20">
+								<input type="password" name="passwd" id="passwd"
+									class="am-radius" placeholder="密码">
+							</div>
+
+							<div class="am-form-group ">
+								<button type="submit" class="am-btn am-btn-primary am-radius"
+									style="width: 100%; height: 100%;">登录</button>
+							</div>
+						</div>
+
+					</form> -->
+
+				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
