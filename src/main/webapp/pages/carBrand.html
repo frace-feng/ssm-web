@@ -6,86 +6,92 @@
 <title>车展</title>
 <meta name="description" content="这是一个车辆页面">
 <meta name="keywords" content="index">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link rel="icon" type="image/png" href="assets/i/favicon.png">
-<link rel="apple-touch-icon-precomposed" href="/admin/assets/i/app-icon72x72@2x.png">
+<link rel="apple-touch-icon-precomposed"
+	href="/admin/assets/i/app-icon72x72@2x.png">
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
 <link rel="stylesheet" href="/css/imgPlayer.css">
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=myak"></script>
 <script src="/admin/assets/js/jquery.min.js"></script>
-<script  src="/js/echarts.js"></script>
-<script  src="/js/car.js"></script>
-<script  src="/js/carFuel.js"></script>
-<script  src="/js/carLowF.js"></script>
-<script  src="/js/client6.js"></script>
+<script src="/js/echarts.js"></script>
+<script src="/js/car.js"></script>
+<script src="/js/carFuel.js"></script>
+<script src="/js/carLowF.js"></script>
+<script src="/js/client6.js"></script>
+<script src="/echarts/bmap.js"></script>
+<script src="/echarts/map.js"></script>
 <script src="/admin/assets/js/app.js"></script>
 <style>
-        /*轮播*/
-        
-        .slider-container {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.52%;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-        
-        .slider-content {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            transition: all 1s linear;
-            visibility: hidden;
-            opacity: 0;
-        }
-        
-        .slider-content img {
-            height: 70%;
-            width: 70%;
-            	
-        }
-        
-        .slider-pre,
-        .slider-next {
-            position: absolute;
-            display: inline-block;
-            top: 50%;
-            font-size: 5rem;
-            width: 5rem;
-            height: 10rem;
-            line-height: 10rem;
-            margin-top: -5rem;
-            cursor: pointer;
-            text-align: center;
-            color: white;
-            z-index: 2;
-            user-select: none;
-        }
-        
-        .slider-pre:hover,
-        .slider-next:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .slider-pre {
-            left: 0;
-        }
-        
-        .slider-next {
-            right: 0;
-        }
-        
-        .slider-show {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
-    <script>
+/*轮播*/
+#carm {
+	height: 100%;
+}
+
+.slider-container {
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.52%;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+}
+
+.slider-content {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	transition: all 1s linear;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.slider-content img {
+	height: 70%;
+	width: 70%;
+}
+
+.slider-pre, .slider-next {
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	font-size: 5rem;
+	width: 5rem;
+	height: 10rem;
+	line-height: 10rem;
+	margin-top: -5rem;
+	cursor: pointer;
+	text-align: center;
+	color: white;
+	z-index: 2;
+	user-select: none;
+}
+
+.slider-pre:hover, .slider-next:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.slider-pre {
+	left: 0;
+}
+
+.slider-next {
+	right: 0;
+}
+
+.slider-show {
+	visibility: visible;
+	opacity: 1;
+}
+</style>
+<script>
         function Slider(id) {
             //当前元素          
             this.current = 0;
@@ -148,88 +154,99 @@
     </script>
 </head>
 <body>
-<header class="am-topbar admin-header">
-  <div class="am-topbar-brand"><img src="/admin/assets/i/Weblogo.png"></div>
+	<header class="am-topbar admin-header">
+		<div class="am-topbar-brand">
+			<img src="/admin/assets/i/Weblogo.png">
+		</div>
 
-  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-    <ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
+		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+			<ul class="am-nav am-nav-pills am-topbar-nav admin-header-list">
 
-   <li class="am-dropdown tognzhi" data-am-dropdown>
-   <button class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o" data-am-dropdown-toggle> 
-   	数据可视化
-   <span class="am-badge am-badge-danger am-round">^</span>
-   </button>
-  <ul class="am-dropdown-content">
- 	
-    <li class="am-dropdown-header">跳到到前台首页</li>
-    <li><a href="/pages/main.html">首页 <span class="am-badge am-badge-danger am-round"></span></a></li>
-  
-  </ul>
-</li>
+				<li class="am-dropdown tognzhi" data-am-dropdown>
+					<button
+						class="am-btn am-btn-primary am-dropdown-toggle am-btn-xs am-radius am-icon-bell-o"
+						data-am-dropdown-toggle>
+						数据可视化 <span class="am-badge am-badge-danger am-round">^</span>
+					</button>
+					<ul class="am-dropdown-content">
 
- <li class="kuanjie">
- 	
-	<a href="/pages/clientList.html">用户展示</a>          
- 	<a href="/pages/orderList.html">订单展示</a> 
- 	<a href="/pages/carList.html">车辆展示</a>   
- 	<a href="/pages/moneyList.html">收入展示</a> 
- 	<a href="/pages/notice.html">消息展示</a> 
- </li>
- 
-    </ul>
-  </div>
-</header>
+						<li class="am-dropdown-header">跳到到前台首页</li>
+						<li><a href="/pages/main.html">首页 <span
+								class="am-badge am-badge-danger am-round"></span></a></li>
 
-<div class="am-cf admin-main"> 
+					</ul>
+				</li>
 
-<div class="nav-navicon admin-main admin-sidebar">
-    
-    
-    <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员frs</div>
-    <div class="sideMenu">
-            <h3 class="am-icon-flag"><em></em> <a href="/pages/clientList.html">用户展示</a></h3>
-      <ul>
-        <li><a href="/pages/clientList6.html">用户列表</a></li>
-        <li><a href="/pages/clientList.html">注册量</a></li>
-        <li><a href="/pages/clientList.html">注册+身份通过</a></li>
-        <li><a href="/pages/clientList1.html">注册+交押金数</a> </li>
-        <li><a href="/pages/clientList1.html">利润</a></li>
-        <li><a href="/pages/clientList2.html">性别+年龄占比 </a></li>       
-        <li><a href="/pages/clientList3.html">客户身份</a> </li>
-        <li><a href="/pages/clientList4.html">流失人群 </a></li>
-        
-      </ul>
-      <h3 class="am-icon-cart-plus"><em></em> <a href="/pages/orderList.html"> 订单展示</a></h3>
-      <ul>
-        <li><a href="/pages/orderList.html">时间段订单</a></li>
-        <li><a href="/pages/orderList1.html">有效订单</a></li>
-        <li><a href="/pages/orderList3.html">推广绩点</a></li>
-      </ul>
-      <h3 class="am-icon-users on"><em></em> <a href="/pages/carList.html">车辆展示</a></h3>
-      <ul>
-        <li><a href="/pages/carList.html">车辆状态 </a></li>
-        <li><a href="/pages/carList.html">加油量</a></li>
-        <li><a href="/pages/carBrand.html">车展</a></li>
-        <li><a href="/pages/carBrand.html">车辆地址</a></li>
-      </ul>
-      <h3 class="am-icon-gears"><em></em> <a href="/pages/moneyList.html">收入展示</a></h3>
-      <ul>
-        <li><a href="/pages/moneyList.html">充值</a></li>
-        <li><a href="/pages/moneyList.html">退押金</a></li>
-        <li><a href="/pages/moneyList1.html">月现金收入</a></li>
-        <li><a href="/pages/moneyList1.html">总收入</a></li>
+				<li class="kuanjie"><a href="/pages/clientList.html">用户展示</a> <a
+					href="/pages/orderList.html">订单展示</a> <a href="/pages/carList.html">车辆展示</a>
+					<a href="/pages/moneyList.html">收入展示</a> <a
+					href="/pages/notice.html">消息展示</a></li>
 
-      </ul> 
-      <h3 class="am-icon-volume-up"><em></em> <a href="/pages/notice.html">消息展示</a></h3>
-      <ul>
-        <li><a href="/pages/notice.html">站内消息 /留言 </a></li>
-        <li><a href="/pages/upload.html">上传文件</a></li>
-      </ul>
+			</ul>
+		</div>
+	</header>
 
-    </div>
-    <!-- sideMenu End --> 
-    
-    	<script type="text/javascript">
+	<div class="am-cf admin-main">
+
+		<div class="nav-navicon admin-main admin-sidebar">
+
+
+			<div class="sideMenu am-icon-dashboard"
+				style="color: #aeb2b7; margin: 10px 0 0 0;">欢迎系统管理员frs</div>
+			<div class="sideMenu">
+				<h3 class="am-icon-flag">
+					<em></em> <a href="/pages/clientList.html">用户展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/clientList6.html">用户列表</a></li>
+					<li><a href="/pages/clientList.html">注册量</a></li>
+					<li><a href="/pages/clientList.html">注册+身份通过</a></li>
+					<li><a href="/pages/clientList1.html">注册+交押金数</a></li>
+					<li><a href="/pages/clientList1.html">利润</a></li>
+					<li><a href="/pages/clientList2.html">性别+年龄占比 </a></li>
+					<li><a href="/pages/clientList3.html">客户身份</a></li>
+					<li><a href="/pages/clientList4.html">流失人群 </a></li>
+
+				</ul>
+				<h3 class="am-icon-cart-plus">
+					<em></em> <a href="/pages/orderList.html"> 订单展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/orderList.html">时间段订单</a></li>
+					<li><a href="/pages/orderList1.html">有效订单</a></li>
+					<li><a href="/pages/orderList3.html">推广绩点</a></li>
+				</ul>
+				<h3 class="am-icon-users on">
+					<em></em> <a href="/pages/carList.html">车辆展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/carList.html">车辆状态 </a></li>
+					<li><a href="/pages/carList.html">加油量</a></li>
+					<li><a href="/pages/carBrand.html">车展</a></li>
+					<li><a href="/pages/carBrand.html">车辆地址</a></li>
+				</ul>
+				<h3 class="am-icon-gears">
+					<em></em> <a href="/pages/moneyList.html">收入展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/moneyList.html">充值</a></li>
+					<li><a href="/pages/moneyList.html">退押金</a></li>
+					<li><a href="/pages/moneyList1.html">月现金收入</a></li>
+					<li><a href="/pages/moneyList1.html">总收入</a></li>
+
+				</ul>
+				<h3 class="am-icon-volume-up">
+					<em></em> <a href="/pages/notice.html">消息展示</a>
+				</h3>
+				<ul>
+					<li><a href="/pages/notice.html">站内消息 /留言 </a></li>
+					<li><a href="/pages/upload.html">上传文件</a></li>
+				</ul>
+
+			</div>
+			<!-- sideMenu End -->
+
+			<script type="text/javascript">
 			jQuery(".sideMenu").slide({
 				titCell:"h3", //鼠标触发对象
 				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
@@ -239,108 +256,127 @@
 				defaultPlay:true,//默认是否执行效果（默认true）
 				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
 				});
-		</script>     
-</div>
-
-<div class=" admin-content">
-	
-		<div class="daohang">
-			<ul>
-				<li><button type="button" class="am-btn am-btn-default am-radius am-btn-xs"> 用户信息展示 </li>				
-			</ul>
-	
+		</script>
 		</div>
-<!-- 数据展示开始 -->
-<div class="admin-biaogelist">
-     <div class="am-tabs am-margin" data-am-tabs>
-   	 <ul class="am-tabs-nav am-nav am-nav-tabs">
-      <li class="am-active"><a href="#tab1">车展</a></li>
-      <li><a href="#tab2">车地址</a></li>
-    </ul>
-    
-  <div class="am-tabs-bd">
-     	<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-        <div class="am-g am-margin-top">    
-		<script type="text/javascript"></script>
- 				<!-- 图片轮换 -->
-				<h3 align="center" font-family="宋体">车牌展示</h3>
-				<div class="slider-container" width="600px" height="400px">
-					<div class="slider-pre" onclick="slider1.pre()"><</div>
-					<div class="content-container" id="slider1">
-						<!-- 增加图片只需要增加一个下面的div项 -->
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car2.png" />
+
+		<div class=" admin-content">
+
+			<div class="daohang">
+				<ul>
+					<li><button type="button"
+							class="am-btn am-btn-default am-radius am-btn-xs">
+							用户信息展示</li>
+				</ul>
+
+			</div>
+			<!-- 数据展示开始 -->
+			<div class="admin-biaogelist">
+				<div class="am-tabs am-margin" data-am-tabs>
+					<ul class="am-tabs-nav am-nav am-nav-tabs">
+						<li class="am-active"><a href="#tab1">车展</a></li>
+						<li><a href="#tab3">车位置</a></li>
+						<li><a href="#tab2">车地址比较</a></li>
+
+					</ul>
+
+					<div class="am-tabs-bd">
+						<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+							<div class="am-g am-margin-top">
+								<script type="text/javascript"></script>
+								<!-- 图片轮换 -->
+								<h3 align="center" font-family="宋体">车牌展示</h3>
+								<div class="slider-container" width="600px" height="400px">
+									<div class="slider-pre" onclick="slider1.pre()"><</div>
+									<div class="content-container" id="slider1">
+										<!-- 增加图片只需要增加一个下面的div项 -->
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car2.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car3.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car4.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car6.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car7.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car8.png" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car1.jpg" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car10.jpg" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car5.jpg" />
+										</div>
+										<div class="slider-content" width="600px" height="400px">
+											<img src="/img/car9.jpg" />
+										</div>
+									</div>
+									<div class="slider-next" onclick="slider1.next()">></div>
+
+								</div>
+							</div>
 						</div>
-						<div class="slider-content" width="600px" height="400px"> 
-							<img src="/img/car3.png" />
+						<div class="am-tab-panel am-fade" id="tab2">
+							<table>
+								<tr>
+									<td><div id="" style="width: 1000px; height: 50px;"></div></td>
+								</tr>
+								<tr>
+									<td><div id="client6"
+											style="width: 1000px; height: 400px;"></div></td>
+								</tr>
+								<tr>
+									<td><div id="" style="width: 1000px; height: 200px;"></div></td>
+								</tr>
+							</table>
 						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car4.png" />
+						<div class="am-tab-panel am-fade" id="tab3">
+							<table>
+							<tr>
+									<td><div id="" style="width: 1000px; height: 50px;"></div></td>
+								</tr>
+								<tr>
+									<td><div id="carm" style="width: 1000px; height: 550px;"></div></td>
+								</tr>
+								<tr>
+									<td><div id="" style="width: 1000px; height: 50px;"></div></td>
+								</tr>
+							</table>
 						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car6.png" />
+						<!--这里打开的是新页面-->
+						<ul class="am-pagination am-fr">
+							<li><a href="/pages/carList.html">«</a></li>
+							<li><a href="/pages/carList.html">1</a></li>
+							<li class="am-active"><a href="/pages/carBrand.html">2</a></li>
+							<li class="am-disabled"><a href="/pages/carList1.html">»</a></li>
+						</ul>
+
+
+
+
+						<div class="foods">
+							<ul>版权所有@2018
+							</ul>
+							<dl>
+								<a href="/pages/clientList.html" title="返回头部"
+									class="am-icon-btn am-icon-arrow-up"></a>
+							</dl>
 						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car7.png" />
-						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car8.png" />
-						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car1.jpg" />
-						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car10.jpg" />
-						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car5.jpg" />
-						</div>
-						<div class="slider-content" width="600px" height="400px">
-							<img src="/img/car9.jpg" />
-						</div>
+
 					</div>
-					<div class="slider-next" onclick="slider1.next()">></div>
-					
+
 				</div>
-			</div></div>
-			<div class="am-tab-panel am-fade" id="tab2" >	
-					<table>
-					<tr>
-						<td><div id="" style="width: 1000px;height:50px;"></div></td>
-					</tr>
-					<tr>
-						<td><div id="client6" style="width: 1000px;height:400px;"></div></td>
-					</tr>
-					<tr>
-						<td><div id="" style="width: 1000px;height:200px;"></div></td>
-					</tr>
-					</table>
-			</div>		
-				<!--这里打开的是新页面-->
-				<ul class="am-pagination am-fr">
-                <li><a href="/pages/carList.html">«</a></li>
-                <li><a href="/pages/carList.html">1</a></li>
-                <li class="am-active"><a href="/pages/carBrand.html">2</a></li>
-                <li  class="am-disabled"><a href="/pages/carList1.html">»</a></li>
-              </ul>
-				
-
-
-
-<div class="foods">
-  <ul>
-    版权所有@2018
-  </ul>
-  <dl>
-    <a href="/pages/clientList.html" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a>
-  </dl>
-</div>
-
-</div>
-
-</div>
-</div>
-<script src="/admin/assets/js/amazeui.min.js"></script>
+			</div>
+			<script src="/admin/assets/js/amazeui.min.js"></script>
 </body>
 
 </html>

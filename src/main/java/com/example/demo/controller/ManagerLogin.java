@@ -52,7 +52,10 @@ public class ManagerLogin {
 		}
 		Map<String, Object> user = null;
 		if(result.size() > 0) {
-			user = result.get(0);
+			for(int i=0;i<result.size();i++) {
+				user = result.get(i);
+			}
+			
 		}
 		if (user == null) {
 			request.setAttribute("error2", "没有此用户");
