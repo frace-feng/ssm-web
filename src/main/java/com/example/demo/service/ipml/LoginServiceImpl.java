@@ -38,11 +38,6 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 
-	@Override
-	public List<Map<String, Object>> getStatus() {
-		// TODO Auto-generated method stub
-		return loginDao.selectByStatus();
-	}
 	
 
 

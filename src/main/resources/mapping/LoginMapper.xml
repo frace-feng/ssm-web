@@ -15,8 +15,5 @@
     <select id="selectById" resultType="java.util.Map">
     select * from user 
     </select>
-    <select id="selectByStatus" resultType="java.util.Map">
-    	select userName,passWord from user where status = 1
-    </select>
 
 </mapper>    

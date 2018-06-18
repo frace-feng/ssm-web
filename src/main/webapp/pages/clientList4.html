@@ -17,6 +17,7 @@
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <link rel="stylesheet" href="/admin/assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="/admin/assets/css/admin.css">
+<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
 <script src="/admin/assets/js/jquery.min.js"></script>
 <script src="/js/echarts.js"></script>
 <script type="text/javascript" src="/js/audit.js"></script>
@@ -144,15 +145,32 @@
 			<div class="admin-biaogelist">
 
 				<!--这里打开的是新页面-->
-				<h3 align="center">流失人群</h3>
+				<div class="layui-form-item">
+				<table align="center">
+					<tr>
+						<td><label>开始：</label>
+							<div class="layui-form-item">
+								<input type="text" name="stime" value="2018-02-01"
+									class="demo-input" placeholder="请选择日期" id="test1">
+							</div></td>
+						<td><div>&nbsp;&nbsp;&nbsp;</div></td>
+						<td><label>结束：</label>
+							<div class="layui-form-item">
+								<input type="text" name="etime" value="2018-03-07"
+									class="demo-input" placeholder="请选择日期" id="test2">
+							</div></td>
+						<td><button id="tijiao1" class="layui-btn layui-btn-xs"
+								style="width: 100px; height: 45px">提交</button></td>
+					</tr>
+				</table>
+				</div>
 				<div>
 					<table>
 						<tr>
-							<td><div id="client7" style="width: 100px; height: 200px;"></div></td>
-							<td><div id="audit" style="width: 1000px; height: 400px;"></div></td>
+							<td><div id="audit" style="width: 1200px; height: 400px;"></div></td>
 						</tr>
 						<tr>
-							<td><div id="client7" style="width: 100px; height: 200px;"></div></td>
+							<td><div id="client7" style="width: 200px; height: 200px;"></div></td>
 						</tr>
 					</table>
 				</div>
@@ -185,4 +203,18 @@
 	</div>
 	<script src="/admin/assets/js/amazeui.min.js"></script>
 </body>
+<script src="/laydate/laydate.js"></script>
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1',//指定元素
+  //range: true
+});
+laydate.render({
+	  elem: '#test2',//指定元素
+	  //range: true
+	});
+</script>
 </html>

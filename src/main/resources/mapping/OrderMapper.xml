@@ -123,7 +123,7 @@
 	date_format( from_unixtime( createTime ), '%Y-%m') as	time,
 	COUNT(totalMoney) as monTotal
 	FROM f_order
-	WHERE <![CDATA[   date_format( from_unixtime( createTime ),'%Y-%m')> '2017-09-01' ]]>
+	WHERE <![CDATA[date_format( from_unixtime( createTime ),'%Y-%m')> '2017-09-01' ]]>
 	GROUP BY time
 	</select>
 	<!-- 添加订单 -->

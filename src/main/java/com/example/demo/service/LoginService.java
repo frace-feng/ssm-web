@@ -9,7 +9,6 @@ import com.example.demo.entity.Login;
 
 public interface LoginService {
 	//public List<Map<String, Object>> getLoginById();
-	Login checkLogin(String userName,String password);
+	Login checkLogin(String userName,String passWord);
 	List<Map<String, Object>> getLoginById();
-	List<Map<String, Object>> getStatus();
 }

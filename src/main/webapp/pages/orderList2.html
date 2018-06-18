@@ -187,4 +187,18 @@
 	</div>
 	<script src="/admin/assets/js/amazeui.min.js"></script>
 </body>
+<script src="/laydate/laydate.js"></script>
+<script>
+lay('#version').html('-v'+ laydate.v);
+
+//执行一个laydate实例
+laydate.render({
+  elem: '#test1',//指定元素
+  //range: true
+});
+laydate.render({
+	  elem: '#test2',//指定元素
+	  //range: true
+	});
+</script>
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>后台管理系统--更新客户</title>
+    <title>后台管理系统--客户管理</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -307,15 +307,7 @@
                 var form = layui.form
                     //自定义验证规则
                 form.verify({
-                    // title: function(value){
-                    //     if(value.length < 5){
-                    //         return '标题至少得5个字符啊';
-                    //     }
-                    // },
                     pass: [/(.+){6,12}$/, '密码必须6到12位']
-                        // ,content: function(value){
-                        //     layedit.sync(editIndex);
-                        // }
                 });
                 //监听提交
                 form.on('submit(demo1)', function(data) {

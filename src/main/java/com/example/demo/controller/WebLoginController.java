@@ -38,7 +38,8 @@ public class WebLoginController {
 	public void checkLogin(Login login, Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		login = loginService.checkLogin(login.getUserName(), login.getpassWord());
-		 if(login != null) {
+		System.out.println("前台登录");
+		if(login != null) {
 			 model.addAttribute("login", login);
 			 response.sendRedirect("/pages/main.html");
 		 }
@@ -46,28 +47,4 @@ public class WebLoginController {
 		 response.sendRedirect("/pages/fail.html");
 		 }
 	}
-	
-	    //测试超链接跳转到另一个页面是否可以取到session值
-		@RequestMapping("/anotherpage")
-		public void hrefpage(HttpServletResponse response) throws IOException{
-			
-			 response.sendRedirect("/pages/anotherPage.html");
-		}
-		
-		//注销方法
-		@RequestMapping("/outLogin")
-		public void outLogin(HttpServletResponse response) throws IOException{
-			//通过session.invalidata()方法来注销当前的session
-			response.sendRedirect("/pages/login.html");
-		}
-	
-
-	/*// 检测数据是否存在
-	@ResponseBody
-	@RequestMapping(value = "/login2", method = RequestMethod.GET)
-	public List<Map<String, Object>> ajaxshowAdd(HttpServletRequest request, Model model) {
-		List<Map<String, Object>> login = this.loginService.getLoginById();
-		return login;
-	}*/
-
 }

@@ -26,7 +26,11 @@ public class AuditController {
 	@RequestMapping(value = "/ajaxShowAudit")
 	public List<Map<String, Object>> ajaxShowAudit(HttpServletRequest request, Model model) {
 		logger.info("流失人群统计");
-		List<Map<String, Object>> audit = this.auditService.getAuditById(1);
+		String stime = request.getParameter("stime");
+		String etime = request.getParameter("etime");
+		System.out.println(stime);
+		System.out.println(etime);
+		List<Map<String, Object>> audit = this.auditService.getAuditById(0, stime, etime);
 		return audit;
 	}
 

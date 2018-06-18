@@ -155,14 +155,6 @@
                             <input type="email" name="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
                         </div>
                     </div>
-                    <!--身份-->
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">身份</label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="status" value="0" title="用户" checked="">
-                            <input type="radio" name="status" value="1" title="管理员">
-                        </div>
-                    </div>
                     <div class="layui-form-item">
                         <div style="text-align: center;">
                             <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
@@ -207,11 +199,7 @@
                         title: '邮箱',
                         width: 180,
                         sort: true
-                    }, {
-                        field: 'status',
-                        title: '身份',
-                        templet: '#status'
-                    }, {
+                    },  {
                         width: 178,
                         title: '操作',
                         align: 'center',

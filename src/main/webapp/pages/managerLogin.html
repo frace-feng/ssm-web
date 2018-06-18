@@ -30,33 +30,33 @@
 						<label class="layui-form-label">姓名</label>
 							<div class="layui-input-block">
 							
-								<input type="text" name="LoginName" required   lay-verify="required"
+								<input type="text" name="LoginName" id="userName" required   lay-verify="required"
 									autocomplete="nope" placeholder="请输入用户名" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">密码</label>
 							<div class="layui-input-block">
-								<input type="password" required   name="passwd" lay-verify="required"
+								<input type="password" required   name="passwd" id="passWord" lay-verify="required"
 									placeholder="请输入密码" autocomplete="new-password"
 									class="layui-input">
 							</div>
 						</div>
 						<div class="layui-form-item">
 						<div style="text-align: center;">
-							<button class="layui-btn" lay-submit="true" lay-filter="demo1">登录</button>
+							<button class="layui-btn" lay-submit="" type="submit" lay-filter="demo1">登录</button>
 						</div>
 					</div>
 					</form>
 					<!-- <form action="/manager/login" class="layui-form" method="POST" class="am-form">
 						<div class="am-g">
 							<div class="am-form-group">
-								<input type="text"  class="am-radius" name="LoginName"
-									id="LoginName" placeholder="用户名">
+								<input type="text"  class="am-radius" name="userName"
+									id="userName" placeholder="用户名">
 							</div>
 
 							<div class="am-form-group form-horizontal m-t-20">
-								<input type="password" name="passwd" id="passwd"
+								<input type="password" name="passWord" id="passWord"
 									class="am-radius" placeholder="密码">
 							</div>
 

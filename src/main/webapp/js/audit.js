@@ -1,7 +1,14 @@
 $(function(){
-
+	
+	$("#tijiao1").on('click',init);
+	
+	function init(){
 		$.ajax({
 		url:"/audit/ajaxShowAudit",
+		data:{
+			stime:$("input[name='stime']").val(),
+			etime:$("input[name='etime']").val(),
+		},
 		type:"get",
 		success:function(data){
 			console.log(data)
@@ -18,7 +25,7 @@ $(function(){
 		     var option = {
 		    		 /*backgroundColor: '#2c343c',*/
 		         title: {
-		             text: '财务退押金',
+		             text: '流失量',
 		         },
 		         toolbox: {
 		             // y: 'bottom',
@@ -39,7 +46,7 @@ $(function(){
 		             }
 		         },
 		         legend: {
-		        	 data: [ '财务退押金']
+		        	 data: [ '流失量']
 		         },
 		         xAxis: {
 		        	 name:"月份",
@@ -53,7 +60,7 @@ $(function(){
 		          series: [
 		        	
 	                {
-	             	 name: '财务退押金',
+	             	 name: '流失量',
 	            	 type: 'bar',
 	            	 barWidth: 20,
 	            	 fontWeight: 900,
@@ -74,5 +81,6 @@ $(function(){
 		     myChart.setOption(option);
 		}
 	})
-
+	}
+	init();
 })

@@ -29,6 +29,7 @@ $(function(){
 		    		    },
 		    		    toolbox: {
 		    		        feature: {
+		    		        	//数据区域缩放后的事件
 		    		            dataZoom: {
 		    		                yAxisIndex: 'none'
 		    		            },
